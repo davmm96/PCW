@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>PICPLUS</title>
+		<meta charset="UTF-8">
+	</head>
+    <body>
+       <h1><a href="index.html">PICPLUS</a></h1>
+		<h2>Filtros de búsqueda</h2>
+		<form id="Form_busqueda">
+			<p>
+				<label for="name"> Título</label>
+				<input type="text" name="name" id="name"
+				autofocus
+				/>
+			</p>
+
+			<p>
+				Entre
+				<label for="fecha_ini"> </label>
+				<input type="date" name="fecha_nac" id="fecha_ini"
+				min="1999-01-01"
+				/>
+				y
+				<label for="fecha_fin"></label>
+				<input type="date" name="fecha_nac" id="fecha_fin"
+				min="1999-01-01"
+				/>
+			</p>
+
+			<p>
+				<label for="pais"> País </label>
+				<input type="text" name="pais" id="pais"/>
+			</p>
+		</form>
+
+		<form method="get" action="resultado_busqueda.html">
+				<button type="submit">Buscar</button>
+		</form>
+	</body>
+</html>
