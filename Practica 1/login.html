@@ -1,9 +1,34 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<title></title>
-</head>
-<body>
+	<head>
+		<title>iCook</title>
+		<meta charset="UTF-8">
+	</head>
+    <body>
+        <h1><a href="index.html">iCook</a></h1>
+		<h2>Log in</h2>
+		<form id="Form_registro">
 
-</body>
+			<p>
+				<label for="usuario">Usuario</label>
+				<input type="text" name="usuario" id="usuario"
+				placeholder="Davm96"
+				pattern="[^-\d]+[A-Za-z0-9]{6,20}"
+				autofocus
+				required/>
+			</p>
+
+			<p>
+				<label for="password"> Contraseña</label>
+				<input type="password" name="password" id="password"
+				placeholder="qwe1234"
+				pattern="[A-Za-z0-9_-]{8,20}"
+				required/>
+			</p>
+			
+			<p>
+				<input type="submit" value="Entrar">
+			</p>
+		</form>
+	</body>
 </html>
