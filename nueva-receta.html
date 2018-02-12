@@ -1,9 +1,65 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<title></title>
-</head>
-<body>
+	<head>
+		<title>iCook</title>
+		<meta charset="UTF-8">
+	</head>
+    <body>
+        <h1><a href="index.html">iCook</a></h1>
+		<h2>Nueva receta</h2>
+		<form id="Form_registro">
 
-</body>
+			<p>
+				<label for="receta"> Nombre de la receta</label>
+				<input type="text" name="receta" id="receta"
+				placeholder="Arroz a banda"
+				pattern="[^-\d]+[A-Za-z0-9]{6,20}"
+				autofocus
+				required/>
+			</p>
+
+			<p>
+				<label for="elaboracion"> Elaboración</label>
+				 <textarea>
+
+				</textarea>
+			</p>
+
+			<p>
+				<label for="comensales"> Nº de comensales</label>
+				<input type="number" name="comensales" id="comensales"
+				min=0
+				required/> 
+			</p>
+
+			<p>
+				<label for="tiempo">Tiempor de elaboración (en minutos)</label>
+				<input type="number" name="tiempo" id="tiempo"
+				min=0
+				required/> 
+			</p>
+
+			<p>
+				<label for="dificultad">Dificultad</label>
+				<select>
+					<option value="Baja">Baja</option>
+					<option value="Media">Media</option>
+					<option value="Alta">Alta</option>
+					
+				</select>
+
+			</p>
+			
+			<p>
+				<input type="submit" value="Crear">
+			</p>
+		</form>
+
+		<div> 
+			<p>Zona de ingredientes</p>
+				<ul>Lista de ingredientes</ul>
+					<li></li>
+				<p> 
+		</div>
+	</body>
 </html>
