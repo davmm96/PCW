@@ -13,6 +13,9 @@ buscar 1 David
 
 receta 1 Sergio
 
+nueva-receta 0.75 David
+
 acerca 0.5 Sergio
+
 
 --------------------
