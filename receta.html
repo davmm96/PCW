@@ -20,27 +20,86 @@
 		</div>
 	</header>
 	
-
-        <h1><a href="index.html">PICPLUS</a></h1>
+	<main>
 		
-		<img src="img/receta1.jpg" alt="receta 1" width="350" height="200"/>
-		<p>Foto 1 de la receta</p>
-		<p>
-			<a href=""> < </a>
-			<a href=""> > </a>	
-		</p>
+	
+		<article>
+			<h1><a href="index.html">PICPLUS</a></h1>
+		
+			<img src="img/receta1.jpg" alt="receta 1" width="350" height="200"/>
+			<p>Foto 1 de la receta</p>
+			<p>
+				<a href=""> < </a>
+				<a href=""> > </a>	
+			</p>
 
+			<div class="like">
+				<button type="button">Me gusta</button>
+				<button type="button">No me gusta</button>
+			</div>
+			
 
+			<p>Receta 1</p>
+			<p>Fecha: 01/01/2018</p>
+			<p>Tiempo de elaboracion: 60 minutos</p>
+			<p>Dificultad: 3/5</p>
+			<p>Plato para: 4 personas</p>
+			<p>4 votos positivos</p>
+			<p>1 votos negativos</p>
+			<p><a href="buscar.html">Autor 1</a></p>	
+			<p><a href="#comentarios">2 Comentarios</a></p>
+		</article>
+        
+		<div class="escribe-comentario">
 
-		<p>Receta 1</p>
-		<p>Fecha: 01/01/2018</p>
-		<p>Tiempo de elaboracion: 60 minutos</p>
-		<p>Dificultad: 3/5</p>
-		<p>Plato para: 4 personas</p>
-		<p>4 votos positivos</p>
-		<p>1 votos negativos</p>
-		<p>5 Comentarios</p>
-		<p><a href="buscar.html">Autor 1</a></p>
+			<h2>Escribe tu comentario:</h2>
+
+			<form class="form-comentario">
+				<p>
+					<label for="titulo-comentario">Titulo</label>
+				</p>
+				<p>
+					<input type="text" name="titulo" id="titulo-comentario" required maxlength="50">
+				</p>
+				<p>
+					<label for="contenido-comentario">Contenido</label>
+				</p>
+				<p>
+					<textarea id="contenido-comentario" required></textarea>
+				</p>
+				<p>
+					<input type="submit" value="Comentar">
+				</p>
+				
+			</form>
+		</div>
+
+		<div id="comentarios">
+			<h2>Comentarios</h2>
+
+			<div>
+				<p>Comentario 1</p>
+				<p>Autor 1</p>
+				<p>Fecha: Domingo, 28/01/2018, 09:32h</p>
+			</div>
+
+			<div>
+				<p>Comentario 2</p>
+				<p>Autor 2</p>
+				<p>Fecha: Jueves, 25/01/2018, 19:36h</p>
+			</div>
+
+			<p>
+				<a href="">1</a>
+				<a href=""> < </a>
+				2
+				<a href=""> > </a>
+				<a href="">Fin</a>
+	</p>
+
+		</div>
+
+		</main>
 
 	<footer>
 		<a href="acerca.html">Información de contacto</a>
