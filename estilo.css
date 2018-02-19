@@ -1,5 +1,7 @@
-body{
+html,body{
     background-color: #FCFAF9;
+    padding:0;
+    margin:0;
 }
 
 .form-vertical input {
@@ -43,6 +45,18 @@ body{
 
 .menu-horizontal a:hover{
     background-color: #48E5C2;
+}
+footer{
+    font-family: 'Patrick Hand', cursive;
+    overflow: hidden;
+    position: relative;
+    background: #48E5C2;
+}
+.boton_no_molon{
+    font-family: 'Patrick Hand', cursive;
+    position: absolute;
+    top: 0;
+    right: 0;
 }
 
 /* #DDD92A */ 
