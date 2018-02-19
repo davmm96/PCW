@@ -5,7 +5,21 @@
 		<meta charset="UTF-8">
 	</head>
     <body>
-        <h1><a href="index.html">iCook</a></h1>
+        	<header>
+		<img src="https://viviendosanos.com/wp-content/uploads/2011/11/comida-rapida-consecuencias-de-comer-en-exceso-comida-rapida-comida-rapida.jpg" alt="logo" width="50" height="50">
+		<p>iCook</p>
+		<p>Esta es una página para subir recetas.</p>
+
+		<div>
+			<a href="index.html">Inicio</a>
+			<a href="buscar.html">Buscar</a>
+			<a href="login.html">Login</a>
+			<a href="registro.html">Registro</a>
+			<a href="">Logout</a>
+			<a href="nueva-receta.html">Nueva receta</a>
+		</div>
+	</header>
+
 		<h2>Nueva receta</h2>
 		<form id="Form_registro">
 
@@ -13,7 +27,6 @@
 				<label for="receta"> Nombre de la receta</label>
 				<input type="text" name="receta" id="receta"
 				placeholder="Arroz a banda"
-				pattern="[^-\d]+[A-Za-z0-9]{6,20}"
 				autofocus
 				required/>
 			</p>
@@ -53,13 +66,37 @@
 			<p>
 				<input type="submit" value="Crear">
 			</p>
-		</form>
 
-		<div> 
-			<p>Zona de ingredientes</p>
-				<ul>Lista de ingredientes</ul>
-					<li></li>
+			<div> 
+				<p>Lista de ingredientes</p>
+					<ul>
+						<li>Arroz</li>
+						<li>Pollo</li>
+					</ul>
+					<textarea></textarea>
+					<button>Añadir</button>
 				<p> 
-		</div>
+			</div>
+
+			<div> 
+				<p>Fotos</p>
+					<ul>
+						<li><img src="img/receta1.jpg" alt="foto receta1" width="350" height="200"></li>
+						<li><img src="img/receta1.jpg" alt="foto receta1" width="350" height="200"></li>
+					</ul>
+					<button>Añadir</button>
+				<p> 
+			</div>
+
+			<p>
+				<input type="submit" value="Crear receta">
+			</p>
+		</form>
+<footer>
+		<a href="acerca.html">Información de contacto</a>
+		<p>Copyright 2018</p>
+		<a href="index.html">Inicio</a>
+	</footer>
+		
 	</body>
 </html>

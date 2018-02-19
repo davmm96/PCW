@@ -1,41 +1,170 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>PICPLUS</title>
+		<title>iCook</title>
 		<meta charset="UTF-8">
 	</head>
     <body>
-       <h1><a href="index.html">PICPLUS</a></h1>
-		<h2>Filtros de búsqueda</h2>
-		<form id="Form_busqueda">
+       	<header>
+		<img src="https://viviendosanos.com/wp-content/uploads/2011/11/comida-rapida-consecuencias-de-comer-en-exceso-comida-rapida-comida-rapida.jpg" alt="logo" width="50" height="50">
+		<p>iCook</p>
+		<p>Esta es una página para subir recetas.</p>
+
+		<div>
+			<a href="index.html">Inicio</a>
+			<a href="buscar.html">Buscar</a>
+			<a href="login.html">Login</a>
+			<a href="registro.html">Registro</a>
+			<a href="">Logout</a>
+			<a href="nueva-receta.html">Nueva receta</a>
+		</div>
+	</header>
+
+		<h2>Búsqueda</h2>
+		<form id="Form_busqueda" method="get" action="resultado_busqueda.html">
 			<p>
-				<label for="name"> Título</label>
+				<label for="name">Nombre</label>
 				<input type="text" name="name" id="name"
 				autofocus
 				/>
 			</p>
 
 			<p>
-				Entre
-				<label for="fecha_ini"> </label>
-				<input type="date" name="fecha_nac" id="fecha_ini"
-				min="1999-01-01"
+				Tiempo de preparación entre
+				<label for="tiempo_ini"> </label>
+				<input type="number" name="tiempo_ini" id="tiempo_ini"
+				min=0
 				/>
 				y
-				<label for="fecha_fin"></label>
-				<input type="date" name="fecha_nac" id="fecha_fin"
-				min="1999-01-01"
+				<label for="tiempo_fin"></label>
+				<input type="number" name="tiempo_fin" id="tiempo_fin"
+				min=0
 				/>
 			</p>
 
 			<p>
-				<label for="pais"> País </label>
-				<input type="text" name="pais" id="pais"/>
-			</p>
-		</form>
+				<label for="dificultad">Dificultad</label>
+				<select>
+					<option value="Baja">Baja</option>
+					<option value="Media">Media</option>
+					<option value="Alta">Alta</option>
+					
+				</select>
 
-		<form method="get" action="resultado_busqueda.html">
+			</p>
+
+			<p>
+				<label for="comensales"> Nº de comensales</label>
+				<input type="number" name="comensales" id="comensales"
+				min=0
+				/> 
+			</p>
+
+			<p>
+				<label for="autor">Autor</label>
+				<input type="text" name="autor" id="autor"
+				/>
+			</p>
 				<button type="submit">Buscar</button>
 		</form>
+
+		<article>
+		<p><a href="receta.html">Receta 1</a></p>
+		<img src="img/receta1.jpg" alt="foto receta1" width="350" height="200">
+		<p><a href="buscar.html">Autor 1</a></p>
+		<p>05/02/2018</p>
+		<p>12 votos positivos</p>
+		<p>3 votos negativos</p>
+		<p>3 Comentarios</p>
+	</article>
+
+	<article>
+		<p><a href="receta.html">Receta 2</a></p>
+		<img src="img/receta2.jpg" alt="foto receta2 width="350" height="200">
+		<p><a href="buscar.html">Autor 2</a></p>
+		<p>04/02/2018</p>
+		<p>4 votos positivos</p>
+		<p>1 votos negativos</p>
+		<p>5 Comentarios</p>
+	</article>
+
+	<article>
+		<p><a href="receta.html">Receta 3</a></p>
+		<img src="img/receta3.jpg" alt="foto receta3 width="350" height="200">
+		<p><a href="buscar.html">Autor 3</a></p>
+		<p>03/02/2018</p>
+		<p>10 votos positivos</p>
+		<p>5 votos negativos</p>
+		<p>2 Comentarios</p>
+	</article>
+
+	<article>
+		<p><a href="receta.html">Receta 4</a></p>
+		<img src="img/receta4.jpg" alt="foto receta4 width="350" height="200">
+		<p><a href="buscar.html">Autor 4</a></p>
+		<p>02/02/2018</p>
+		<p>8 votos positivos</p>
+		<p>2 votos negativos</p>
+		<p>4 Comentarios</p>
+	</article>
+
+	<article>
+		<p><a href="receta.html">Receta 5</a></p>
+		<img src="img/receta5.jpg" alt="foto receta5 width="350" height="200">
+		<p><a href="buscar.html">Autor 5</a></p>
+		<p>01/02/2018</p>
+		<p>14 votos positivos</p>
+		<p>5 votos negativos</p>
+		<p>3 Comentarios</p>
+	</article>
+
+	<article>
+		<p><a href="receta.html">Receta 6</a></p>
+		<img src="img/receta6.jpg" alt="foto receta6 width="350" height="200">
+		<p><a href="buscar.html">Autor 6</a></p>
+		<p>30/01/2018</p>
+		<p>9 votos positivos</p>
+		<p>4 votos negativos</p>
+		<p>3 Comentarios</p>
+	</article>
+
+	<form>
+		<p>
+		<label>Ordenar por orden:</label>
+		<select>
+			<option value="ascendente">
+				Ascendente
+			</option>
+			<option value="descendente">
+				Descendente
+			</option>
+			<option value="valoracion">
+				De valoración
+			</option>
+			<option value="fecha">
+				De fecha
+			</option>
+		</select>
+		</p>
+
+		<p>
+			<label for="busqueda_rapida">Búsqueda rápida:</label>
+			<input type="text" name="buscar" id="busqueda_rapida">
+		</p>
+	</form>
+
+	<p>
+		<a href="">1</a>
+		<a href=""> < </a>
+		5
+		<a href=""> > </a>
+		<a href="">Fin</a>
+	</p>
+
+	<footer>
+		<a href="acerca.html">Información de contacto</a>
+		<p>Copyright 2018</p>
+		<a href="index.html">Inicio</a>
+	</footer>
 	</body>
 </html>
