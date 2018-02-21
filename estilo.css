@@ -1,6 +1,12 @@
+<<<<<<< HEAD
 body{
     margin: 1% 5%;
+=======
+html,body{
+>>>>>>> bc539673b74563e31d604a1bc4e1889b5f1d1f1c
     background-color: #FCFAF9;
+    padding:0;
+    margin:0;
 }
 
 .form-vertical input {
@@ -64,6 +70,18 @@ body{
     width: 29%;
     margin: 1% 2%;
     border-radius: 0.5%;
+}
+footer{
+    font-family: 'Patrick Hand', cursive;
+    overflow: hidden;
+    position: relative;
+    background: #48E5C2;
+}
+.boton_no_molon{
+    font-family: 'Patrick Hand', cursive;
+    position: absolute;
+    top: 0;
+    right: 0;
 }
 
 .contenido article 
