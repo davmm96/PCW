@@ -9,40 +9,43 @@
 	</head>
     <body>
     	<header>
-			<img src="https://viviendosanos.com/wp-content/uploads/2011/11/comida-rapida-consecuencias-de-comer-en-exceso-comida-rapida-comida-rapida.jpg" alt="logo" width="50" height="50">
-			<p>iCook</p>
-			<p>Esta es una página para subir recetas.</p>
 
-			<div class="menu-horizontal">
-				<a href="index.html">Inicio</a>
-				<a href="buscar.html">Buscar</a>
-				<a href="login.html">Login</a>
-				<a href="registro.html">Registro</a>
-				<a href="">Logout</a>
-				<a href="nueva-receta.html">Nueva receta</a>
-			</div>
-		</header>
+		<div id="logo"><img src="img/icook-logo.png" alt="logo"></div>
+		
+		<p>Esta es una página para subir recetas.</p>
+
+		<div class="menu-horizontal" id="menu-principal">
+			<a href="index.html">Inicio</a>
+			<a href="buscar.html">Buscar</a>
+			<a href="login.html">Login</a>
+			<a href="registro.html">Registro</a>
+			<a href="">Logout</a>
+			<a href="nueva-receta.html">Nueva receta</a>
+		</div>
+	</header>
 	
-	<main>
+	<main class="contenido">
 		
 	
-		<article>
-			<h1><a href="index.html">PICPLUS</a></h1>
-		
-			<img src="img/receta1.jpg" alt="receta 1" width="350" height="200"/>
-			<p>Foto 1 de la receta</p>
-			<p>
-				<a href=""> < </a>
-				<a href=""> > </a>	
-			</p>
+		<article id="info-receta">
+			
+			<div id="apartado-foto-receta">
+				<img src="img/receta1.jpg" alt="receta 1" width="350" height="200"/>
+				<p>Foto 1 de la receta</p>
+				<p>
+					<a href=""> < </a>
+					<a href=""> > </a>	
+				</p>
 
-			<div class="like">
-				<button type="button">Me gusta</button>
-				<button type="button">No me gusta</button>
+				<div class="like">
+					<button type="button">Me gusta</button>
+					<button type="button">No me gusta</button>
+				</div>
+
 			</div>
 			
 
-			<p>Receta 1</p>
+			<h1>Receta 1</h1>
 			<p>Fecha: 01/01/2018</p>
 			<p>Tiempo de elaboracion: 60 minutos</p>
 			<p>Dificultad: 3/5</p>
@@ -80,13 +83,13 @@
 		<div id="comentarios">
 			<h2>Comentarios</h2>
 
-			<div>
+			<div class="comentarios">
 				<p>Comentario 1</p>
 				<p>Autor 1</p>
 				<p>Fecha: Domingo, 28/01/2018, 09:32h</p>
 			</div>
 
-			<div>
+			<div class="comentarios">
 				<p>Comentario 2</p>
 				<p>Autor 2</p>
 				<p>Fecha: Jueves, 25/01/2018, 19:36h</p>

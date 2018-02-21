@@ -1,13 +1,34 @@
-<<<<<<< HEAD
-body{
-    margin: 1% 5%;
-=======
 html,body{
->>>>>>> bc539673b74563e31d604a1bc4e1889b5f1d1f1c
     background-color: #FCFAF9;
     padding:0;
-    margin:0;
+    margin: 1% 2%;
 }
+/*TITULO*/
+
+header{
+    background-color: #9dff35;
+    margin-bottom: 3%;
+    box-shadow: 0px 0px 30px -3px rgba(0,0,0,0.63);
+}
+
+#logo{
+    margin: auto;
+    text-align: center;
+}
+
+header img{
+    margin-top: 2%;
+    width: 15%;
+    height: 15%;
+}
+
+header p{
+    font-size: 120%;
+    font-family: 'Patrick Hand', cursive;
+    margin: auto;
+    text-align: center;
+}
+
 
 .form-vertical input {
     width: 100%;
@@ -19,9 +40,13 @@ html,body{
     box-sizing: border-box;
 }
 
+.form-vertical textarea{
+    width: 100%;
+}
+
 .form-vertical input[type=submit] {
     width: 100%;
-    background-color: #0044b2;
+    background-color: #007c16;
     color: white;
     padding: 1% 1%;
     margin: 1% 0;
@@ -31,7 +56,7 @@ html,body{
 }
 
 .form-vertical input[type=submit]:hover {
-    background-color: #002d77;
+    background-color: #00590f;
 }
 
 .menu-horizontal{
@@ -44,7 +69,7 @@ html,body{
 .menu-horizontal a{
     display: inline-block;
     transition: background-color 0.2s ease-in-out , color 0.5s ease-in-out ;
-    background-color: #48E5C2;
+    background-color: #f2f2f2;
     color: #333333;
     box-sizing: border-box;
     text-decoration: none;
@@ -56,27 +81,10 @@ html,body{
 
 .menu-horizontal a:hover{
     color: #FCFAF9;
-    background-color: #5e5e5e;
+    background-color: #007c16;
 }
 
 
-.contenido{
-    box-sizing: border-box;
-}
-
-.contenido article{
-    background-color: #9dff35;
-    display: inline-block;
-    width: 29%;
-    margin: 1% 2%;
-    border-radius: 0.5%;
-}
-footer{
-    font-family: 'Patrick Hand', cursive;
-    overflow: hidden;
-    position: relative;
-    background: #48E5C2;
-}
 .boton_no_molon{
     font-family: 'Patrick Hand', cursive;
     position: absolute;
@@ -84,16 +92,62 @@ footer{
     right: 0;
 }
 
-.contenido article 
+.contenido {
+    text-align: center;
+    margin: auto;
+}
 
-.contenido article .titulo-receta{
+.contenido article{
+    box-shadow: 0px 0px 30px -3px rgba(0,0,0,0.63);
+    background-color: #9dff35;
+    display: inline-block;
+    width: 300px;
+    margin: 1% 2%;
+}
+
+#info-receta{
+    padding-top: 5%;
+    width: 90%;
+}
+
+.contenido article a{
     font-family: 'Patrick Hand', cursive;
+    transition: color 0.2s ease-in-out ;
     color: #333333;
     text-decoration: none;
     font-size: 120%;
 }
 
+.contenido article .titulo-receta{
+    font-size: 150%;
+}
+
+.contenido article a:hover{
+    color: #007c16;
+}
+
 .contenido article img{
     max-width: 90%;
 }
-/* #DDD92A */ 
+
+#apartado-foto-receta{
+    box-shadow: 0px 0px 30px -3px rgba(0,0,0,0.63);
+    padding:5% 0;
+    margin: 0 5%;
+    background-color: #FCFAF9;
+}
+
+.comentarios{
+    padding: 1% 2%;
+    outline: 0.1em black solid;
+    text-align: left;
+    margin-bottom: 2%;
+}
+
+footer{
+    box-shadow: 0px 0px 30px -3px rgba(0,0,0,0.63);
+    background-color: #9dff35;
+    font-family: 'Patrick Hand', cursive;
+    overflow: hidden;
+    position: relative;
+}
