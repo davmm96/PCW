@@ -2,6 +2,7 @@
 <html>
 	<head>
 		<link href="https://fonts.googleapis.com/css?family=Patrick+Hand" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Delius" rel="stylesheet">
 		<link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
 		<title>iCook</title>
 		<meta charset="UTF-8">
@@ -10,27 +11,28 @@
     <body>
     	<header>
 
-		<div id="logo"><img src="img/icook-logo.png" alt="logo"></div>
+		<div id="logo"><a href="index.html"><img src="img/icook-logo.png" alt="logo"></a></div>
 		
 		<p>Esta es una página para subir recetas.</p>
 
 		<div class="menu-horizontal" id="menu-principal">
 			<a href="index.html">Inicio</a>
 			<a href="buscar.html">Buscar</a>
-			<a href="login.html">Login</a>
-			<a href="registro.html">Registro</a>
-			<a href="">Logout</a>
 			<a href="nueva-receta.html">Nueva receta</a>
+			<a href="registro.html">Registro</a>
+			<a href="login.html" >Login</a>		
+			<a href="" id="logout">Logout</a>
+			
 		</div>
 	</header>
 	
-	<main class="contenido">
+	<main>
 		
 	
-		<article id="info-receta">
+		<article class="receta">
 			
-			<div id="apartado-foto-receta">
-				<img src="img/receta1.jpg" alt="receta 1" width="350" height="200"/>
+			<div class="foto-receta">
+				<img src="img/receta1.jpg" alt="receta 1"/>
 				<p>Foto 1 de la receta</p>
 				<p>
 					<a href=""> &lt;</a>
@@ -45,16 +47,21 @@
 
 			</div>
 			
+			<div class="info-receta">
+				<h1>Receta 1</h1>
+				<p>Fecha: 01/01/2018</p>
+				<p>Tiempo de elaboracion: 60 minutos</p>
+				<p>Dificultad: 3/5</p>
+				<p>Plato para: 4 personas</p>
+				<p>Moviemiento naranja, el futuro esta en tus manos, movimiento naranja, movimiento ciudadano nanaaa a a ana na na nanana nananana nanana aa naa na nna aaaa. Moviemiento naranja, el futuro esta en tus manos, movimiento naranja, movimiento ciudadano nanana na na nanana nananana nana a aaa naaaaa. Moviemiento naranja, el futuro esta en tus manos, movimiento naranja, movimiento ciudadano nanana na na nan aa ana nananana nananaaaaa. Moviemiento naranja, el futuro esta en tus manos, movimiento naranja, movimiento ciudadano nanana na na nanana nananana nananaaaaa. Moviemiento naranja, el futuro esta en tus manos, movimiento naranja, movimiento ciudadano nanana na na nanana nananana nananaaaaa. </p>
+				<p>4 votos positivos</p>
+				<p>1 votos negativos</p>
+				<p><a href="buscar.html">Autor 1</a></p>	
+				<p><a href="#comentarios">2 Comentarios</a></p>
+				
+				</div>
 
-			<h1>Receta 1</h1>
-			<p>Fecha: 01/01/2018</p>
-			<p>Tiempo de elaboracion: 60 minutos</p>
-			<p>Dificultad: 3/5</p>
-			<p>Plato para: 4 personas</p>
-			<p>4 votos positivos</p>
-			<p>1 votos negativos</p>
-			<p><a href="buscar.html">Autor 1</a></p>	
-			<p><a href="#comentarios">2 Comentarios</a></p>
+			
 		</article>
         
 		<div class="escribe-comentario">
@@ -81,7 +88,7 @@
 			</form>
 		</div>
 
-		<div id="comentarios">
+		<div id="seccion-comentarios">
 			<h2>Comentarios</h2>
 
 			<div class="comentarios">
