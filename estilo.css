@@ -49,6 +49,15 @@ h2{
     width: 100%;
 }
 
+.form-vertical input:hover{
+    background-color: red;
+}
+
+.form-vertical input:focus{
+    background-color: blue;
+}
+
+
 .form-busqueda{
     text-align: center;
     background-color:#9dff35;
@@ -91,7 +100,7 @@ h2{
     display: inline-block;
     transition: background-color 0.2s ease-in-out , color 0.5s ease-in-out ;
     background-color: #0BA25D;
-    color: #333333;
+    color: black;
     box-sizing: border-box;
     text-decoration: none;
     font-family: 'Patrick Hand', cursive;
@@ -103,12 +112,6 @@ h2{
 .menu-horizontal a:hover{
     color: black;
     background-color: #99e88b;
-
-}
-
-.menu-horizontal a:last-child:hover{
-    color: white;
-    background-color: #ef4839;
 
 }
 
@@ -124,7 +127,7 @@ h2{
      color: white;
     display: inline-block;
     width: 300px;
-    margin: 1% 2%;
+    margin: 2.5% 2.5%;
 }
 
 #info-receta{
@@ -145,7 +148,7 @@ h2{
 }
 
 .contenido article a:hover{
-    color: white;
+    color: #99e88b;
 }
 
 .contenido article img{
@@ -187,9 +190,11 @@ h2{
     color:#f2f2f2;
 }
 
-.acerca{
-
+.centrado a:hover{
+    text-decoration: none;
+    color:#0BA25D;
 }
+
 
 footer{
     text-align: center;
@@ -203,5 +208,13 @@ footer{
 footer a {
     color: white;
 }
+
+footer a:hover {
+    color: #0BA25D;
+}
+
+
+
+
 
 
