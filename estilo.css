@@ -192,16 +192,26 @@ h2{
 }
 
 .foto-receta{
+    font-size: 150%;
     text-align: center;
     box-shadow: 0px 0px 30px -3px rgba(0,0,0,0.63);
     background-color: rgba(0, 0, 0,0.4); 
     color: white;
-    padding: 1% 1%;
-    margin: 0% 20%;
+    margin: 0% 25%;
+    padding-bottom: 1%;
 } 
+.foto-receta i{
+    font-size: 150%;
+    margin: 0% 2%;
+}
+
+
+.foto-receta a{
+    text-decoration: none;
+}
 
 .foto-receta img{
-   width: 80%;
+   width: 100%;
 } 
 
 .info-receta{
@@ -222,6 +232,24 @@ h2{
 .info-receta a:hover{
     color: #99e88b;
 }
+
+
+.like a{
+    color: #0BA25D;
+}
+
+.like a:hover{
+    color: #99e88b;
+}
+
+.like a #dislike{
+    color: #b20000;
+}
+
+.like a #dislike:hover{
+    color: #af3434;
+}
+
 
 #seccion-comentarios{
     font-family: 'Patrick Hand', cursive;
