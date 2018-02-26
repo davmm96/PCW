@@ -3,6 +3,7 @@ html,body{
     padding:0;
     margin: 1% 2%;
     color: white;
+    font-family: 'Patrick Hand', cursive;
 }
 /*TITULO*/
 
@@ -33,9 +34,16 @@ header p{
 h2{
     text-align: center;
     color: white;
+    font-size: 280%;
+}
+
+.form-vertical{
+    margin:0 auto;
+    max-width: 800px;
 }
 
 .form-vertical input {
+    text-align: center;
     width: 100%;
     padding: 1% 1%;
     margin: 1% 0;
@@ -45,16 +53,31 @@ h2{
     box-sizing: border-box;
 }
 
+.form-vertical label {
+    text-align: center;
+    width: 100%;
+    padding: 1% 1%;
+    margin: 1% 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.text-center{
+    text-align: center;
+}
+
 .form-vertical textarea{
     width: 100%;
 }
 
 .form-vertical input:hover{
-    background-color: red;
+    outline: 5px solid #0BA25D;
 }
 
 .form-vertical input:focus{
-    background-color: blue;
+    background-color: #eff4bc;
 }
 
 
@@ -74,19 +97,23 @@ h2{
 }
 
 .form-vertical input[type=submit] {
+    font-family: 'Patrick Hand', cursive;
+    font-size: 120%;
     width: 100%;
-    background-color: #2bb213;
-    color: white;
+    background-color: #0BA25D;
+    color: black;
     padding: 1% 1%;
     margin: 1% 0;
     border: none;
     border-radius: 4px;
     cursor: pointer;
+
 }
 
 .form-vertical input[type=submit]:hover {
-    background-color: #5ae241;
+    background-color: #99e88b;
     color: black;
+    outline: none;
 }
 
 .menu-horizontal{
@@ -228,6 +255,11 @@ h2{
     color:#0BA25D;
 }
 
+.acerca{
+   max-width: 90%;
+   margin: 0 auto;
+}
+
 
 footer{
     text-align: center;
@@ -242,6 +274,13 @@ footer a {
 }
 
 footer a:hover {
+    color: #0BA25D;
+}
+
+a{
+    color:white;
+}
+a:hover{
     color: #0BA25D;
 }
 
