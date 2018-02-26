@@ -1,12 +1,14 @@
 html,body{
-    background-color: #FCFAF9;
+    background-image: url("img/madera8.jpg");
     padding:0;
     margin: 1% 2%;
+    color: white;
 }
 /*TITULO*/
 
 header{
-    background-color: #9dff35;
+    
+   background-color:  rgba(255,255,255,0.1);
     margin-bottom: 3%;
     box-shadow: 0px 0px 30px -3px rgba(0,0,0,0.63);
 }
@@ -18,8 +20,8 @@ header{
 
 header img{
     margin-top: 2%;
-    width: 15%;
-    height: 15%;
+    width: 10%;
+    height: 10%;
 }
 
 header p{
@@ -27,8 +29,13 @@ header p{
     font-family: 'Patrick Hand', cursive;
     margin: auto;
     text-align: center;
+    color: white;
 }
 
+h2{
+    text-align: center;
+    color: white;
+}
 
 .form-vertical input {
     width: 100%;
@@ -44,9 +51,24 @@ header p{
     width: 100%;
 }
 
+.form-busqueda{
+    text-align: center;
+    background-color:#9dff35;
+    color: black;
+}
+
+.form-busqueda input {
+  padding: .2em;
+}
+
+.form-busqueda label {
+  width: 25%;
+  float: left;
+}
+
 .form-vertical input[type=submit] {
     width: 100%;
-    background-color: #007c16;
+    background-color: #2bb213;
     color: white;
     padding: 1% 1%;
     margin: 1% 0;
@@ -56,7 +78,8 @@ header p{
 }
 
 .form-vertical input[type=submit]:hover {
-    background-color: #00590f;
+    background-color: #5ae241;
+    color: black;
 }
 
 .menu-horizontal{
@@ -81,16 +104,16 @@ header p{
 
 .menu-horizontal a:hover{
     color: #FCFAF9;
-    background-color: #007c16;
+    background-color: #4cb539;
+
 }
 
+.menu-horizontal a:last-child:hover{
+    color: white;
+    background-color: red;
 
-.boton_no_molon{
-    font-family: 'Patrick Hand', cursive;
-    position: absolute;
-    top: 0;
-    right: 0;
 }
+
 
 .contenido {
     text-align: center;
@@ -99,7 +122,8 @@ header p{
 
 .contenido article{
     box-shadow: 0px 0px 30px -3px rgba(0,0,0,0.63);
-    background-color: #9dff35;
+    background-color: rgba(248, 255, 244,0.2); 
+     color: black;
     display: inline-block;
     width: 300px;
     margin: 1% 2%;
@@ -113,7 +137,7 @@ header p{
 .contenido article a{
     font-family: 'Patrick Hand', cursive;
     transition: color 0.2s ease-in-out ;
-    color: #333333;
+    color: #000000;
     text-decoration: none;
     font-size: 120%;
 }
@@ -123,11 +147,11 @@ header p{
 }
 
 .contenido article a:hover{
-    color: #007c16;
+    color: white;
 }
 
 .contenido article img{
-    max-width: 90%;
+    width: 100%;
 }
 
 #apartado-foto-receta{
@@ -144,10 +168,56 @@ header p{
     margin-bottom: 2%;
 }
 
-footer{
-    box-shadow: 0px 0px 30px -3px rgba(0,0,0,0.63);
-    background-color: #9dff35;
+.centrado{
+    text-align: center;
+    color: white;
+
     font-family: 'Patrick Hand', cursive;
-    overflow: hidden;
-    position: relative;
+    font-size: 120%;
+    }
+
+.centrado a{
+    text-decoration: none;
+    color:#f2f2f2;
+}
+
+.acerca{
+
+}
+
+footer{
+    text-align: center;
+    box-shadow: 0px 0px 30px -3px rgba(0,0,0,0.63);
+    background-color:  rgba(255,255,255,0.1);
+    color: white;
+    font-family: 'Patrick Hand', cursive;
+    padding: 8px;
+}
+
+footer a {
+    color: white;
+}
+
+
+
+
+
+.img-contenedor img {
+-webkit-transition:all .9s ease; /* Safari y Chrome */
+-moz-transition:all .9s ease; /* Firefox */
+-o-transition:all .9s ease; /* IE 9 */
+-ms-transition:all .9s ease; /* Opera */
+width:100%;
+}
+.img-contenedor:hover img {
+-webkit-transform:scale(1.25);
+-moz-transform:scale(1.25);
+-ms-transform:scale(1.25);
+-o-transform:scale(1.25);
+transform:scale(1.25);
+}
+.img-contenedor {/*Ancho y altura son modificables al requerimiento de cada uno*/
+width:300px;
+height:180px;
+overflow:hidden;
 }

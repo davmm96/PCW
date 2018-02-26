@@ -10,22 +10,23 @@
 <body>
 	<header>
 
-		<div id="logo"><img src="img/icook-logo.png" alt="logo"></div>
+		<div id="logo"><a href="index.html"><img src="img/icook-logo.png" alt="logo"></img></a></div>
 		
 		<p>Esta es una página para subir recetas.</p>
 
 		<div class="menu-horizontal" id="menu-principal">
 			<a href="index.html">Inicio</a>
 			<a href="buscar.html">Buscar</a>
-			<a href="login.html">Login</a>
-			<a href="registro.html">Registro</a>
-			<a href="">Logout</a>
 			<a href="nueva-receta.html">Nueva receta</a>
+			<a href="registro.html">Registro</a>
+			<a href="login.html" >Login</a>		
+			<a href="" id="logout">Logout</a>
+			
 		</div>
 	</header>
 
 	<div class="contenido">
-		<article>
+		<article id="img-contenedor">
 		<p><a href="receta.html" class="titulo-receta">Receta 1</a></p>
 		<img src="img/receta1.jpg" alt="foto receta1" width="350" height="200">
 		<p><a href="buscar.html">Autor 1</a></p>
@@ -87,7 +88,7 @@
 	</div>
 	
 
-	<form>
+	<form class="centrado">
 		<p>
 		<label>Ordenar por orden:</label>
 		<select>
@@ -112,18 +113,19 @@
 		</p>
 	</form>
 
-	<p>
+	<p class="centrado">
 		<a href="">1</a>
 		<a href=""> < </a>
-		5
+		<a> 5 </a>
 		<a href=""> > </a>
 		<a href="">Fin</a>
 	</p>
 
 	<footer>
+		<a href="index.html">Inicio</a>
 		<a href="acerca.html">Información de contacto</a>
 		<p>Copyright 2018</p>
-		<a href="index.html" class="boton_no_molon">Inicio</a>
+		
 	</footer>
 </body>
 </html>
