@@ -7,10 +7,8 @@ html,body{
 /*TITULO*/
 
 header{
-    
-   background-color:  rgba(255,255,255,0.1);
+
     margin-bottom: 3%;
-    box-shadow: 0px 0px 30px -3px rgba(0,0,0,0.63);
 }
 
 #logo{
@@ -86,31 +84,31 @@ h2{
     text-align: center;
     width: 100%;
     box-sizing: border-box;
-    margin: auto;
+
 }
 
 .menu-horizontal a{
     display: inline-block;
     transition: background-color 0.2s ease-in-out , color 0.5s ease-in-out ;
-    background-color: #f2f2f2;
+    background-color: #0BA25D;
     color: #333333;
     box-sizing: border-box;
     text-decoration: none;
     font-family: 'Patrick Hand', cursive;
-    font-size: 150%;
+    font-size: 180%;
     padding: 0% 3%;
-    margin: 2% 0%;
+    margin: 1% 0%;
 }
 
 .menu-horizontal a:hover{
-    color: #FCFAF9;
-    background-color: #4cb539;
+    color: black;
+    background-color: #99e88b;
 
 }
 
 .menu-horizontal a:last-child:hover{
     color: white;
-    background-color: red;
+    background-color: #ef4839;
 
 }
 
@@ -122,8 +120,8 @@ h2{
 
 .contenido article{
     box-shadow: 0px 0px 30px -3px rgba(0,0,0,0.63);
-    background-color: rgba(248, 255, 244,0.2); 
-     color: black;
+    background-color: rgba(0, 0, 0,0.4); 
+     color: white;
     display: inline-block;
     width: 300px;
     margin: 1% 2%;
@@ -137,7 +135,7 @@ h2{
 .contenido article a{
     font-family: 'Patrick Hand', cursive;
     transition: color 0.2s ease-in-out ;
-    color: #000000;
+    color: #0BA25D;
     text-decoration: none;
     font-size: 120%;
 }
@@ -153,6 +151,14 @@ h2{
 .contenido article img{
     width: 100%;
 }
+
+.contenido article{
+    transition: transform 0.2s ease-in-out;
+}
+.contenido article:hover{
+    transform:scale(1.1);
+}
+
 
 #apartado-foto-receta{
     box-shadow: 0px 0px 30px -3px rgba(0,0,0,0.63);
@@ -188,7 +194,7 @@ h2{
 footer{
     text-align: center;
     box-shadow: 0px 0px 30px -3px rgba(0,0,0,0.63);
-    background-color:  rgba(255,255,255,0.1);
+    background-color:  rgba(0,0,0,0.3);
     color: white;
     font-family: 'Patrick Hand', cursive;
     padding: 8px;
@@ -199,25 +205,3 @@ footer a {
 }
 
 
-
-
-
-.img-contenedor img {
--webkit-transition:all .9s ease; /* Safari y Chrome */
--moz-transition:all .9s ease; /* Firefox */
--o-transition:all .9s ease; /* IE 9 */
--ms-transition:all .9s ease; /* Opera */
-width:100%;
-}
-.img-contenedor:hover img {
--webkit-transform:scale(1.25);
--moz-transform:scale(1.25);
--ms-transform:scale(1.25);
--o-transform:scale(1.25);
-transform:scale(1.25);
-}
-.img-contenedor {/*Ancho y altura son modificables al requerimiento de cada uno*/
-width:300px;
-height:180px;
-overflow:hidden;
-}
