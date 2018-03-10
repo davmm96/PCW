@@ -151,7 +151,7 @@ h2{
 .contenido article{
     box-shadow: 0px 0px 30px -3px rgba(0,0,0,0.63);
     background-color: rgba(0, 0, 0,0.4); 
-     color: white;
+    color: white;
     display: inline-block;
     width: 300px;
     margin: 2.5% 2.5%;
@@ -185,12 +185,82 @@ h2{
 }
 
 
-
-/* APARTADO DETALLE RECETA*/
-.receta {
-
+/*FORMULARIO FIN INDEX*/
+.form-pequenyo{
+    text-align: center;
+    width: 20%;
+    padding: 0% 1%;
+    padding-bottom: 0.5%;
+    box-shadow: 0px 0px 30px -3px rgba(0,0,0,0.63);
+    background-color: rgba(0, 0, 0,0.4); 
+    margin: auto;
+    font-size: 120%;
 }
 
+.form-pequenyo input{
+    text-align: center;
+    width: 100%;
+    padding: 1% 1%;
+    margin: 1% 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+.form-pequenyo input:hover{
+    outline: 3px solid #0BA25D;
+}
+
+.form-pequenyo input:focus{
+    background-color: #eff4bc;
+}
+
+.form-pequenyo label{
+    text-align: center;
+    width: 100%;
+    padding: 1% 1%;
+    margin: 3% 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+
+.dropdown{
+    width: 100%;
+    font-family: 'Patrick Hand', cursive;
+    color: black;
+    font-size: 100%;
+}
+
+.pasa_paginas{
+    font-size: 180%;
+    text-align: center;
+}
+
+.pasa_paginas a{
+    margin: 0% 0.5%;
+    text-decoration: none;
+}
+
+/*ACERCA*/
+
+#acerca{
+    font-size: 150%;
+    text-align: center;
+    margin: auto;
+}
+
+.autor-acerca{
+    display: inline-block;
+    box-shadow: 0px 0px 30px -3px rgba(0,0,0,0.63);
+    background-color: rgba(0, 0, 0,0.4); 
+    width: 40%;
+    margin: 0% 2%;
+}
+
+
+/* APARTADO DETALLE RECETA*/
 .foto-receta{
     font-size: 150%;
     text-align: center;

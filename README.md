@@ -4,13 +4,13 @@ CSS
 
 Buscar -> David
 
-Detalle receta -> Sergio
+Detalle receta -> Sergio	OK
 
 Nueva receta -> David
 
-Acerca -> Sergio
+Acerca -> Sergio OK	
 
-Ordenar (Index) -> Sergio
+Ordenar (Index) -> Sergio OK
 
 
 
