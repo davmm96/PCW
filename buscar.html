@@ -24,7 +24,7 @@
 		</div>
 	</header>
 	<h2>Búsqueda</h2>
-	<form class="form-busqueda" id="Form_busqueda" method="get" action="resultado_busqueda.html">
+	<form class="form-vertical" id="Form_busqueda" method="get" action="resultado_busqueda.html">
 		
 			<p>
 				<label for="name">Nombre</label>
@@ -34,13 +34,12 @@
 			</p>
 
 			<p>
-				Tiempo de preparación entre
-				<label for="tiempo_ini"> </label>
+				
+				<label for="tiempo_ini"> Tiempo mínimo</label>
 				<input type="number" name="tiempo_ini" id="tiempo_ini"
 				min=0
-				/>
-				y
-				<label for="tiempo_fin"></label>
+				/>	
+				<label for="tiempo_fin">Tiempo máximo</label>
 				<input type="number" name="tiempo_fin" id="tiempo_fin"
 				min=0
 				/>
@@ -69,7 +68,9 @@
 				<input type="text" name="autor" id="autor"
 				/>
 			</p>
-				<button type="submit">Buscar</button>
+			<p>
+				<input type="submit" value="Buscar">
+			</p>
 		</form>
 
 <div class="contenido">

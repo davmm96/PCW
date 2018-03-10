@@ -1,21 +1,20 @@
 # PCW
-
-HTML
+CSS
 --------------
 
-index 1 Sergio	FIN
- 
-login 0.5 David FIN
+Buscar -> David
 
-Registro 0.5 David FIN
+Detalle receta -> Sergio
 
-buscar 1 David FIN
+Nueva receta -> David
 
-receta 1 Sergio FIN
+Acerca -> Sergio
 
-nueva-receta 0.75 David FIN
-
-acerca 0.5 Sergio FIN
+Ordenar (Index) -> Sergio
 
 
+
+Responsive-> Detalle receta ancho foto
+
+Iconos
 --------------------
