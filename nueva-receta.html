@@ -25,6 +25,8 @@
 	</header>
 
 		<h2>Nueva receta</h2>
+
+		<h2> Datos generales</h2>
 		<form class="form-vertical">
 
 			<p>
@@ -68,25 +70,31 @@
 			</p>
 
 			<div> 
-				<p>Lista de ingredientes</p>
-					<ul>
+				<h2>Lista de ingredientes</h2>
+
+				<fieldset>
+					<legend>Ingredientes</legend>
+					<ul contenteditable="true">
 						<li>Arroz</li>
 						<li>Pollo</li>
 					</ul>
-					<textarea></textarea>
-					<button>Añadir</button>
+
+				</fieldset>	
+					<button  class="boton_form">Añadir</button>
 				<p> 
 			</div>
 
-			<div> 
-				<p>Fotos</p>
+			 
+				<h2>Fotos</h2>
 					<ul>
-						<li><img src="img/receta1.jpg" alt="foto receta1" width="350" height="200"></li>
-						<li><img src="img/receta1.jpg" alt="foto receta1" width="350" height="200"></li>
+						<li><img src="img/receta1.jpg" alt="foto receta1" width="200" height="100"></li>
+						<li><img src="img/receta2.jpg" alt="foto receta1" width="200" height="100"></li>
 					</ul>
-					<button>Añadir</button>
+					<div class="anyadir">
+					<button class="boton_form">Subir</button>
+					</div>
 				<p> 
-			</div>
+			
 
 			<p>
 				<input type="submit" value="Crear receta">
