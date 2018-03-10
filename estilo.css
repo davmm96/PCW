@@ -184,6 +184,36 @@ h2{
     transform:scale(1.1);
 }
 
+/*FORMULARIO BUSCAR*/
+.form-reducido{
+    margin: auto;
+    text-align: center;
+}
+
+.form-reducido p{
+    display: inline-block;
+    width: 200px;
+    margin: 1% 1%;
+}
+
+.form-reducido input,select{
+    text-align: center;
+    width: 100%;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+.form-reducido label{
+    text-align: center;
+    width: 100%;
+    padding: 1% 1%;
+    margin: 3% 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
 
 /*FORMULARIO FIN INDEX*/
 .form-pequenyo{
