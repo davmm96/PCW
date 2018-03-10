@@ -2,11 +2,11 @@
 CSS
 --------------
 
-Buscar -> David
+Buscar -> David OK
 
 Detalle receta -> Sergio	OK
 
-Nueva receta -> David
+Nueva receta -> David OK
 
 Acerca -> Sergio OK	
 
@@ -14,7 +14,7 @@ Ordenar (Index) -> Sergio OK
 
 
 
-Responsive-> Detalle receta ancho foto
+Responsive-> Cabecera (Icono en grande y menu hamburguesa)
 
-Iconos
+Iconos-> Igual con un Home y con los de like y dislike sobra
 --------------------
