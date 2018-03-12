@@ -1,3 +1,4 @@
+
 html,body{
     background-image: url("img/madera8.jpg");
     padding:0;
@@ -8,7 +9,7 @@ html,body{
 /*TITULO*/
 
 header{
-
+	text-align: center;
     margin-bottom: 3%;
 }
 
@@ -19,8 +20,9 @@ header{
 
 header img{
     margin-top: 2%;
-    width: 10%;
-    height: 10%;
+    width: 20%;
+    height: 20%;
+    min-width: 150px;
 }
 
 header p{
@@ -220,11 +222,15 @@ h2{
     width: 400px;
 }
 
+.form-reducido input[type=submit]{
+	width: 150px;
+}
 
 /*FORMULARIO FIN INDEX*/
 .form-pequenyo{
     text-align: center;
     width: 20%;
+    min-width: 120px;
     padding: 0% 1%;
     padding-bottom: 0.5%;
     box-shadow: 0px 0px 30px -3px rgba(0,0,0,0.63);
@@ -282,7 +288,7 @@ h2{
 /*ACERCA*/
 
 #acerca{
-    font-size: 150%;
+    font-size: 120%;
     text-align: center;
     margin: auto;
 }
@@ -291,8 +297,12 @@ h2{
     display: inline-block;
     box-shadow: 0px 0px 30px -3px rgba(0,0,0,0.63);
     background-color: rgba(0, 0, 0,0.4); 
-    width: 40%;
-    margin: 0% 2%;
+    width: 400px;
+    margin: 5% 2%;
+}
+
+.autor-acerca p{
+	width: 100%;
 }
 
 
@@ -304,6 +314,7 @@ h2{
     background-color: rgba(0, 0, 0,0.4); 
     color: white;
     margin: 0% 25%;
+    margin-bottom: 5%;
     padding-bottom: 1%;
 } 
 .foto-receta i{
@@ -441,6 +452,29 @@ a:hover{
 ul {
   list-style-type: none;
 }
+
+@media screen and (max-width: 480px) {
+	header img{
+		margin-bottom: 5%;
+		width: 50%;
+		height: 50%;
+	}	
+
+	header p{
+		display: none;
+	}
+
+	.contenido article{
+		width: 220px;
+		margin: 10%  0%;
+	}
+
+	.autor-acerca{
+		width: 90%;
+    	font-size: 90%;
+	}
+}
+
 
 
 
