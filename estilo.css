@@ -127,7 +127,9 @@ header label{
     top: 2%;
     left: 5%;
     display: none;
-
+    background-color: rgba(0, 0, 0,0.3); 
+    padding: 0% 3%;
+    border-radius: 5%;
 }
 
 #boton_menu{
@@ -513,7 +515,7 @@ ul{
         transition: transform 0.8s ease-in-out;
         width: 50%;
         top: 2%;
-        padding-left: 15%;
+        padding-left: 20%;
         padding-right: 2%;
         z-index: 100;
     }
@@ -523,11 +525,9 @@ ul{
         display: block;
     }
 
- .menu-horizontal span{
-    display: none;
- }
-
-  
+    .menu-horizontal span{
+        display: none;
+    }
 
     header input:checked + div, header input:checked + div a{
         display: block;
