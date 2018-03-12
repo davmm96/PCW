@@ -42,6 +42,7 @@ h2{
 .form-vertical{
     margin:0 auto;
     max-width: 600px;
+    text-align: center;
 }
 
 .form-vertical input {
@@ -117,6 +118,22 @@ h2{
     color: black;
     outline: none;
 }
+
+
+/*MENU CABECERA*/
+
+header label{
+    position: fixed;
+    top: 2%;
+    left: 5%;
+    display: none;
+
+}
+
+#boton_menu{
+   display:none; 
+}
+
 
 .menu-horizontal{
     text-align: center;
@@ -449,9 +466,11 @@ a:hover{
     outline: none;
 }
 
-ul {
-  list-style-type: none;
+ul{
+    text-align: left;
+    list-style-type: none;
 }
+
 
 @media screen and (max-width: 480px) {
 	header img{
@@ -473,6 +492,49 @@ ul {
 		width: 90%;
     	font-size: 90%;
 	}
+
+    header label{
+        cursor: pointer;
+        z-index: 999;
+        display:initial;
+        font-size: 230%;
+    }
+
+    header label:hover{
+        color: #777777;
+    }
+
+    .menu-horizontal{
+        font-size: 80%;
+        box-shadow: 0px 0px 30px -3px rgba(0,0,0,0.63);
+        background-color: rgba(0, 0, 0,0.7); 
+        position: fixed;
+        transform: translateX(-180%);
+        transition: transform 0.8s ease-in-out;
+        width: 50%;
+        top: 2%;
+        padding-left: 15%;
+        padding-right: 2%;
+        z-index: 100;
+    }
+
+    .menu-horizontal a{
+        margin: 5%;
+        display: block;
+    }
+
+ .menu-horizontal span{
+    display: none;
+ }
+
+  
+
+    header input:checked + div, header input:checked + div a{
+        display: block;
+        transform: translateX(0);
+    }
+
+
 }
 
 
