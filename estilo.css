@@ -72,11 +72,11 @@ h2{
     width: 100%;
 }
 
-.form-vertical input:hover{
+.form-vertical input:hover, .form-reducido input:hover{
     outline: 5px solid #0BA25D;
 }
 
-.form-vertical input:focus{
+.form-vertical input:focus, .form-reducido input:focus{
     background-color: #eff4bc;
 }
 
