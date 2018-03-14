@@ -39,6 +39,7 @@
 				<label for="receta"> Nombre de la receta</label>
 				<input type="text" name="receta" id="receta"
 				placeholder="Arroz a banda"
+				maxlength="200"
 				autofocus
 				required/>
 			</p>
@@ -51,7 +52,7 @@
 			</p>
 
 			<p>
-				<label for="tiempo">Tiempor de elaboración (en minutos)</label>
+				<label for="tiempo">Tiempo de elaboración (en minutos)</label>
 				<input type="number" name="tiempo" id="tiempo"
 				min=0
 				required/> 
@@ -86,6 +87,10 @@
 					</ul>
 
 				</fieldset>	
+
+				<input type="text" name="ingrediente" id="ingrediente"
+				required/> 
+
 					<button  class="boton_form">Añadir</button>
 				<p> 
 			</div>
@@ -95,11 +100,33 @@
 					<div class="contenido">
 						<article>
 							<img src="img/receta1.jpg" alt="foto receta1" width="350" height="200">
+							Esta es la foto 1 de la receta
 						</article>
 						<article>
 							<img src="img/receta2.jpg" alt="foto receta1" width="350" height="200">
+							Esta es la foto 2 de la receta
 						</article>
 					</div>
+
+					<br>
+
+					<div class="anyadir">
+					<button class="boton_form">Seleccionar fichero</button>
+					</div>
+
+					<p>
+						<label for="desc_foto">Descripción</label>
+				 		<textarea id="desc_foto">
+
+						</textarea>
+					</p>
+
+					<div class="anyadir">
+					<button class="boton_form rojo">Eliminar foto</button>
+					</div>
+
+
+
 					<div class="anyadir">
 					<button class="boton_form">Subir</button>
 					</div>

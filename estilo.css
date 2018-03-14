@@ -454,6 +454,11 @@ ul{
 }
 
 
+.rojo{
+    background-color: #db3b3b;
+}
+
+
 @media screen and (max-width: 480px) {
 
     /*CABECERA*/
@@ -538,6 +543,7 @@ ul{
     margin-bottom: 5%;
     padding-bottom: 1%;
 } 
+
 
 
 }
