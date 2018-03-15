@@ -326,6 +326,11 @@ header label{
 	width: 100%;
 }
 
+.fuente{
+    font-size: 80%;
+}
+
+
 
 /* APARTADO DETALLE RECETA*/
 .foto-receta{
@@ -450,11 +455,13 @@ a:hover{
     color: #0BA25D;
 }
 
+
 .boton_form{
 
     font-family: 'Patrick Hand', cursive;
     font-size: 120%;
     width: 20%;
+    min-width: 90px;
     background-color: #0BA25D;
     color: black;
     padding: 1% 1%;
