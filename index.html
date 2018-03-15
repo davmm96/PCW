@@ -97,12 +97,17 @@
 
 	<form class="form-pequenyo">
 		<p>
-			<label>Ordenar por orden:</label>
+			<label>Ordenar por:</label>
+			<select class="dropdown">
+				<option value="valoracion">Valoración</option>
+				<option value="fecha">Fecha</option>
+			</select>
+		</p>
+		<p>
+			<label>Tipo de orden:</label>
 			<select class="dropdown">
 				<option value="ascendente" class="option">Ascendente</option>
 				<option value="descendente">Descendente</option>
-				<option value="valoracion">De valoración</option>
-				<option value="fecha">De fecha</option>
 			</select>
 		</p>
 		<input type="submit" value="Ordenar">
