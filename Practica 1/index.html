@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<link href="https://fonts.googleapis.com/css?family=Patrick+Hand" rel="stylesheet">
+	<link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+	<title>iCook</title>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" type="text/css" href="estilo.css">
+</head>
+<body>
+	<header id="header">
+
+		<div id="logo"><a href="index.html"><img src="img/icook-logo.png" alt="logo"></a></div>
+
+
+		
+		<p>Esta es una página para subir recetas.</p>
+
+
+
+		<label for="boton_menu"> <i class="fas fa-bars"></i></label>
+			<input type="checkbox" name="menu" id="boton_menu"/>
+
+		<div class="menu-horizontal" id="menu-principal">
+			<a href="index.html">Inicio <i class="fas fa-home"></i></a>
+			<a href="buscar.html">Buscar <i class="fas fa-search"></i></a>
+			<a href="nueva-receta.html">Nueva receta <i class="fas fa-plus-circle"></i></a>
+			<a href="registro.html">Registro <i class="fas fa-user-plus"></i></a>
+			<a href="login.html" >Login <i class="fas fa-sign-in-alt"></i></a>		
+			<a href="index.html" id="logout">Logout <i class="fas fa-sign-out-alt"></i></a>
+			
+		</div>
+	</header>
+
+	<div class="contenido">
+		<article>
+		<p><a href="receta.html" class="titulo-receta">Receta 1</a></p>
+		<img src="img/receta1.jpg" alt="foto receta1" width="350" height="200">
+		<p><a href="buscar.html">Autor 1</a></p>
+		<p>05/02/2018</p>
+		<p>12 votos positivos</p>
+		<p>3 votos negativos</p>
+		<p>3 Comentarios</p>
+	</article>
+
+	<article>
+		<p><a href="receta.html" class="titulo-receta">Receta 2</a></p>
+		<img src="img/receta2.jpg" alt="foto receta2" width="350" height="200">
+		<p><a href="buscar.html">Autor 2</a></p>
+		<p>04/02/2018</p>
+		<p>4 votos positivos</p>
+		<p>1 votos negativos</p>
+		<p>5 Comentarios</p>
+	</article>
+
+	<article>
+		<p><a href="receta.html" class="titulo-receta">Receta 3</a></p>
+		<img src="img/receta3.jpg" alt="foto receta3" width="350" height="200">
+		<p><a href="buscar.html">Autor 3</a></p>
+		<p>03/02/2018</p>
+		<p>10 votos positivos</p>
+		<p>5 votos negativos</p>
+		<p>2 Comentarios</p>
+	</article>
+
+	<article>
+		<p><a href="receta.html" class="titulo-receta">Receta 4</a></p>
+		<img src="img/receta4.jpg" alt="foto receta4" width="350" height="200">
+		<p><a href="buscar.html">Autor 4</a></p>
+		<p>02/02/2018</p>
+		<p>8 votos positivos</p>
+		<p>2 votos negativos</p>
+		<p>4 Comentarios</p>
+	</article>
+
+	<article>
+		<p><a href="receta.html" class="titulo-receta">Receta 5</a></p>
+		<img src="img/receta5.jpg" alt="foto receta5" width="350" height="200">
+		<p><a href="buscar.html">Autor 5</a></p>
+		<p>01/02/2018</p>
+		<p>14 votos positivos</p>
+		<p>5 votos negativos</p>
+		<p>3 Comentarios</p>
+	</article>
+
+	<article>
+		<p><a href="receta.html" class="titulo-receta">Receta 6</a></p>
+		<img src="img/receta6.jpg" alt="foto receta6" width="350" height="200">
+		<p><a href="buscar.html">Autor 6</a></p>
+		<p>30/01/2018</p>
+		<p>9 votos positivos</p>
+		<p>4 votos negativos</p>
+		<p>3 Comentarios</p>
+	</article>
+	</div>
+	
+
+	<form class="form-pequenyo">
+		<p>
+			<label>Ordenar por:</label>
+			<select class="dropdown">
+				<option value="valoracion">Valoración</option>
+				<option value="fecha">Fecha</option>
+			</select>
+		</p>
+		<p>
+			<label>Tipo de orden:</label>
+			<select class="dropdown">
+				<option value="ascendente" class="option">Ascendente</option>
+				<option value="descendente">Descendente</option>
+			</select>
+		</p>
+		<input type="submit" value="Ordenar">
+	</form>
+
+	<form class="form-pequenyo">
+		<p>
+			<label for="busqueda_rapida">Búsqueda rápida:</label>
+			<input type="text" name="buscar" id="busqueda_rapida">
+		</p>
+		<input type="submit" value="Buscar">
+	</form>
+
+	<div class="centrado">
+		<div class="pasa_paginas">
+			<a href="">1</a>
+			<a href=""><i class="fas fa-caret-left"></i></a>
+			<a href=""> 5 </a>
+			<a href=""><i class="fas fa-caret-right"></i></a>
+			<a href="">Fin</a>	
+		</div>	
+	</div>
+
+	<footer>
+		<a href="#header">Inicio</a>
+		<a href="acerca.html">Información de contacto</a>
+		<p>Copyright 2018</p>
+		
+	</footer>
+</body>
+</html>
