@@ -6,7 +6,30 @@
 	<title>iCook</title>
 	<meta charset="UTF-8">
 	<link rel="stylesheet" type="text/css" href="estilo.css">
-	<script src="javascript.js"></script>
+	<script >
+		
+		function peticionFetchAPI_GET(){
+			var url ='http://localhost/PCW/practica02/rest/receta/';
+			fetch(url).then(function(response){
+				if(!response.ok){
+					console.log('Error(' + response.status + '): ' + response.statusText);
+					return;
+				}
+				response.json().then(function(data){
+					console.log(data);
+					for(let i = 0; i<data.FILAS.length;i++){
+						var receta = data.FILAS[i];
+						console.log(receta.nombre);
+						console.log(receta.autor);
+					}
+					
+					
+				});
+			})/*.cath(function(err){
+				console.log('Fetch Error: ', err);
+			})*/;
+		}
+	</script>
 </head>
 <body>
 	<header id="header">
@@ -114,14 +137,14 @@
 		<input type="submit" value="Ordenar">
 	</form>
 	-->
-	<form class="form-pequenyo" action="buscar.html">
+	<form class="form-pequenyo">
 		<p>
 			<label for="busqueda_rapida">Búsqueda rápida:</label>
 			<input type="text" name="buscar" id="busqueda_rapida">
 		</p>
 		<input type="submit" value="Buscar">
 	</form>
-
+	<button onclick="peticionFetchAPI_GET();">BUSCA</button>
 	<div class="centrado">
 		<div class="pasa_paginas">
 			<a href="">1</a>
@@ -138,5 +161,6 @@
 		<p>Copyright 2018</p>
 		
 	</footer>
+	
 </body>
 </html>
