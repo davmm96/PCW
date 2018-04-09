@@ -21,8 +21,22 @@ function peticionFetchAPI_GET(){
 			})*/;
 }
 
+function seleccionar_busqueda(){
+	if( getParameterByName('autor') ){
+		busqueda_autor();
+	}
+	else{
+		busqueda_rapida_recetas();
+	}
+}
 function seisUltimas(){
 	var url ='http://localhost/PCW/practica02/rest/receta/?u=6';
+	mostar_recetas(url);
+}
+
+function busqueda_autor(){
+	var parametros = getParameterByName('autor');
+	var url ='http://localhost/PCW/practica02/rest/receta/?a=' + parametros;
 	mostar_recetas(url);
 }
 
@@ -54,9 +68,9 @@ function mostar_recetas(url){
 							var receta = data.FILAS[i];
 							element.innerHTML = element.innerHTML + 
 						'<article>' +
-				    	'<p><a href="receta.html">' + receta.nombre + '</a></p>'+
+				    	'<p><a href="receta.html?id='+ receta.id +'">' + receta.nombre + '</a></p>'+
 				    	'<img src="fotos/' + receta.fichero + '" alt="'+ receta.descripcion_foto +'" width="350" height="200">'+
-				    	'<p><a href="buscar.html">'+ receta.autor +'</a></p>'+
+				    	'<p><a href="buscar.html?autor='+ receta.autor+'">'+ receta.autor +'</a></p>'+
 				    	'<p>'+ receta.fecha +'</p>'+
 				    	'<p>'+receta.negativos+' votos positivos</p>'+
 				    	'<p>'+receta.positivos+' votos negativos</p>'+
