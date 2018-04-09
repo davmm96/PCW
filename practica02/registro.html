@@ -6,9 +6,11 @@
 		<title>iCook</title>
 		<meta charset="UTF-8">
 		<link rel="stylesheet" type="text/css" href="estilo.css">
+		<script src="javascript.js">	</script>
 	</head>
-    <body>
-        <header id="header">
+    <body onload="cabecera();">
+    	<header id="header">
+
 		<div id="logo">
 			<a href="index.html"><img src="img/icook-logo.png" alt="logo" width="100px" height="100px"></a>
 		</div>
@@ -21,7 +23,7 @@
 		<div class="menu-horizontal" id="menu-principal">
 			<a href="index.html">Inicio <i class="fas fa-home"></i></a>
 			<a href="buscar.html">Buscar <i class="fas fa-search"></i></a>
-			<a href="nueva-receta.html">Nueva receta <i class="fas fa-plus-circle"></i></a>
+			<a href="nueva-receta.html" id="n_rec">Nueva receta <i class="fas fa-plus-circle"></i></a>
 			<a href="registro.html">Registro <i class="fas fa-user-plus"></i></a>
 			<a href="login.html" >Login <i class="fas fa-sign-in-alt"></i></a>		
 			<a href="index.html" id="logout">Logout <i class="fas fa-sign-out-alt"></i></a>

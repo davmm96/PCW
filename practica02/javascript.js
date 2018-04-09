@@ -27,3 +27,42 @@ function getParameterByName(name){
     results = regex.exec(location.search);
     return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
 }
+
+
+function comprobar(){
+	if(window.localStorage){
+		var form=document.querySelectorAll("form")[0];
+
+		if(form.check.checked){
+			localStorage.setItem("login",form.login.value);
+
+		}
+	}
+}
+
+function rellenar(){
+	if(window.localStorage){
+		var form=document.querySelectorAll("form")[0];
+
+		if(localStorage.getItem("login")){
+			form.login.value=localStorage.getItem("login");
+			
+		}
+	}
+}
+
+function cabecera(){
+
+	if(window.localStorage){
+		if(!localStorage.getItem("login")){
+			document.getElementById("n_rec").style.display='none';
+			document.getElementById("logout").style.display='none';
+		}
+		else{
+			document.getElementById("n_rec").style.display='relative';
+			document.getElementById("logout").style.display='relative';
+		}
+
+	}
+
+}
