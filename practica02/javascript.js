@@ -31,22 +31,38 @@ function seisUltimas(){
 
 	console.log(url);
 	mostar_recetas(url);
+	paginacion(pag);
 
+	
+}
+function paginacion(pag,parametros){
+	var pathname = window.location.pathname;
+	var web = pathname.split("/");
+	var web = web[3];
+	console.log(web);
+	console.log(parametros);
+	if(parametros){
+		web = web + parametros + '&';
+		console.log(parametros);
+	}
+	else{
+		web = web + '?';
+	}
 	var element = document.getElementById("paginacion");
 	var npag = parseInt(pag) + 1;
 	var npag_anterior = pag -1;
 	if (npag_anterior < 0) { npag_anterior = 0};
+
 	element.innerHTML = 
 	'<div class="centrado" id="paginacion">'  +
 	'<div class="pasa_paginas">'  +
-	'<a href="index.html">1</a>'  +
-	'<a href="index.html?pag='+ npag_anterior +'"><i class="fas fa-caret-left"></i></a>'  +
+	'<a href="'+ web +'">1</a>'  +
+	'<a href="'+ web +'pag='+ npag_anterior +'"><i class="fas fa-caret-left"></i></a>'  +
 	'<a href=""> '+ npag +' </a>'  +
-	'<a href="index.html?pag='+ npag +'"><i class="fas fa-caret-right"></i></a>'  +
+	'<a href="'+ web +'pag='+ npag +'"><i class="fas fa-caret-right"></i></a>'  +
 	'<a href="">Fin</a>'  +
 	'</div>'  +
 	'</div>';
-	console.log(element);
 }
 
 function busqueda_avanzada(){
@@ -55,37 +71,67 @@ function busqueda_avanzada(){
 	}
 	else{
 		var parametro;
+		var check = false;
 		var url = 'http://localhost/PCW/practica02/rest/receta/';
+		var parametros = 
+		"?name=" + getParameterByName('name') +
+		"&ingredientes=" + getParameterByName('ingredientes') +
+		"&tiempo_ini=" + getParameterByName('tiempo_ini') +
+		"&tiempo_fin=" + getParameterByName('tiempo_fin') +
+		"&dificultad=" + getParameterByName('dificultad') +
+		"&comensales=" + getParameterByName('comensales') +
+		"&autor=" + getParameterByName('autor');
+
 		//rest/receta/?pag={pagina}&lpag={registros_por_pagina}
 
-		url = url + "?n=" + getParameterByName('name');
-		url = url + "&i=" + getParameterByName('ingredientes');
-		url = url + "&di=" + getParameterByName('tiempo_ini');
-		url = url + "&df=" + getParameterByName('tiempo_fin');
-		url = url + "&d=" + getParameterByName('dificultad');
-		url = url + "&c=" + getParameterByName('comensales');
-		url = url + "&a=" + getParameterByName('autor');
+		if(getParameterByName('autor') || getParameterByName('name') || getParameterByName('ingredientes') 
+			||  getParameterByName('tiempo_ini') || getParameterByName('tiempo_fin') || getParameterByName('dificultad') 
+			|| getParameterByName('comensales') ){
+			check = true;
 
-		if(url == "http://localhost/PCW/practica02/rest/receta/?n=&i=&di=&df=&d=&c=&a="){
+			url = url + "?n=" + getParameterByName('name');
+			url = url + "&i=" + getParameterByName('ingredientes');
+			url = url + "&di=" + getParameterByName('tiempo_ini');
+			url = url + "&df=" + getParameterByName('tiempo_fin');
+			url = url + "&d=" + getParameterByName('dificultad');
+			url = url + "&c=" + getParameterByName('comensales');
+			url = url + "&a=" + getParameterByName('autor');
+
+			var pag = 0;
+			if( getParameterByName('pag') ){
+				pag = getParameterByName('pag');		
+			}
+
+			url = url + '&pag='+ pag + '&lpag=6';
+		}
+
+		
+
+		if(check == false){
 			seisUltimas();
 		}
 		else{
+			console.log(url);
 			mostar_recetas(url);	
+			console.log(parametros);
+			paginacion(pag,parametros);
 		}
 	}
 }
 
 function busqueda_rapida_recetas(){
 	var parametros = getParameterByName('buscar');
-	var datos = parametros.split(",");
-	var url_par = datos[0];
-
-	for (let n = 1 ; n < datos.length; n++) {
-		url_par = url_par + ',' + datos[n];
+	var url ='http://localhost/PCW/practica02/rest/receta/?t=' + parametros;
+	var param = '?buscar=' + parametros;
+	var pag = 0;
+	if( getParameterByName('pag') ){
+		pag = getParameterByName('pag');		
 	}
 
-	var url ='http://localhost/PCW/practica02/rest/receta/?t=' + url_par;
+	url = url + '&pag='+ pag + '&lpag=6';
+
 	mostar_recetas(url);
+	paginacion(pag,param);
 }
 
 function mostar_recetas(url){
