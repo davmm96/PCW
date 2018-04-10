@@ -9,7 +9,7 @@
 		<script src="javascript.js"></script>
 	</head>
 
-    <body   onload="seleccionar_busqueda();  cabecera();">
+    <body onload="busqueda_avan(); cabecera();">
 
        	<header id="header">
 
@@ -63,11 +63,11 @@
 
 			<p>
 				<label for="dificultad">Dificultad</label>
-				<select id="dificultad" class="dropdown">
+				<select name="dificultad" id="dificultad" class="dropdown">
 					<option value="" disabled selected>Selecciona una dificultad</option>
-					<option value="Baja">Baja</option>
-					<option value="Media">Media</option>
-					<option value="Alta">Alta</option>
+					<option value="0">Baja</option>
+					<option value="1">Media</option>
+					<option value="2">Alta</option>
 					
 				</select>
 

@@ -21,23 +21,58 @@ function peticionFetchAPI_GET(){
 			})*/;
 }
 
-function seleccionar_busqueda(){
-	if( getParameterByName('autor') ){
-		busqueda_autor();
-	}
-	else{
-		busqueda_rapida_recetas();
-	}
-}
 function seisUltimas(){
-	var url ='http://localhost/PCW/practica02/rest/receta/?u=6';
+	var pag = 0;
+	var url = 'http://localhost/PCW/practica02/rest/get/receta.php?prm=&pag=';
+	if( getParameterByName('pag') ){
+		pag = getParameterByName('pag');		
+	}
+	url = url + pag + '&lpag=6';
+
+	console.log(url);
 	mostar_recetas(url);
+
+	var element = document.getElementById("paginacion");
+	var npag = parseInt(pag) + 1;
+	var npag_anterior = pag -1;
+	if (npag_anterior < 0) { npag_anterior = 0};
+	element.innerHTML = 
+	'<div class="centrado" id="paginacion">'  +
+	'<div class="pasa_paginas">'  +
+	'<a href="index.html">1</a>'  +
+	'<a href="index.html?pag='+ npag_anterior +'"><i class="fas fa-caret-left"></i></a>'  +
+	'<a href=""> '+ npag +' </a>'  +
+	'<a href="index.html?pag='+ npag +'"><i class="fas fa-caret-right"></i></a>'  +
+	'<a href="">Fin</a>'  +
+	'</div>'  +
+	'</div>';
+	console.log(element);
 }
 
-function busqueda_autor(){
-	var parametros = getParameterByName('autor');
-	var url ='http://localhost/PCW/practica02/rest/receta/?a=' + parametros;
-	mostar_recetas(url);
+function busqueda_avanzada(){
+	if( getParameterByName('buscar') ){
+		busqueda_rapida_recetas();
+	}
+	else{
+		var parametro;
+		var url = 'http://localhost/PCW/practica02/rest/receta/';
+		//rest/receta/?pag={pagina}&lpag={registros_por_pagina}
+
+		url = url + "?n=" + getParameterByName('name');
+		url = url + "&i=" + getParameterByName('ingredientes');
+		url = url + "&di=" + getParameterByName('tiempo_ini');
+		url = url + "&df=" + getParameterByName('tiempo_fin');
+		url = url + "&d=" + getParameterByName('dificultad');
+		url = url + "&c=" + getParameterByName('comensales');
+		url = url + "&a=" + getParameterByName('autor');
+
+		if(url == "http://localhost/PCW/practica02/rest/receta/?n=&i=&di=&df=&d=&c=&a="){
+			seisUltimas();
+		}
+		else{
+			mostar_recetas(url);	
+		}
+	}
 }
 
 function busqueda_rapida_recetas(){
