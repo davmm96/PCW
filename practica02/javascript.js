@@ -21,6 +21,24 @@ function peticionFetchAPI_GET(){
 			})*/;
 }
 
+function peticionFetchAPI_POST( form_HTML, clave ) {
+	var url = 'rest/login/',
+		fd = new FormData(form_HTML), // se utiliza un objeto FormData()
+		init = { method:'post', body:fd, headers:{'Authorization':clave} };
+	fetch(url,init).then(function(response){
+		if(!response.ok){
+			console.log('Error con código: ' + response.status);
+			return;
+		}
+		response.json().then(function(data) { // se tiene la respuesta
+			console.log('Nombre:' + data.nombre); // data es un objeto JSON
+		});
+	}).catch(function(err) {
+		console.log('Fetch Error: ', err);
+	});
+}
+
+
 function seisUltimas(){
 	var pag = 0;
 	var url = 'http://localhost/PCW/practica02/rest/get/receta.php?prm=&pag=';
@@ -145,18 +163,19 @@ function mostar_recetas(url){
 					var element;
 					element = document.getElementById("contenido_busqueda");
 					if (element) {
+						console.log(data);
 						for( let i = 0 ; i < data.FILAS.length; i++){
 							var receta = data.FILAS[i];
 							element.innerHTML = element.innerHTML + 
-						'<article>' +
-				    	'<p><a href="receta.html?id='+ receta.id +'">' + receta.nombre + '</a></p>'+
-				    	'<img src="fotos/' + receta.fichero + '" alt="'+ receta.descripcion_foto +'" width="350" height="200">'+
-				    	'<p><a href="buscar.html?autor='+ receta.autor+'">'+ receta.autor +'</a></p>'+
-				    	'<p>'+ receta.fecha +'</p>'+
-				    	'<p>'+receta.negativos+' votos positivos</p>'+
-				    	'<p>'+receta.positivos+' votos negativos</p>'+
-				    	'<p>'+receta.comentarios+' Comentarios</p>' +
-				    	'</article>';
+							'<article>' +
+					    	'<p><a href="receta.html?id='+ receta.id +'">' + receta.nombre + '</a></p>'+
+					    	'<img src="fotos/' + receta.fichero + '" alt="'+ receta.descripcion_foto +'" width="350" height="200">'+
+					    	'<p><a href="buscar.html?autor='+ receta.autor+'">'+ receta.autor +'</a></p>'+
+					    	'<p>'+ receta.fecha +'</p>'+
+					    	'<p>'+receta.negativos+' votos positivos</p>'+
+					    	'<p>'+receta.positivos+' votos negativos</p>'+
+					    	'<p>'+receta.comentarios+' Comentarios</p>' +
+					    	'</article>';
 						}
 				    	
 					}

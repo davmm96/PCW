@@ -426,6 +426,33 @@ header label{
 
 
 /* FIN APARTADO DETALLE RECETA*/
+
+/*LOGIN*/
+#login-error{
+    box-shadow: 0px 0px 30px -3px rgba(0,0,0,0.63);
+    background-color: rgba(0, 0, 0,0.4);
+    color: white;
+    text-align: center;
+    margin:auto;
+    padding: 10px 0;
+    width: 30%;
+}
+
+#login-error p{
+    display: inline-block;
+    margin: 0% 2%;
+}
+
+#login-error p button{
+    cursor: pointer;
+    color: white;
+    background-color: rgb(0,0,0,0);
+    text-decoration: none;
+    border: none;
+}
+#login-error p button:hover{ color: red; }
+
+/*FIN LOGIN*/
 .centrado{
     text-align: center;
     color: white;
@@ -506,7 +533,6 @@ ul{
 .rojo:hover{
     background-color: #af3434;;
 }
-
 @media screen and (max-width: 480px) {
 
     /*CABECERA*/
@@ -541,7 +567,6 @@ ul{
     header label:hover{
         color: #777777;
     }
-
     /*MENU NAVEGACION*/
 
     .menu-horizontal{
