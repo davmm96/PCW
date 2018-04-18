@@ -8,7 +8,7 @@
 	<link rel="stylesheet" type="text/css" href="estilo.css">
 	<script src="javascript.js">	</script>
 </head>
-<body onload="seisUltimas();">
+<body onload="seisUltimas(); dibujar_menu();">
 	<header id="header">
 
 		<div id="logo"><a href="index.html"><img src="img/icook-logo.png" alt="logo"></a></div>
@@ -28,7 +28,7 @@
 			<a href="nueva-receta.html" id="n_rec">Nueva receta <i class="fas fa-plus-circle"></i></a>
 			<a href="registro.html" id="registro">Registro <i class="fas fa-user-plus"></i></a>
 			<a href="login.html" id="login" >Login <i class="fas fa-sign-in-alt"></i></a>		
-			<a href="index.html" id="logout">Logout <i class="fas fa-sign-out-alt"></i></a>
+			<a href="index.html" id="logout" onclick="desconectar();">Logout <i class="fas fa-sign-out-alt"></i></a>
 		</div>
 	</header>
 
