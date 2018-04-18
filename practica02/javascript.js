@@ -21,24 +21,6 @@ function peticionFetchAPI_GET(){
 			})*/;
 }
 
-function peticionFetchAPI_POST( form_HTML, clave ) {
-	var url = 'rest/login/',
-		fd = new FormData(form_HTML), // se utiliza un objeto FormData()
-		init = { method:'post', body:fd, headers:{'Authorization':clave} };
-	fetch(url,init).then(function(response){
-		if(!response.ok){
-			console.log('Error con código: ' + response.status);
-			return;
-		}
-		response.json().then(function(data) { // se tiene la respuesta
-			console.log('Nombre:' + data.nombre); // data es un objeto JSON
-		});
-	}).catch(function(err) {
-		console.log('Fetch Error: ', err);
-	});
-}
-
-
 function seisUltimas(){
 	var pag = 0;
 	var url = 'http://localhost/PCW/practica02/rest/get/receta.php?prm=&pag=';
@@ -152,6 +134,16 @@ function busqueda_rapida_recetas(){
 	paginacion(pag,param);
 }
 
+function id_receta(){
+	var parametros = getParameterByName('id');
+
+	var url ='http://localhost/PCW/practica02/rest/receta/' + parametros;
+
+	console.log(url);
+	detalle_receta(url);
+
+}
+
 function mostar_recetas(url){
 			
 			fetch(url).then(function(response){
@@ -163,19 +155,18 @@ function mostar_recetas(url){
 					var element;
 					element = document.getElementById("contenido_busqueda");
 					if (element) {
-						console.log(data);
 						for( let i = 0 ; i < data.FILAS.length; i++){
 							var receta = data.FILAS[i];
 							element.innerHTML = element.innerHTML + 
-							'<article>' +
-					    	'<p><a href="receta.html?id='+ receta.id +'">' + receta.nombre + '</a></p>'+
-					    	'<img src="fotos/' + receta.fichero + '" alt="'+ receta.descripcion_foto +'" width="350" height="200">'+
-					    	'<p><a href="buscar.html?autor='+ receta.autor+'">'+ receta.autor +'</a></p>'+
-					    	'<p>'+ receta.fecha +'</p>'+
-					    	'<p>'+receta.negativos+' votos positivos</p>'+
-					    	'<p>'+receta.positivos+' votos negativos</p>'+
-					    	'<p>'+receta.comentarios+' Comentarios</p>' +
-					    	'</article>';
+						'<article>' +
+				    	'<p><a href="receta.html?id='+ receta.id +'">' + receta.nombre + '</a></p>'+
+				    	'<img src="fotos/' + receta.fichero + '" alt="'+ receta.descripcion_foto +'" width="350" height="200">'+
+				    	'<p><a href="buscar.html?autor='+ receta.autor+'">'+ receta.autor +'</a></p>'+
+				    	'<p>'+ receta.fecha +'</p>'+
+				    	'<p>'+receta.negativos+' votos positivos</p>'+
+				    	'<p>'+receta.positivos+' votos negativos</p>'+
+				    	'<p>'+receta.comentarios+' Comentarios</p>' +
+				    	'</article>';
 						}
 				    	
 					}
@@ -184,6 +175,49 @@ function mostar_recetas(url){
 				console.log('Fetch Error: ', err);
 			})*/;
 }
+
+
+function detalle_receta(url){
+			
+			fetch(url).then(function(response){
+				if(!response.ok){
+					console.log('Error(' + response.status + '): ' + response.statusText);
+					return;
+				}
+				response.json().then(function(data){
+					var element;
+					element = document.getElementById("img_receta");
+					if (element) {
+						var receta = data.FILAS[0];
+				    	element.innerHTML ='<img src="fotos/' + receta.fichero + '" alt="'+ receta.descripcion_foto+'">'+			    	
+				    	'<p> <a href=""><i class="fas fa-caret-left"></i></a>'+receta.descripcion_foto+
+				    	'<a href=""><i class="fas fa-caret-right"></i></a>'+
+				    	'</p>'+
+				    	'<div class="like">'+
+				    	'<a href=""><i class="far fa-thumbs-up"></i></a>'+
+				    	'<a href=""><i id="dislike" class="far fa-thumbs-down"></i></a>'+
+				    	'</div>';			    	
+					}
+					element = document.getElementById("info_receta");
+					if (element) {
+						var receta = data.FILAS[0];
+				    	element.innerHTML = '<h1>'+receta.nombre+'</h1>'+
+				    	'<p>Fecha: '+receta.fecha+'</p>'+
+				    	'<p>Tiempo de elaboracion: '+receta.tiempo+'</p>'+
+				    	'<p>Dificultad: '+receta.dificultad+'</p>'+
+				    	'<p>Plato para: '+receta.comensales+' personas</p>'+
+				    	'<p>'+receta.elaboracion+'</p>'+
+				    	'<p>'+receta.positivos+' votos positivos</p>'+
+				    	'<p>'+receta.negativos+' votos negativos</p>'+
+				    	'<p><a href="buscar.html">'+receta.autor+'</a></p>'+
+				    	'<p><a href="#seccion-comentarios">'+receta.comentarios +' Comentarios</a></p>'
+				    	;
+						    	
+					}
+				});
+			})
+}
+
 
 
 function getParameterByName(name){
@@ -222,12 +256,21 @@ function cabecera(){
 		if(!localStorage.getItem("login")){
 			document.getElementById("n_rec").style.display='none';
 			document.getElementById("logout").style.display='none';
+			document.getElementById("login").style.display='relative';
+			document.getElementById("registro").style.display='relative';
 		}
 		else{
 			document.getElementById("n_rec").style.display='relative';
 			document.getElementById("logout").style.display='relative';
+			document.getElementById("login").style.display='none';
+			document.getElementById("registro").style.display='none';
 		}
 
 	}
+
+}
+
+function comprobar_loguin(){
+
 
 }

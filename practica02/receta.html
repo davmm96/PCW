@@ -8,11 +8,8 @@
 		<meta charset="UTF-8">
 		<link rel="stylesheet" type="text/css" href="estilo.css">
 		<script src="javascript.js">	</script>
-
-
-
 	</head>
-    <body onload="cabecera();">
+    <body onload="cabecera();id_receta();">
     	<header id="header">
 
 	<div id="logo">
@@ -28,10 +25,9 @@
 			<a href="index.html">Inicio <i class="fas fa-home"></i></a>
 			<a href="buscar.html">Buscar <i class="fas fa-search"></i></a>
 			<a href="nueva-receta.html" id="n_rec">Nueva receta <i class="fas fa-plus-circle"></i></a>
-			<a href="registro.html">Registro <i class="fas fa-user-plus"></i></a>
-			<a href="login.html" >Login <i class="fas fa-sign-in-alt"></i></a>		
+			<a href="registro.html" id="registro">Registro <i class="fas fa-user-plus"></i></a>
+			<a href="login.html" id="login" >Login <i class="fas fa-sign-in-alt"></i></a>		
 			<a href="index.html" id="logout">Logout <i class="fas fa-sign-out-alt"></i></a>
-			
 		</div>
 	</header>
 	
@@ -39,26 +35,15 @@
 		
 	
 		<article class="receta">
-ç
+
 			
-			<div class="foto-receta">
-				<img src="img/receta1.jpg" alt="receta 1"/>
-				
-				<p>
-					<a href=""><i class="fas fa-caret-left"></i></a>
-					Foto 1
-					<a href=""><i class="fas fa-caret-right"></i></a>
-				</p>
-					
-				<div class="like">
-					<a href=""><i class="far fa-thumbs-up"></i></a>
-					<a href=""><i id="dislike" class="far fa-thumbs-down"></i></a>
-				</div>
+			<div class="foto-receta" id="img_receta">
+
 
 			</div>
 
 			
-			<div class="info-receta">
+			<div class="info-receta" id="info_receta">
 				<h1>Receta 1</h1>
 				<p>Fecha: 01/01/2018</p>
 				<p>Tiempo de elaboracion: 60 minutos</p>
@@ -70,7 +55,7 @@
 				<p><a href="buscar.html">Autor 1</a></p>	
 				<p><a href="#seccion-comentarios">2 Comentarios</a></p>
 				
-				</div>
+			</div>
 
 			
 		</article>
