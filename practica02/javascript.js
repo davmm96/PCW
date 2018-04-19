@@ -31,11 +31,14 @@ function seisUltimas(){
 
 	console.log(url);
 	mostar_recetas(url);
-	paginacion(pag);
+	paginacion(pag,"");
 
 	
 }
 function paginacion(pag,parametros){
+	let n_res = localStorage.getItem("n_resultados");
+	let n_paginas = Math.trunc(n_res / 6 + 1);
+	let ult_pag = n_paginas -1;
 	var pathname = window.location.pathname;
 	var web = pathname.split("/");
 	var web = web[3];
@@ -49,18 +52,20 @@ function paginacion(pag,parametros){
 	}
 
 	var element = document.getElementById("paginacion");
-	var npag = parseInt(pag) + 1;
-	var npag_anterior = pag -1;
-	if (npag_anterior < 0) { npag_anterior = 0};
+	var npag = parseInt(pag) +1 ;
+	var npag_siguiente = parseInt(pag) +1;
+	var npag_anterior = parseInt(pag) -1;
 
+	if (npag_anterior < 0) { npag_anterior = 0;}
+	if(npag_siguiente > ult_pag){ npag_siguiente = ult_pag;}
 	element.innerHTML = 
 	'<div class="centrado" id="paginacion">'  +
 	'<div class="pasa_paginas">'  +
 	'<a href="'+ web +'">1</a>'  +
 	'<a href="'+ web +'pag='+ npag_anterior +'"><i class="fas fa-caret-left"></i></a>'  +
 	'<a href=""> '+ npag +' </a>'  +
-	'<a href="'+ web +'pag='+ npag +'"><i class="fas fa-caret-right"></i></a>'  +
-	'<a href="">Fin</a>'  +
+	'<a href="'+ web +'pag='+ npag_siguiente +'"><i class="fas fa-caret-right"></i></a>'  +
+	'<a href="'+ web +'pag=' + ult_pag +'">'+ n_paginas + '</a>'  +
 	'</div>'  +
 	'</div>';
 }
@@ -145,7 +150,6 @@ function id_receta(){
 }
 
 function mostar_recetas(url){
-			
 			fetch(url).then(function(response){
 				if(!response.ok){
 					console.log('Error(' + response.status + '): ' + response.statusText);
@@ -170,10 +174,12 @@ function mostar_recetas(url){
 						}
 				    	
 					}
+					localStorage.setItem("n_resultados", data.TOTAL_COINCIDENCIAS);
 				});
 			})/*.cath(function(err){
 				console.log('Fetch Error: ', err);
 			})*/;
+			
 }
 
 
@@ -309,7 +315,6 @@ function logueado(){
 }
 
 function mensaje_incorrecto(){
-	var parametros = getParameterByName('inco');
 	if(getParameterByName('inco')){
 		var element;
 		element = document.getElementById("login-errorjs");
@@ -349,7 +354,57 @@ function desconectar(){
 
 
 //FUNCIONES DE REGISTRO
+function registro(){
+	let url = 'http://localhost/PCW/practica02/rest/usuario/',
+	fd = new FormData(),
+	init = {method:'post', 'body':fd};
+	
+	fd.append('login', document.getElementById("usuario").value );
+	fd.append('pwd', document.getElementById("pass").value);
+	fd.append('pwd2', document.getElementById("pass2").value);
+	fd.append('nombre', document.getElementById("name").value);
+	fd.append('email', document.getElementById("email").value);
+	fd.append('fnac', document.getElementById("fecha_nac").value);
 
+	fetch(url,init).then(function(response){
+		if(!response.ok){
+			console.log("no regista");
+			return;
+		}
+		response.json().then(function(data){
+			location.href ="registro.html?reg=ok";
+			console.log("todo oki");
+		});
+	})/*.cath(function(err){
+	console.log('Fetch Error: ', err);
+	})*/;
+	sleep(5000);
+	return false;
+}
+
+function registro_ok(){
+	if(getParameterByName('reg')){
+		var element;
+		element = document.getElementById("login-errorjs");
+		if (element) {
+			element.innerHTML = 
+			'<div id="login-error">' +
+			'<p>Usuario registrado correctamente, pulse para continuar</p>' +
+			' <p><button onclick="redireccionar_registro_ok();"><i class="fas fa-arrow-right"></i></button></p> '+
+			'</br>'
+			'</div>';
+		}
+	}
+}
+
+function redireccionar_registro_ok(){
+	var element;
+	element = document.getElementById("login-errorjs");
+	if (element) {
+		element.innerHTML = '';
+	}
+	location.href ="login.html";
+}
 //FIN FUNCIONES REGISTRO
 	
 //FUNCIONES EXTERNAS 

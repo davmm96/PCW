@@ -7,8 +7,7 @@ INDEX: 0,25 OK 0,5 OK 0,25 OK = 1		ok
 ----------------------
 LOGIN: 0,5 OK +- hay que solucionar k reciba parametros del form
 GLOBAL: 0,25 OK + 0,25 OK = 0,5 OK 		+ 0,5 del validator de mierda
-
-REGISTRO: 0,5 + 0,25 + 0,25 = 1
+REGISTRO: 0,5 + 0,25 + 0,25 OK = 1
 ----------------------
 
 
