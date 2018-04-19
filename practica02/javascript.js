@@ -40,7 +40,6 @@ function paginacion(pag,parametros){
 	var web = pathname.split("/");
 	var web = web[3];
 	console.log(web);
-	console.log(parametros);
 	if(parametros){
 		web = web + parametros + '&';
 		console.log(parametros);
@@ -48,6 +47,7 @@ function paginacion(pag,parametros){
 	else{
 		web = web + '?';
 	}
+
 	var element = document.getElementById("paginacion");
 	var npag = parseInt(pag) + 1;
 	var npag_anterior = pag -1;
@@ -258,15 +258,14 @@ function check_login(){
 	fd = new FormData(),
 	init = {method:'post', 'body':fd};
 	
-	/*
 	let usuario = document.getElementById("usuario").value;
 	let contrasenya = document.getElementById("pass").value;
 	
 	console.log(usuario);
 	console.log(contrasenya);
-	*/
-	fd.append('login', "usuario2");
-	fd.append('pwd', "usuario2");
+
+	fd.append('login', usuario );
+	fd.append('pwd', contrasenya);
 
 
 	fetch(url,init).then(function(response){
@@ -287,6 +286,7 @@ function check_login(){
 	})/*.cath(function(err){
 	console.log('Fetch Error: ', err);
 	})*/;
+	return false;
 }
 
 function logueado(){
