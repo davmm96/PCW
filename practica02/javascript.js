@@ -192,11 +192,14 @@ function detalle_receta(url){
 				    	element.innerHTML ='<img src="fotos/' + receta.fichero + '" alt="'+ receta.descripcion_foto+'">'+			    	
 				    	'<p> <a href=""><i class="fas fa-caret-left"></i></a>'+receta.descripcion_foto+
 				    	'<a href=""><i class="fas fa-caret-right"></i></a>'+
-				    	'</p>'+
-				    	'<div class="like">'+
+				    	'</p>';
+
+				    	if(logueado()){
+				    	element.innerHTML =element.innerHTML +'<div class="like">'+
 				    	'<a href=""><i class="far fa-thumbs-up"></i></a>'+
 				    	'<a href=""><i id="dislike" class="far fa-thumbs-down"></i></a>'+
-				    	'</div>';			    	
+				    	'</div>';
+				    	}			    	
 					}
 					element = document.getElementById("info_receta");
 					if (element) {
@@ -380,4 +383,12 @@ function anyadir_ingr(){
 	li.appendChild(span);
 
 	lista.appendChild(li);
+}
+
+function url_receta(){
+	let id=getParameterByName('id');
+	console.log(id);
+	if(id===""){
+		location.href="index.html";
+	}
 }
