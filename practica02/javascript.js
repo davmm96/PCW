@@ -367,3 +367,17 @@ function sleep(milliseconds) {
     }
   }
 }
+
+function anyadir_ingr(){
+	let ingrediente=document.getElementById("ingrediente").value;
+	let lista = document.getElementById("l_ingr");
+	let li=document.createElement("li");
+	let span = document.createElement("span");
+	let textnode=document.createTextNode(ingrediente);
+
+	span.appendChild(textnode);
+
+	li.appendChild(span);
+
+	lista.appendChild(li);
+}
