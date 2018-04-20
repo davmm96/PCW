@@ -31,7 +31,7 @@
 	</header>
 
 		<h2>Registro</h2>
-		
+		<div id="registro-ok"> </div>
 		<form class="form-vertical" onsubmit="return registro();">
 
 			<p>
@@ -40,9 +40,12 @@
 				placeholder="Davm96"
 				pattern="[^-\d]+[A-Za-z0-9]{6,20}"
 				autofocus
+				onchange="usuario_disponible();"
 				required/>
 			</p>
-
+			<div id="usuario-disponiblejs">
+				
+			</div>
 			<p>
 				<label for="name"> Nombre</label>
 				<input type="text" name="name" id="name"
@@ -63,9 +66,10 @@
 				<input type="password" name="pass2" id="pass2"
 				placeholder="qwe1234"
 				pattern="[A-Za-z0-9_-]{8,20}"
+				onchange="check_pwd();"
 				required/>
 			</p>
-
+			<div id="check_pwdjs"> </div>
 			<p>
 				<label for="email"> E-mail</label>
 				<input type="email" name="email" id="email"
@@ -88,8 +92,6 @@
 				<input type="submit" value="Registrar">
 			</p>
 		</form>
-
-		<div id="login-errorjs"> </div>
 <footer>
 		<a href="#header">Inicio</a>
 		<a href="acerca.html">Información de contacto</a>
