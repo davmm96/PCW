@@ -208,11 +208,27 @@ function id_receta(){
 	var url ='http://localhost/PCW/practica02/rest/receta/' + parametros;
 
 	console.log(url);
-	detalle_receta(url);
+
+	//Informacion general
+	info_receta(url);
+
+	//Ingredientes
+	url2=url+'/ingredientes';
+	ingredientes_receta(url2);
+
+	//Fotos
+	url3=url+'/fotos';
+	foto_receta(url3);
+
+	//Comentarios
+	url4=url+'/comentarios';
+	comen_receta(url4);
+
+
 
 }
 
-function detalle_receta(url){
+function foto_receta(url){
 			
 			fetch(url).then(function(response){
 				if(!response.ok){
@@ -223,19 +239,47 @@ function detalle_receta(url){
 					var element;
 					element = document.getElementById("img_receta");
 					if (element) {
-						var receta = data.FILAS[0];
-				    	element.innerHTML ='<img src="fotos/' + receta.fichero + '" alt="'+ receta.descripcion_foto+'">'+			    	
-				    	'<p> <a href=""><i class="fas fa-caret-left"></i></a>'+receta.descripcion_foto+
+						var fotos = data.FILAS[0];
+				    	element.innerHTML ='<img src="fotos/' + fotos.fichero + '" alt="'+ fotos.texto+'">'+			    	
+				    	'<p> <a href=""><i class="fas fa-caret-left"></i></a>'+fotos.texto+
 				    	'<a href=""><i class="fas fa-caret-right"></i></a>'+
 				    	'</p>';
 
 				    	if(logueado()){
 				    	element.innerHTML =element.innerHTML +'<div class="like">'+
-				    	'<a href=""><i class="far fa-thumbs-up"></i></a>'+
-				    	'<a href=""><i id="dislike" class="far fa-thumbs-down"></i></a>'+
+				    	'<a href="" onclick=voto(1);><i class="far fa-thumbs-up"></i></a>'+
+				    	'<a href=""onclick=voto(0);><i id="dislike" class="far fa-thumbs-down"></i></a>'+
 				    	'</div>';
 				    	}			    	
 					}
+				});
+			})
+}
+
+function voto(tipo){
+
+//LIKE
+	if(tipo===1){
+
+	}
+
+//DISLIKE
+	else{
+
+	}
+}
+
+
+
+function info_receta(url){
+			
+			fetch(url).then(function(response){
+				if(!response.ok){
+					console.log('Error(' + response.status + '): ' + response.statusText);
+					return;
+				}
+				response.json().then(function(data){
+					var element;
 					element = document.getElementById("info_receta");
 					if (element) {
 						var receta = data.FILAS[0];
@@ -244,6 +288,8 @@ function detalle_receta(url){
 				    	'<p>Tiempo de elaboracion: '+receta.tiempo+'</p>'+
 				    	'<p>Dificultad: '+receta.dificultad+'</p>'+
 				    	'<p>Plato para: '+receta.comensales+' personas</p>'+
+				    	'Ingredientes'+
+				    	'<div id="ingredientes"></div>'+
 				    	'<p>'+receta.elaboracion+'</p>'+
 				    	'<p>'+receta.positivos+' votos positivos</p>'+
 				    	'<p>'+receta.negativos+' votos negativos</p>'+
@@ -252,9 +298,63 @@ function detalle_receta(url){
 				    	;
 						    	
 					}
+
+					element2=document.getElementById("form_coment");
+
+					if(!logueado()){
+				    	element2.innerHTML ='<p>'+'Para dejar un comentario debes estar <a href="login.html">logueado</a> '+'</p>';
+				    	}	
 				});
 			})
 }
+
+function ingredientes_receta(url){
+			
+			fetch(url).then(function(response){
+				if(!response.ok){
+					console.log('Error(' + response.status + '): ' + response.statusText);
+					return;
+				}
+				response.json().then(function(data){
+					var element;
+					element = document.getElementById("ingredientes");
+					if (element) {
+						for( let i = 0 ; i < data.FILAS.length; i++){
+						var ingredientes = data.FILAS[i];
+				    	element.innerHTML =element.innerHTML+'<p>'+ ingredientes.nombre+'</p>';
+
+				    	}			    	
+					}
+				});
+			})
+}
+
+function comen_receta(url){
+			
+			fetch(url).then(function(response){
+				if(!response.ok){
+					console.log('Error(' + response.status + '): ' + response.statusText);
+					return;
+				}
+				response.json().then(function(data){
+					var element;
+					element = document.getElementById("seccion-comentarios");
+					if (element) {
+						for( let i = 0 ; i < data.FILAS.length; i++){
+						var comentarios = data.FILAS[i];
+				    	element.innerHTML =element.innerHTML+'<div class="comentarios">' +
+				    	'<p>'+ comentarios.titulo + '</p>'+ 
+				    	'<p>'+comentarios.autor+'</p>'+
+				    	'<p>'+comentarios.fecha+'</p>'+
+				    	'<p>'+comentarios.texto+'</p>';
+				    	}		    	
+					}
+				});
+			})
+}
+
+
+
 //FUNCIONES NUEVA RECETA
 function red_nuevareceta(){
 	if(!logueado()){
