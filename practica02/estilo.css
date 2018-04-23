@@ -509,12 +509,12 @@ header label{
     font-size: 120%;
 }
 
-.centrado a{
+.centrado a, .centrado button{
     text-decoration: none;
     color:#f2f2f2;
 }
 
-.centrado a:hover{
+.centrado a:hover, .centrado button:hover{
     text-decoration: none;
     color:#0BA25D;
 }

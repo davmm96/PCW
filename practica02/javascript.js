@@ -223,37 +223,58 @@ function id_receta(){
 	//Comentarios
 	url4=url+'/comentarios';
 	comen_receta(url4);
-
-
-
 }
+
 
 function foto_receta(url){
 			
-			fetch(url).then(function(response){
-				if(!response.ok){
-					console.log('Error(' + response.status + '): ' + response.statusText);
-					return;
-				}
-				response.json().then(function(data){
-					var element;
-					element = document.getElementById("img_receta");
-					if (element) {
-						var fotos = data.FILAS[0];
-				    	element.innerHTML ='<img src="fotos/' + fotos.fichero + '" alt="'+ fotos.texto+'">'+			    	
-				    	'<p> <a href=""><i class="fas fa-caret-left"></i></a>'+fotos.texto+
-				    	'<a href=""><i class="fas fa-caret-right"></i></a>'+
-				    	'</p>';
+	fetch(url).then(function(response){
+		if(!response.ok){
+			console.log('Error(' + response.status + '): ' + response.statusText);
+			return;
+		}
+		response.json().then(function(data){
 
-				    	if(logueado()){
-				    	element.innerHTML =element.innerHTML +'<div class="like">'+
-				    	'<a href="" onclick=voto(1);><i class="far fa-thumbs-up"></i></a>'+
-				    	'<a href=""onclick=voto(0);><i id="dislike" class="far fa-thumbs-down"></i></a>'+
-				    	'</div>';
-				    	}			    	
-					}
-				});
-			})
+
+				var fotos=data.FILAS[0];
+
+				localStorage.setItem("fotos",JSON.stringify(data));
+
+				mostrar_foto(0);	    	
+
+		    	if(logueado()){
+		    	element.innerHTML =element.innerHTML +'<div class="like">'+
+		    	'<a href="" onclick=voto(1);><i class="far fa-thumbs-up"></i></a>'+
+		    	'<a href=""onclick=voto(0);><i id="dislike" class="far fa-thumbs-down"></i></a>'+
+		    	'</div>';
+	    	
+			}
+		});
+	})
+}
+
+function mostrar_foto(a){
+
+console.log(a);
+
+
+let dato =  localStorage.getItem("fotos") ;
+let data = JSON.parse(dato);
+
+console.log(data);
+
+if(a>=0&&a<data.FILAS.length){
+	var fotos = data.FILAS[a];
+	var a1=a-1;
+	var a2=a+1;
+	var element=document.getElementById("img_receta");
+		element.innerHTML ='<img src="fotos/' + fotos.fichero + '" alt="'+ fotos.texto+'">'+			    	
+				    	'<p> <a onclick="mostrar_foto('+a1+')";><i class="fas fa-caret-left"></i></a>'+fotos.texto+
+				    	'<a  onclick="mostrar_foto('+a2+')";><i class="fas fa-caret-right"></i></a>'+
+				    	'</p>';	
+	
+}
+
 }
 
 function voto(tipo){
@@ -625,3 +646,4 @@ function url_receta(){
 		location.href="index.html";
 	}
 }
+
