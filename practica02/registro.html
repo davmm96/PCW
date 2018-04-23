@@ -8,7 +8,7 @@
 		<link rel="stylesheet" type="text/css" href="estilo.css">
 		<script src="javascript.js">	</script>
 	</head>
-    <body onload="dibujar_menu(); red_login_registro();">
+    <body onload="dibujar_menu(); red_login_registro(); registro_ok();">
     	<header id="header">
 
 		<div id="logo">
@@ -31,8 +31,8 @@
 	</header>
 
 		<h2>Registro</h2>
-		
-		<form class="form-vertical">
+		<div id="registro-ok"> </div>
+		<form class="form-vertical" onsubmit="return registro();">
 
 			<p>
 				<label for="usuario"> Nombre de usuario</label>
@@ -40,9 +40,12 @@
 				placeholder="Davm96"
 				pattern="[^-\d]+[A-Za-z0-9]{6,20}"
 				autofocus
+				onchange="usuario_disponible();"
 				required/>
 			</p>
-
+			<div id="usuario-disponiblejs">
+				
+			</div>
 			<p>
 				<label for="name"> Nombre</label>
 				<input type="text" name="name" id="name"
@@ -52,7 +55,7 @@
 
 			<p>
 				<label for="password"> Contraseña</label>
-				<input type="password" name="password" id="password"
+				<input type="password" name="pass" id="pass"
 				placeholder="qwe1234"
 				pattern="[A-Za-z0-9_-]{8,20}"
 				required/> (la contraseña debe tener al menos 8 caracteres y puede incluir letras o números)
@@ -60,12 +63,13 @@
 
 			<p>
 				<label for="password2"> Repetir contraseña</label>
-				<input type="password" name="password2" id="password2"
+				<input type="password" name="pass2" id="pass2"
 				placeholder="qwe1234"
 				pattern="[A-Za-z0-9_-]{8,20}"
+				onchange="check_pwd();"
 				required/>
 			</p>
-
+			<div id="check_pwdjs"> </div>
 			<p>
 				<label for="email"> E-mail</label>
 				<input type="email" name="email" id="email"

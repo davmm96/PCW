@@ -427,8 +427,57 @@ header label{
 
 
 /* FIN APARTADO DETALLE RECETA*/
+/*REGISTRO*/
+.box_emergente{
+    box-shadow: 0px 0px 30px -3px rgba(0,0,0,0.63);
+    background-color: rgba(0, 0, 0,0.4);
+    color: white;
+    text-align: center;
+    margin:auto;
+    padding: 10px 0;
+    width: 80%;
+    max-width: 600px;
+}
 
+.box_emergente p{
+    display: inline-block;
+    margin: 0% 2%;
+    color: green;
+}
+
+.box_emergente button{
+    color: green;
+    font-size: 120%;
+    cursor: pointer;
+    background-color: rgb(0,0,0,0);
+    text-decoration: none;
+    border: none;
+}
+
+.box_emergente button:hover{
+   color: white;
+}
+
+.usuario-nodisponible{
+    box-shadow: 0px 0px 30px -3px rgba(0,0,0,0.63);
+    background-color: rgba(0, 0, 0,0.4);
+    color: white;
+    text-align: center;
+    margin:auto;
+    padding: 10px 0;
+    width: 80%;
+}
+
+.usuario-nodisponible p, .usuario-nodisponible i{
+    display: inline-block;
+    margin: 0% 2%;
+    color: red;
+}
+
+
+/*FIN REGISTRO*/
 /*LOGIN*/
+
 #login-error{
     box-shadow: 0px 0px 30px -3px rgba(0,0,0,0.63);
     background-color: rgba(0, 0, 0,0.4);
@@ -461,12 +510,12 @@ header label{
     font-size: 120%;
 }
 
-.centrado a{
+.centrado a, .centrado button{
     text-decoration: none;
     color:#f2f2f2;
 }
 
-.centrado a:hover{
+.centrado a:hover, .centrado button:hover{
     text-decoration: none;
     color:#0BA25D;
 }
@@ -483,6 +532,7 @@ footer{
     background-color:  rgba(0,0,0,0.4);
     font-family: 'Patrick Hand', cursive;
     padding: 8px;
+    margin-top: 1%;
 }
 
 footer a {

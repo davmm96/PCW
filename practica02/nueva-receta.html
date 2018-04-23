@@ -8,7 +8,7 @@
 		<link rel="stylesheet" type="text/css" href="estilo.css">
 		<script src="javascript.js">	</script>
 	</head>
-    <body onload="dibujar_menu(); red_nuevareceta();">
+    <body onload="dibujar_menu(); red_nuevareceta(); ">
         <header id="header">
 
 		<div id="logo">
@@ -81,9 +81,7 @@
 
 				<fieldset>
 					<legend>Ingredientes</legend>
-					<ul contenteditable="true">
-						<li>Arroz</li>
-						<li>Pollo</li>
+					<ul contenteditable="true" id="l_ingr">
 					</ul>
 
 				</fieldset>	
@@ -91,7 +89,7 @@
 				<input type="text" name="ingrediente" id="ingrediente"
 				required/> 
 
-					<button  class="boton_form">Añadir</button>
+					<button  class="boton_form" onclick="anyadir_ingr();">Añadir</button>
 				<p> 
 			</div>
 

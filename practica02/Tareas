@@ -1,14 +1,13 @@
 TAREAS
 PATO
 ----------------------
-BUSCAR: 0,5 OK 0,5 OK 0,25 OK = 1,25 	ok
-INDEX: 0,25 OK 0,5 OK 0,25 OK = 1		ok
+BUSCAR: 0,5 OK 0,5 OK 0,25 OK = 1,25 	OK
+INDEX: 0,25 OK 0,5 OK 0,25 OK = 1		OK
 ----------------------
 ----------------------
-LOGIN: 0,5 OK +- hay que solucionar k reciba parametros del form
+LOGIN: 0,5 OK
 GLOBAL: 0,25 OK + 0,25 OK = 0,5 OK 		+ 0,5 del validator de mierda
-
-REGISTRO: 0,5 + 0,25 + 0,25 = 1
+REGISTRO: 0,5 OK + 0,25 OK + 0,25 OK = 1	OK
 ----------------------
 
 
