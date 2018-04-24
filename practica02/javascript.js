@@ -277,7 +277,7 @@ if(a>=0&&a<data.FILAS.length){
 
 }
 
-function voto(tipo,url){
+function voto(){
 
 var parametros = getParameterByName('id');
 var data=JSON.parse(sessionStorage.getItem('usuario'));
@@ -307,7 +307,7 @@ var usuario=data.login;
 			'</br>'
 			'</div>';
 		}
-			console.log("todo oki");
+			console.log("voto oki");
 		});
 
 	})/*.cath(function(err){
@@ -315,18 +315,6 @@ var usuario=data.login;
 	})*/;
 	return false;
 
-
-
-
-//LIKE
-	if(tipo===1){
-
-	}
-
-//DISLIKE
-	else{
-
-	}
 }
 
 function cerrar_voto(){
@@ -338,6 +326,58 @@ function cerrar_voto(){
 }
 
 
+function comentario(){
+
+var parametros = getParameterByName('id');
+var data=JSON.parse(sessionStorage.getItem('usuario'));
+console.log(data);
+var clave=data.clave;
+var usuario=data.login;
+
+	var url ='http://localhost/PCW/practica02/rest/receta/' + parametros+'/comentario';
+	var fd = new FormData();
+	var init = {method:'post', 'body':fd, headers:{'Authorization':clave}};
+	
+	fd.append('l', usuario);
+	fd.append('titulo', document.getElementById("titulo-comentario").value);
+	fd.append('texto', document.getElementById("contenido-comentario").value);
+
+	fetch(url,init).then(function(response){
+		if(!response.ok){
+			console.log("error comentario");
+			document.getElementById("titulo-comentario").setAttribute("focused",true);
+			return;
+		}
+		response.json().then(function(data){
+			var element;
+		element = document.getElementById("comentario-ok");
+		if (element) {
+			element.innerHTML = 
+			'<div class="box_emergente">' +
+			'<p>Comentario registrado correctamente, pulse para continuar</p>' +
+			'<p><button onclick="cerrar_comentario();"><i class="far fa-times-circle"></i></button></p>'+
+			'</br>'
+			'</div>';
+
+			document.getElementById("titulo-comentario").value="";
+			document.getElementById("contenido-comentario").value="";
+		}
+			console.log("comentario oki");
+		});
+
+	});
+
+	return false;
+
+}
+
+function cerrar_comentario(){
+	var element;
+		element = document.getElementById("comentario-ok");
+		if (element) {
+			element.innerHTML = '';
+		}
+}
 
 
 function info_receta(url){
