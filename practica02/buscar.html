@@ -10,123 +10,80 @@
 	</head>
 
     <body onload="busqueda_avanzada(); dibujar_menu();">
+    	<header id="header">
+			<div id="logo"><a href="index.html"><img src="img/icook-logo.png" alt="logo" width="100px" height="100px"></a></div>
+			
+			<p>Esta es una página para subir recetas.</p>
 
-       	<header id="header">
+			<label for="boton_menu"> <i class="fas fa-bars"></i></label>
+				<input type="checkbox" name="menu" id="boton_menu"/>
 
-		<div id="logo">
-			<a href="index.html"><img src="img/icook-logo.png" alt="logo" width="100px" height="100px"></a>
+			<div class="menu-horizontal" id="menu-principal">
+				<a href="index.html">Inicio <i class="fas fa-home"></i></a>
+				<a href="buscar.html">Buscar <i class="fas fa-search"></i></a>
+				<a href="nueva-receta.html" id="n_rec">Nueva receta <i class="fas fa-plus-circle"></i></a>
+				<a href="registro.html" id="registro">Registro <i class="fas fa-user-plus"></i></a>
+				<a href="login.html" id="login" >Login <i class="fas fa-sign-in-alt"></i></a>		
+				<a href="index.html" id="logout">Logout <i class="fas fa-sign-out-alt"></i></a>
+			</div>
+		</header>
+
+		<h2>Búsqueda</h2>
+		<form class="form-reducido" action="buscar.html">
+				<p>
+					<label for="name">Nombre</label>
+					<input type="text" name="name" id="name" autofocus/>
+				</p>
+				<p>
+					<label for="ingredientes">Ingredientes</label>
+					<input type="text" name="ingredientes" id="ingredientes"/>
+				</p>
+				<p>				
+					<label for="tiempo_ini"> Tiempo mínimo</label>
+					<input type="number" name="tiempo_ini" id="tiempo_ini" min=0/>	
+				</p>
+				<p>
+					<label for="tiempo_fin">Tiempo máximo</label>
+					<input type="number" name="tiempo_fin" id="tiempo_fin" min=0/>
+				</p>
+				<p>
+					<label for="dificultad">Dificultad</label>
+					<select name="dificultad" id="dificultad" class="dropdown">
+						<option value="" disabled selected>Selecciona una dificultad</option>
+						<option value="0">Baja</option>
+						<option value="1">Media</option>
+						<option value="2">Alta</option>	
+					</select>
+				</p>
+				<p>
+					<label for="comensales"> Nº de comensales</label>
+					<input type="number" name="comensales" id="comensales" min=0/> 
+				</p>
+				<p>
+					<label for="autor">Autor</label>
+					<input type="text" name="autor" id="autor"/>
+				</p>
+				<br>
+				<input type="reset" value="Reset">
+				<input type="submit" value="Buscar">
+			</form>
+		<div class="contenido" id="contenido_busqueda"></div>
+
+		<div class="centrado" id="paginacion">
+			<div class="pasa_paginas">
+				<a href="">1</a>
+				<a href=""><i class="fas fa-caret-left"></i></a>
+				<a href=""> 5 </a>
+				<a href=""><i class="fas fa-caret-right"></i></a>
+				<a href="">Fin</a>	
+			</div>	
 		</div>
+
+		<footer>
+			<a href="#header">Inicio</a>
+			<a href="acerca.html">Información de contacto</a>
+			<p>Copyright 2018</p>		
+		</footer>
 		
-		<p>Esta es una página para subir recetas.</p>
-
-		<label for="boton_menu"> <i class="fas fa-bars"></i></label>
-			<input type="checkbox" name="menu" id="boton_menu"/>
-
-		<div class="menu-horizontal" id="menu-principal">
-			<a href="index.html">Inicio <i class="fas fa-home"></i></a>
-			<a href="buscar.html">Buscar <i class="fas fa-search"></i></a>
-			<a href="nueva-receta.html" id="n_rec">Nueva receta <i class="fas fa-plus-circle"></i></a>
-			<a href="registro.html" id="registro">Registro <i class="fas fa-user-plus"></i></a>
-			<a href="login.html" id="login" >Login <i class="fas fa-sign-in-alt"></i></a>		
-			<a href="index.html" id="logout">Logout <i class="fas fa-sign-out-alt"></i></a>
-		</div>
-	</header>
-	<h2>Búsqueda</h2>
-	<form class="form-reducido" action="buscar.html">
-			<p>
-				<label for="name">Nombre</label>
-				<input type="text" name="name" id="name"
-				autofocus
-				/>
-			</p>
-
-			<p>
-				<label for="ingredientes">Ingredientes</label>
-				<input type="text" name="ingredientes" id="ingredientes"
-				/>
-			</p>
-
-			<p>
-				
-				<label for="tiempo_ini"> Tiempo mínimo</label>
-				<input type="number" name="tiempo_ini" id="tiempo_ini"
-				min=0
-				/>	
-			</p>
-			<p>
-				<label for="tiempo_fin">Tiempo máximo</label>
-				<input type="number" name="tiempo_fin" id="tiempo_fin"
-				min=0
-				/>
-			</p>
-
-			<p>
-				<label for="dificultad">Dificultad</label>
-				<select name="dificultad" id="dificultad" class="dropdown">
-					<option value="" disabled selected>Selecciona una dificultad</option>
-					<option value="0">Baja</option>
-					<option value="1">Media</option>
-					<option value="2">Alta</option>
-					
-				</select>
-
-			</p>
-
-			<p>
-				<label for="comensales"> Nº de comensales</label>
-				<input type="number" name="comensales" id="comensales"
-				min=0
-				/> 
-			</p>
-
-			<p>
-				<label for="autor">Autor</label>
-				<input type="text" name="autor" id="autor"
-				/>
-			</p>
-			<br>
-			<input type="reset" value="Reset">
-			<input type="submit" value="Buscar">
-		</form>
-		<!--
-		<form class="form-pequenyo">
-			<p>
-				<label>Ordenar por:</label>
-				<select class="dropdown">
-					<option value="valoracion">Valoración</option>
-					<option value="fecha">Fecha</option>
-				</select>
-			</p>
-			<p>
-				<label>Tipo de orden:</label>
-				<select class="dropdown">
-					<option value="ascendente" class="option">Ascendente</option>
-					<option value="descendente">Descendente</option>
-				</select>
-			</p>
-			<input type="submit" value="Ordenar">
-		</form>
-		-->
-
-<div class="contenido" id="contenido_busqueda">
-
-</div>
-
-<div class="centrado" id="paginacion">
-		<div class="pasa_paginas">
-			<a href="">1</a>
-			<a href=""><i class="fas fa-caret-left"></i></a>
-			<a href=""> 5 </a>
-			<a href=""><i class="fas fa-caret-right"></i></a>
-			<a href="">Fin</a>	
-		</div>	
-	</div>
-
-	<footer>
-		<a href="#header">Inicio</a>
-		<a href="acerca.html">Información de contacto</a>
-		<p>Copyright 2018</p>
-		
-	</footer>
 	</body>
 </html>

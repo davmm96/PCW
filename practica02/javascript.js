@@ -1,26 +1,3 @@
-function peticionFetchAPI_GET(){
-			var url ='http://localhost/PCW/practica02/rest/receta/';
-			fetch(url).then(function(response){
-				if(!response.ok){
-					console.log('Error(' + response.status + '): ' + response.statusText);
-					return;
-				}
-				response.json().then(function(data){
-					console.log(data);
-					console.log(data.CODIGO);
-					for(let i = 0; i<data.FILAS.length;i++){
-						var receta = data.FILAS[i];
-						console.log(receta.nombre);
-						console.log(receta.autor);
-					}
-					var prodId = getParameterByName('buscar');
-					console.log(prodId);
-				});
-			})/*.cath(function(err){
-				console.log('Fetch Error: ', err);
-			})*/;
-}
-
 //FUNCIONES INDEX Y BUSCAR//
 
 function seisUltimas(){
@@ -105,18 +82,16 @@ function busqueda_rapida_recetas(){
 }
 
 function obtener_nres(url,pag,param){
-			fetch(url).then(function(response){
-				if(!response.ok){
-					console.log('Error(' + response.status + '): ' + response.statusText);
-					return;
-				}
-				response.json().then(function(data){
-					localStorage.setItem("n_resultados", data.TOTAL_COINCIDENCIAS);
-					paginacion(pag,param);
-				});
-			})/*.cath(function(err){
-				console.log('Fetch Error: ', err);
-			})*/;
+	fetch(url).then(function(response){
+		if(!response.ok){
+			console.log('Error(' + response.status + '): ' + response.statusText);
+			return;
+		}
+		response.json().then(function(data){
+			localStorage.setItem("n_resultados", data.TOTAL_COINCIDENCIAS);
+			paginacion(pag,param);
+		});
+	});
 }
 
 function paginacion(pag,parametros){
@@ -161,135 +136,156 @@ function paginacion(pag,parametros){
 }
 
 function mostar_recetas(url){
-			console.log("mostrarrecetas");
-			fetch(url).then(function(response){
-				if(!response.ok){
-					console.log('Error(' + response.status + '): ' + response.statusText);
-					console.log("agjioewjgieawoje");
-					return;
-				}
-				response.json().then(function(data){
-					console.log("hola");
-					localStorage.setItem("n_resultados", data.TOTAL_COINCIDENCIAS);
-					console.log("storage mostrar: " + localStorage.getItem("n_resultados"));
-					var element;
-					element = document.getElementById("contenido_busqueda");
-					if (element) {
-						for( let i = 0 ; i < data.FILAS.length; i++){
-							var receta = data.FILAS[i];
-							element.innerHTML = element.innerHTML + 
-						'<article>' +
-				    	'<p><a href="receta.html?id='+ receta.id +'">' + receta.nombre + '</a></p>'+
-				    	'<img src="fotos/' + receta.fichero + '" alt="'+ receta.descripcion_foto +'" width="350" height="200">'+
-				    	'<p><a href="buscar.html?autor='+ receta.autor+'">'+ receta.autor +'</a></p>'+
-				    	'<p>'+ receta.fecha +'</p>'+
-				    	'<p>'+receta.negativos+' votos positivos</p>'+
-				    	'<p>'+receta.positivos+' votos negativos</p>'+
-				    	'<p>'+receta.comentarios+' Comentarios</p>' +
-				    	'</article>';
-						}
-				    	
-					}
-					
-					
-				});
-			})/*.cath(function(err){
-				console.log('Fetch Error: ', err);
-			})*/;
-			
+	console.log("mostrarrecetas");
+	fetch(url).then(function(response){
+		if(!response.ok){
+			console.log('Error(' + response.status + '): ' + response.statusText);
+			console.log("agjioewjgieawoje");
+			return;
+		}
+		response.json().then(function(data){
+			console.log("hola");
+			localStorage.setItem("n_resultados", data.TOTAL_COINCIDENCIAS);
+			console.log("storage mostrar: " + localStorage.getItem("n_resultados"));
+			var element;
+			element = document.getElementById("contenido_busqueda");
+			if (element) {
+				for( let i = 0 ; i < data.FILAS.length; i++){
+					var receta = data.FILAS[i];
+					element.innerHTML = element.innerHTML + 
+				'<article>' +
+		    	'<p><a href="receta.html?id='+ receta.id +'">' + receta.nombre + '</a></p>'+
+		    	'<img src="fotos/' + receta.fichero + '" alt="'+ receta.descripcion_foto +'" width="350" height="200">'+
+		    	'<p><a href="buscar.html?autor='+ receta.autor+'">'+ receta.autor +'</a></p>'+
+		    	'<p>'+ receta.fecha +'</p>'+
+		    	'<p>'+receta.negativos+' votos positivos</p>'+
+		    	'<p>'+receta.positivos+' votos negativos</p>'+
+		    	'<p>'+receta.comentarios+' Comentarios</p>' +
+		    	'</article>';
+				}	    	
+			}			
+		});
+	});			
 }
 
-//FIN FUNCIONES INDEX Y BUSCAR//
+//FIN FUNCIONES INDEX Y BUSCAR
 
 
-function id_receta(){
+//FUNCIONES RECETA
+function url_receta(){//Redirecciona si la url no tiene el id
+	let id=getParameterByName('id');
+	console.log(id);
+	if(id===""){
+		location.href="index.html";
+	}
+}
+function id_receta(){//Obtiene el id de la receta y hace los 3 fetch (ingredientes,fotos,comentarios)
 	var parametros = getParameterByName('id');
-
 	var url ='http://localhost/PCW/practica02/rest/receta/' + parametros;
-
-	console.log(url);
 
 	//Informacion general
 	info_receta(url);
-
-	//Ingredientes
-	url2=url+'/ingredientes';
-	ingredientes_receta(url2);
-
 	//Fotos
-	url3=url+'/fotos';
-	foto_receta(url3);
-
+	url2=url+'/fotos';
+	foto_receta(url2);
+	//Ingredientes
+	url3=url+'/ingredientes';
+	ingredientes_receta(url3);
 	//Comentarios
 	url4=url+'/comentarios';
 	comen_receta(url4);
 }
 
-
-function foto_receta(url){
-			
+function info_receta(url){//Fetch de la info y muestra el form de comentario (log) desde fichero
 	fetch(url).then(function(response){
 		if(!response.ok){
 			console.log('Error(' + response.status + '): ' + response.statusText);
 			return;
 		}
 		response.json().then(function(data){
-
-
-				var fotos=data.FILAS[0];
-
-				localStorage.setItem("fotos",JSON.stringify(data));
-
-				mostrar_foto(0);	    	
-
-		    	
+			var element;
+			element = document.getElementById("info_receta");
+			if (element) {
+				var receta = data.FILAS[0];
+		    	element.innerHTML = '<h1>'+receta.nombre+'</h1>'+
+		    	'<p>Fecha: '+receta.fecha+'</p>'+
+		    	'<p>Tiempo de elaboracion: '+receta.tiempo+'</p>'+
+		    	'<p>Dificultad: '+receta.dificultad+'</p>'+
+		    	'<p>Plato para: '+receta.comensales+' personas</p>'+
+		    	'Ingredientes'+
+		    	'<div id="ingredientes"></div>'+
+		    	'<p>'+receta.elaboracion+'</p>'+
+		    	'<p>'+receta.positivos+' votos positivos</p>'+
+		    	'<p>'+receta.negativos+' votos negativos</p>'+
+		    	'<p><a href="buscar.html">'+receta.autor+'</a></p>'+
+		    	'<p><a href="#seccion-comentarios">'+receta.comentarios +' Comentarios</a></p>';		    	
+			}
+			element2=document.getElementById("form_coment");
+			if(!logueado()){
+		    	element2.innerHTML ='<p>'+'Para dejar un comentario debes estar <a href="login.html">logueado</a> '+'</p>';
+		    }
+		    else{
+		    	var xhttp = new XMLHttpRequest();
+		    	xhttp.open("GET", "comentario.html", true);
+				xhttp.onreadystatechange = function() {
+				    if (this.readyState == 4 && this.status == 200) {
+				       document.getElementById("form_coment").innerHTML = xhttp.responseText;
+				    }
+				};
+				xhttp.send(null);
+		    }	
 		});
 	})
 }
 
-function mostrar_foto(a){
+function foto_receta(url){//Fetch de fotos		
+	fetch(url).then(function(response){
+		if(!response.ok){
+			console.log('Error(' + response.status + '): ' + response.statusText);
+			return;
+		}
+		response.json().then(function(data){
+			var fotos=data.FILAS[0];
+			localStorage.setItem("fotos",JSON.stringify(data));
+			mostrar_foto(0);	    	  	
+		});
+	})
+}
 
-console.log(a);
+function mostrar_foto(a){//Funcion recursiva para mostrar la foto siguiente o anterior
+	let dato=localStorage.getItem("fotos") ;
+	let data=JSON.parse(dato);
 
+	if(a>=0&&a<data.FILAS.length){
+		var fotos=data.FILAS[a];
+		var a1=a-1;
+		var a2=a+1;
+		var element=document.getElementById("img_receta");
 
-let dato =  localStorage.getItem("fotos") ;
-let data = JSON.parse(dato);
-
-console.log(data);
-
-if(a>=0&&a<data.FILAS.length){
-	var fotos = data.FILAS[a];
-	var a1=a-1;
-	var a2=a+1;
-	var element=document.getElementById("img_receta");
-		element.innerHTML ='<img src="fotos/' + fotos.fichero + '" alt="'+ fotos.texto+'">'+			    	
-				    	'<p> <a onclick="mostrar_foto('+a1+')";><i class="fas fa-caret-left"></i></a>'+fotos.texto+
-				    	'<a  onclick="mostrar_foto('+a2+')";><i class="fas fa-caret-right"></i></a>'+
-				    	'</p>';	
-	if(logueado()){
-		    	element.innerHTML =element.innerHTML +'<div class="like">'+
-		    	'<a onclick=voto(1);><i class="far fa-thumbs-up"></i></a>'+
-		    	'<a onclick=voto(0);><i id="dislike" class="far fa-thumbs-down"></i></a>'+
-		    	'</div>';
+		element.innerHTML='<img src="fotos/' + fotos.fichero + '" alt="'+ fotos.texto+'">'+			    	
+					    	'<p> <a onclick="mostrar_foto('+a1+')";><i class="fas fa-caret-left"></i></a>'+fotos.texto+
+					    	'<a  onclick="mostrar_foto('+a2+')";><i class="fas fa-caret-right"></i></a>'+
+					    	'</p>';	
+		if(logueado()){
+	    	element.innerHTML=element.innerHTML +'<div class="like">'+
+	    	'<a onclick=voto(1);><i class="far fa-thumbs-up"></i></a>'+
+	    	'<a onclick=voto(0);><i id="dislike" class="far fa-thumbs-down"></i></a>'+
+	    	'</div>';
+		}	
 	}
-	
 }
 
-}
+function voto(){//Fetch de voto
+	var parametros=getParameterByName('id');
+	var data=JSON.parse(sessionStorage.getItem('usuario'));
+	var clave=data.clave;
+	var usuario=data.login;
 
-function voto(){
-
-var parametros = getParameterByName('id');
-var data=JSON.parse(sessionStorage.getItem('usuario'));
-console.log(data);
-var clave=data.clave;
-var usuario=data.login;
-
-	var url ='http://localhost/PCW/practica02/rest/receta/' + parametros+'/voto/'+tipo;
-	var fd = new FormData();
-	var init = {method:'post', 'body':fd, headers:{'Authorization':clave}};
+	var url='http://localhost/PCW/practica02/rest/receta/'+parametros+'/voto/'+tipo;
+	var fd=new FormData();
+	var init={method:'post','body':fd,headers:{'Authorization':clave}};
 	
-	fd.append('l', usuario);
+	fd.append('l',usuario);
 
 	fetch(url,init).then(function(response){
 		if(!response.ok){
@@ -298,49 +294,77 @@ var usuario=data.login;
 		}
 		response.json().then(function(data){
 			var element;
-		element = document.getElementById("voto-ok");
-		if (element) {
-			element.innerHTML = 
-			'<div class="box_emergente">' +
-			'<p>Voto registrado correctamente, pulse para continuar</p>' +
-			'<p><button onclick="cerrar_voto();"><i class="far fa-times-circle"></i></button></p>'+
-			'</br>'
-			'</div>';
-		}
-			console.log("voto oki");
+			element=document.getElementById("voto-ok");
+			if(element){
+				element.innerHTML= 
+				'<div class="box_emergente">'+
+				'<p>Voto registrado correctamente, pulse para continuar</p>'+
+				'<p><button onclick="cerrar(1);"><i class="far fa-times-circle"></i></button></p>'+
+				'</br>'
+				'</div>';
+			}
+			console.log("voto ok");
 		});
-
-	})/*.cath(function(err){
-	console.log('Fetch Error: ', err);
-	})*/;
+	});
 	return false;
-
 }
 
-function cerrar_voto(){
-	var element;
-		element = document.getElementById("voto-ok");
-		if (element) {
-			element.innerHTML = '';
+function ingredientes_receta(url){//Fetch ingredientes			
+	fetch(url).then(function(response){
+		if(!response.ok){
+			console.log('Error('+response.status+'): '+response.statusText);
+			return;
 		}
+		response.json().then(function(data){
+			var element;
+			element=document.getElementById("ingredientes");
+			if(element){
+				for(let i=0; i<data.FILAS.length; i++){
+				var ingredientes=data.FILAS[i];
+		    	element.innerHTML=element.innerHTML+'<p>'+ingredientes.nombre+'</p>';
+		    	}			    	
+			}
+		});
+	})
 }
 
+function comen_receta(url){//Fetch de comentario	
+	fetch(url).then(function(response){
+		if(!response.ok){
+			console.log('Error('+response.status+'): '+response.statusText);
+			return;
+		}
+		response.json().then(function(data){
+			var element;
+			element=document.getElementById("seccion-comentarios");
+			if(element){
+				for(let i=0; i<data.FILAS.length; i++){
+				var comentarios=data.FILAS[i];
+		    	element.innerHTML=element.innerHTML+'<div class="comentarios">'+
+		    	'<p>'+comentarios.titulo+'</p>'+ 
+		    	'<p>'+comentarios.autor+'</p>'+
+		    	'<p>'+comentarios.fecha+'</p>'+
+		    	'<p>'+comentarios.texto+'</p>';
+		    	}		    	
+			}
+		});
+	})
+}
 
-function comentario(){
+function comentario(){//Post de comentario
+	var parametros=getParameterByName('id');
+	var data=JSON.parse(sessionStorage.getItem('usuario'));
+	console.log(data);
+	var clave=data.clave;
+	var usuario=data.login;
 
-var parametros = getParameterByName('id');
-var data=JSON.parse(sessionStorage.getItem('usuario'));
-console.log(data);
-var clave=data.clave;
-var usuario=data.login;
-
-	var url ='http://localhost/PCW/practica02/rest/receta/' + parametros+'/comentario';
-	var fd = new FormData();
-	var init = {method:'post', 'body':fd, headers:{'Authorization':clave}};
+	var url='http://localhost/PCW/practica02/rest/receta/'+parametros+'/comentario';
+	var fd=new FormData();
+	var init={method:'post','body':fd,headers:{'Authorization':clave}};
 	
-	fd.append('l', usuario);
-	fd.append('titulo', document.getElementById("titulo-comentario").value);
-	fd.append('texto', document.getElementById("contenido-comentario").value);
+	fd.append('l',usuario);
+	fd.append('titulo',document.getElementById("titulo-comentario").value);
+	fd.append('texto',document.getElementById("contenido-comentario").value);
 
 	fetch(url,init).then(function(response){
 		if(!response.ok){
@@ -350,143 +374,71 @@ var usuario=data.login;
 		}
 		response.json().then(function(data){
 			var element;
-		element = document.getElementById("comentario-ok");
-		if (element) {
-			element.innerHTML = 
-			'<div class="box_emergente">' +
-			'<p>Comentario registrado correctamente, pulse para continuar</p>' +
-			'<p><button onclick="cerrar_comentario();"><i class="far fa-times-circle"></i></button></p>'+
-			'</br>'
-			'</div>';
+			element=document.getElementById("comentario-ok");
+			if(element){
+				element.innerHTML= 
+				'<div class="box_emergente">'+
+				'<p>Comentario registrado correctamente, pulse para continuar</p>'+
+				'<p><button onclick="cerrar(2);"><i class="far fa-times-circle"></i></button></p>'+
+				'</br>'
+				'</div>';
 
-			document.getElementById("titulo-comentario").value="";
-			document.getElementById("contenido-comentario").value="";
-			document.getElementById("titulo-comentario").focus();
-		}
+				document.getElementById("titulo-comentario").value="";
+				document.getElementById("contenido-comentario").value="";
+				document.getElementById("titulo-comentario").focus();
+			}
 			console.log("comentario oki");
 		});
-
 	});
-
 	return false;
-
 }
 
-function cerrar_comentario(){
+function cerrar(tipo){//Cerrar mensaje emergente
 	var element;
-		element = document.getElementById("comentario-ok");
-		if (element) {
-			element.innerHTML = '';
-		}
+
+	if(tipo===1)
+		element=document.getElementById("voto-ok");
+	else
+		element=document.getElementById("comentario-ok");
+
+	if (element)
+		element.innerHTML='';
 }
-
-
-function info_receta(url){
-			
-			fetch(url).then(function(response){
-				if(!response.ok){
-					console.log('Error(' + response.status + '): ' + response.statusText);
-					return;
-				}
-				response.json().then(function(data){
-					var element;
-					element = document.getElementById("info_receta");
-					if (element) {
-						var receta = data.FILAS[0];
-				    	element.innerHTML = '<h1>'+receta.nombre+'</h1>'+
-				    	'<p>Fecha: '+receta.fecha+'</p>'+
-				    	'<p>Tiempo de elaboracion: '+receta.tiempo+'</p>'+
-				    	'<p>Dificultad: '+receta.dificultad+'</p>'+
-				    	'<p>Plato para: '+receta.comensales+' personas</p>'+
-				    	'Ingredientes'+
-				    	'<div id="ingredientes"></div>'+
-				    	'<p>'+receta.elaboracion+'</p>'+
-				    	'<p>'+receta.positivos+' votos positivos</p>'+
-				    	'<p>'+receta.negativos+' votos negativos</p>'+
-				    	'<p><a href="buscar.html">'+receta.autor+'</a></p>'+
-				    	'<p><a href="#seccion-comentarios">'+receta.comentarios +' Comentarios</a></p>'
-				    	;
-						    	
-					}
-
-					element2=document.getElementById("form_coment");
-
-					if(!logueado()){
-				    	element2.innerHTML ='<p>'+'Para dejar un comentario debes estar <a href="login.html">logueado</a> '+'</p>';
-				    }
-				    else{
-				    	var xhttp = new XMLHttpRequest();
-				    	xhttp.open("GET", "comentario.html", true);
-						xhttp.onreadystatechange = function() {
-						    if (this.readyState == 4 && this.status == 200) {
-						       // Typical action to be performed when the document is ready:
-						       document.getElementById("form_coment").innerHTML = xhttp.responseText;
-						    }
-						};
-						
-						xhttp.send(null);
-				    }	
-				});
-			})
-}
-
-function ingredientes_receta(url){
-			
-			fetch(url).then(function(response){
-				if(!response.ok){
-					console.log('Error(' + response.status + '): ' + response.statusText);
-					return;
-				}
-				response.json().then(function(data){
-					var element;
-					element = document.getElementById("ingredientes");
-					if (element) {
-						for( let i = 0 ; i < data.FILAS.length; i++){
-						var ingredientes = data.FILAS[i];
-				    	element.innerHTML =element.innerHTML+'<p>'+ ingredientes.nombre+'</p>';
-
-				    	}			    	
-					}
-				});
-			})
-}
-
-function comen_receta(url){
-			
-			fetch(url).then(function(response){
-				if(!response.ok){
-					console.log('Error(' + response.status + '): ' + response.statusText);
-					return;
-				}
-				response.json().then(function(data){
-					var element;
-					element = document.getElementById("seccion-comentarios");
-					if (element) {
-						for( let i = 0 ; i < data.FILAS.length; i++){
-						var comentarios = data.FILAS[i];
-				    	element.innerHTML =element.innerHTML+'<div class="comentarios">' +
-				    	'<p>'+ comentarios.titulo + '</p>'+ 
-				    	'<p>'+comentarios.autor+'</p>'+
-				    	'<p>'+comentarios.fecha+'</p>'+
-				    	'<p>'+comentarios.texto+'</p>';
-				    	}		    	
-					}
-				});
-			})
-}
-
-
+//FIN FUNCIONES RECETA
 
 //FUNCIONES NUEVA RECETA
-function red_nuevareceta(){
+function red_nuevareceta(){//Redirecciona si no logeado
 	if(!logueado()){
 		location.href="index.html";
 	}
 }
+
+function anyadir_ingr(){//Anyade un ingrediente a la lista
+	let ingrediente=document.getElementById("ingrediente").value;
+	let lista=document.getElementById("l_ingr");
+	let li=document.createElement("li");
+	let span=document.createElement("span");
+	let textnode=document.createTextNode(ingrediente);
+
+	span.appendChild(textnode);
+	li.appendChild(span);
+	lista.appendChild(li);
+	document.getElementById("ingrediente").value="";
+}
+
+function form_foto_receta(){//Carga el formulario al pulsar subir foto
+	var xhttp=new XMLHttpRequest();
+    xhttp.open("GET","form_foto.html", true);
+	xhttp.onreadystatechange=function(){
+		if(this.readyState==4 && this.status==200){
+	       document.getElementById("form_foto").innerHTML=xhttp.responseText;
+	    }
+	};
+	xhttp.send(null);
+}
 //FIN FUNCIONES NUEVA RECETA
 
 //FUNCIONES DEL MENU
-
 function dibujar_menu(){
 	var element;
 	element = document.getElementById("menu-principal");
@@ -507,12 +459,10 @@ function dibujar_menu(){
 			'<a href="login.html" id="login" >Login <i class="fas fa-sign-in-alt"></i></a> ' ;
 		}
 	}
-
 }
-
 //FIN FUNCIONES DEL MENU
-//FUNCIONES DE LOGIN
 
+//FUNCIONES DE LOGIN
 function check_login(){
 	let url = 'http://localhost/PCW/practica02/rest/login/',
 	fd = new FormData(),
@@ -543,9 +493,7 @@ function check_login(){
 			
 			location.href="index.html";
 		});
-	})/*.cath(function(err){
-	console.log('Fetch Error: ', err);
-	})*/;
+	});
 	return false;
 }
 
@@ -577,8 +525,8 @@ function mensaje_incorrecto(){
 			'</div>';
 		}
 	}
-	
 }
+
 function cerrar_aviso(){
 	var element;
 		element = document.getElementById("login-errorjs");
@@ -592,11 +540,9 @@ function red_login_registro(){
 		location.href="index.html";
 	}
 }
-
 //FIN DE FUNCIONES DE LOGIN
 
 //LOGOUT
-
 function desconectar(){
 	if(window.sessionStorage){
 		sessionStorage.clear();
@@ -648,9 +594,7 @@ function usuario_disponible(){
 				'</div>';
 			}	
 		});
-	})/*.cath(function(err){
-	console.log('Fetch Error: ', err);
-	})*/;
+	});
 }
 
 function registro(){
@@ -676,9 +620,7 @@ function registro(){
 			console.log("todo oki");
 		});
 
-	})/*.cath(function(err){
-	console.log('Fetch Error: ', err);
-	})*/;
+	});
 	return false;
 }
 
@@ -705,13 +647,9 @@ function redireccionar_registro_ok(){
 	}
 	location.href ="login.html";
 }
-
-
 //FIN FUNCIONES REGISTRO
 	
 //FUNCIONES EXTERNAS 
-
-
 function getParameterByName(name){
     name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
     var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
@@ -728,25 +666,6 @@ function sleep(milliseconds) {
   }
 }
 
-function anyadir_ingr(){
-	let ingrediente=document.getElementById("ingrediente").value;
-	let lista = document.getElementById("l_ingr");
-	let li=document.createElement("li");
-	let span = document.createElement("span");
-	let textnode=document.createTextNode(ingrediente);
 
-	span.appendChild(textnode);
 
-	li.appendChild(span);
-
-	lista.appendChild(li);
-}
-
-function url_receta(){
-	let id=getParameterByName('id');
-	console.log(id);
-	if(id===""){
-		location.href="index.html";
-	}
-}
 

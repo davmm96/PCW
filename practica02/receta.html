@@ -11,80 +11,40 @@
 	</head>
     <body onload="dibujar_menu(); id_receta();url_receta();">
     	<header id="header">
-
-	<div id="logo">
-			<a href="index.html"><img src="img/icook-logo.png" alt="logo" width="100px" height="100px"></a>
-	</div>
+			<div id="logo"><a href="index.html"><img src="img/icook-logo.png" alt="logo" width="100px" height="100px"></a></div>
 		
-		<p>Esta es una página para subir recetas.</p>
+			<p>Esta es una página para subir recetas.</p>
 
-		<label for="boton_menu"> <i class="fas fa-bars"></i></label>
-			<input type="checkbox" name="menu" id="boton_menu"/>
+			<label for="boton_menu"> <i class="fas fa-bars"></i></label>
+				<input type="checkbox" name="menu" id="boton_menu"/>
 
-		<div class="menu-horizontal" id="menu-principal">
-			<a href="index.html">Inicio <i class="fas fa-home"></i></a>
-			<a href="buscar.html">Buscar <i class="fas fa-search"></i></a>
-			<a href="nueva-receta.html" id="n_rec">Nueva receta <i class="fas fa-plus-circle"></i></a>
-			<a href="registro.html" id="registro">Registro <i class="fas fa-user-plus"></i></a>
-			<a href="login.html" id="login" >Login <i class="fas fa-sign-in-alt"></i></a>		
-			<a href="index.html" id="logout">Logout <i class="fas fa-sign-out-alt"></i></a>
-		</div>
-	</header>
+			<div class="menu-horizontal" id="menu-principal">
+				<a href="index.html">Inicio <i class="fas fa-home"></i></a>
+				<a href="buscar.html">Buscar <i class="fas fa-search"></i></a>
+				<a href="nueva-receta.html" id="n_rec">Nueva receta <i class="fas fa-plus-circle"></i></a>
+				<a href="registro.html" id="registro">Registro <i class="fas fa-user-plus"></i></a>
+				<a href="login.html" id="login" >Login <i class="fas fa-sign-in-alt"></i></a>		
+				<a href="index.html" id="logout">Logout <i class="fas fa-sign-out-alt"></i></a>
+			</div>
+		</header>
 	
-	<main>
-		
-	
-		<article class="receta">
-
-			
-			<div class="foto-receta" id="img_receta">
-
-
-			</div>
-
-			<div id="voto-ok">
-			</div>
-
-			
-			<div class="info-receta" id="info_receta">
-				<h1>Receta 1</h1>
-				<p>Fecha: 01/01/2018</p>
-				<p>Tiempo de elaboracion: 60 minutos</p>
-				<p>Dificultad: 3/5</p>
-				<p>Plato para: 4 personas</p>
-
-				<p>Moviemiento naranja, el futuro esta en tus manos, movimiento naranja, movimiento ciudadano nanaaa a a ana na na nanana nananana nanana aa naa na nna aaaa. Moviemiento naranja, el futuro esta en tus manos, movimiento naranja, movimiento ciudadano nanana na na nanana nananana nana a aaa naaaaa. Moviemiento naranja, el futuro esta en tus manos, movimiento naranja, movimiento ciudadano nanana na na nan aa ana nananana nananaaaaa. Moviemiento naranja, el futuro esta en tus manos, movimiento naranja, movimiento ciudadano nanana na na nanana nananana nananaaaaa. Moviemiento naranja, el futuro esta en tus manos, movimiento naranja, movimiento ciudadano nanana na na nanana nananana nananaaaaa. </p>
-				<p>4 votos positivos</p>
-				<p>1 votos negativos</p>
-				<p><a href="buscar.html">Autor 1</a></p>	
-				<p><a href="#seccion-comentarios">2 Comentarios</a></p>
-				
-			</div>
-
-			
-		</article>
+		<main>	
+			<article class="receta">
+				<div class="foto-receta" id="img_receta"></div>
+				<div id="voto-ok"></div>
+				<div class="info-receta" id="info_receta"></div>
+			</article>
         
-		
-
-		<h2>Comentarios</h2>
-
-		<div id="seccion-comentarios">
-
-		</div>
-
-		<div id="form_coment" class="escribe-comentario">
-
-			
-		</div>
-
+			<h2>Comentarios</h2>
+			<div id="seccion-comentarios"></div>
+			<div id="form_coment" class="escribe-comentario"></div>
 		</main>
 
-	<footer>
-		<a href="#header">Inicio</a>
-		<a href="acerca.html">Información de contacto</a>
-		<p>Copyright 2018</p>
-	</footer>
-
-
+		<footer>
+			<a href="#header">Inicio</a>
+			<a href="acerca.html">Información de contacto</a>
+			<p>Copyright 2018</p>
+		</footer>
+		
 	</body>
 </html>

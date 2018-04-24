@@ -8,32 +8,29 @@
 		<link rel="stylesheet" type="text/css" href="estilo.css">
 		<script src="javascript.js">	</script>
 	</head>
+
     <body onload="dibujar_menu(); red_login_registro(); registro_ok();">
     	<header id="header">
+			<div id="logo"><a href="index.html"><img src="img/icook-logo.png" alt="logo" width="100px" height="100px"></a></div>
+			
+			<p>Esta es una página para subir recetas.</p>
 
-		<div id="logo">
-			<a href="index.html"><img src="img/icook-logo.png" alt="logo" width="100px" height="100px"></a>
-		</div>
-		
-		<p>Esta es una página para subir recetas.</p>
+			<label for="boton_menu"> <i class="fas fa-bars"></i></label>
+				<input type="checkbox" name="menu" id="boton_menu"/>
 
-		<label for="boton_menu"> <i class="fas fa-bars"></i></label>
-			<input type="checkbox" name="menu" id="boton_menu"/>
-
-		<div class="menu-horizontal" id="menu-principal">
-			<a href="index.html">Inicio <i class="fas fa-home"></i></a>
-			<a href="buscar.html">Buscar <i class="fas fa-search"></i></a>
-			<a href="nueva-receta.html" id="n_rec">Nueva receta <i class="fas fa-plus-circle"></i></a>
-			<a href="registro.html" id="registro">Registro <i class="fas fa-user-plus"></i></a>
-			<a href="login.html" id="login" >Login <i class="fas fa-sign-in-alt"></i></a>		
-			<a href="index.html" id="logout">Logout <i class="fas fa-sign-out-alt"></i></a>
-		</div>
-	</header>
+			<div class="menu-horizontal" id="menu-principal">
+				<a href="index.html">Inicio <i class="fas fa-home"></i></a>
+				<a href="buscar.html">Buscar <i class="fas fa-search"></i></a>
+				<a href="nueva-receta.html" id="n_rec">Nueva receta <i class="fas fa-plus-circle"></i></a>
+				<a href="registro.html" id="registro">Registro <i class="fas fa-user-plus"></i></a>
+				<a href="login.html" id="login" >Login <i class="fas fa-sign-in-alt"></i></a>		
+				<a href="index.html" id="logout">Logout <i class="fas fa-sign-out-alt"></i></a>
+			</div>
+		</header>
 
 		<h2>Registro</h2>
 		<div id="registro-ok"> </div>
 		<form class="form-vertical" onsubmit="return registro();">
-
 			<p>
 				<label for="usuario"> Nombre de usuario</label>
 				<input type="text" name="usuario" id="usuario"
@@ -43,22 +40,18 @@
 				onchange="usuario_disponible();"
 				required/>
 			</p>
-			<div id="usuario-disponiblejs">
-				
-			</div>
+
+			<div id="usuario-disponiblejs"></div>
+
 			<p>
 				<label for="name"> Nombre</label>
-				<input type="text" name="name" id="name"
-				placeholder="David Melero"
-				required/>
+				<input type="text" name="name" id="name" placeholder="David Melero" required/>
 			</p>
 
 			<p>
 				<label for="password"> Contraseña</label>
-				<input type="password" name="pass" id="pass"
-				placeholder="qwe1234"
-				pattern="[A-Za-z0-9_-]{8,20}"
-				required/> (la contraseña debe tener al menos 8 caracteres y puede incluir letras o números)
+				<input type="password" name="pass" id="pass" placeholder="qwe1234" pattern="[A-Za-z0-9_-]{8,20}" required/> 
+				(la contraseña debe tener al menos 8 caracteres y puede incluir letras o números)
 			</p>
 
 			<p>
@@ -69,34 +62,29 @@
 				onchange="check_pwd();"
 				required/>
 			</p>
+
 			<div id="check_pwdjs"> </div>
+
 			<p>
 				<label for="email"> E-mail</label>
-				<input type="email" name="email" id="email"
-				placeholder="dmelero96@gmail.com"
-				required/>
+				<input type="email" name="email" id="email" placeholder="dmelero96@gmail.com" required/>
 			</p>
 
 			<p>
 				<label for="fecha_nac"> Fecha de nacimiento</label>
-				<input type="date" name="fecha_nac" id="fecha_nac"
-				min="1999-01-01"
-				required/>
+				<input type="date" name="fecha_nac" id="fecha_nac" min="1999-01-01" required/>
 			</p>
 
-			<p>
-				Nota: Todos los campos son obligatorios
-			</p>
+			<p>Nota: Todos los campos son obligatorios</p>
 			
-			<p>
-				<input type="submit" value="Registrar">
-			</p>
+			<p><input type="submit" value="Registrar"></p>
 		</form>
-<footer>
-		<a href="#header">Inicio</a>
-		<a href="acerca.html">Información de contacto</a>
-		<p>Copyright 2018</p>
+
+		<footer>
+			<a href="#header">Inicio</a>
+			<a href="acerca.html">Información de contacto</a>
+			<p>Copyright 2018</p>
+		</footer>
 		
-	</footer>
 	</body>
 </html>

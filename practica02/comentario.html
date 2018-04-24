@@ -1,23 +1,11 @@
 <h2>Escribe tu comentario:</h2>
+<form id="form_coment" class="form-vertical" onsubmit="return comentario();">
+	<p><label for="titulo-comentario">Titulo</label></p>
+	<p><input type="text" name="titulo" id="titulo-comentario" required maxlength="50"></p>
 
-			<form id="form_coment" class="form-vertical" onsubmit="return comentario();">
-				<p>
-					<label for="titulo-comentario">Titulo</label>
-				</p>
-				<p>
-					<input type="text" name="titulo" id="titulo-comentario" required maxlength="50">
-				</p>
-				<p>
-					<label for="contenido-comentario">Contenido</label>
-				</p>
-				<p>
-					<textarea id="contenido-comentario" required></textarea>
-				</p>
-				<p>
-					<input type="submit" value="Comentar">
-				</p>
-				
-			</form>
+	<p><label for="contenido-comentario">Contenido</label></p>
+	<p><textarea id="contenido-comentario" required></textarea></p>
 
-			<div id="comentario-ok">
-			</div>
+	<p><input type="submit" value="Comentar"></p>		
+</form>
+<div id="comentario-ok"></div>
