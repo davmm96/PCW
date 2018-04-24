@@ -345,7 +345,7 @@ var usuario=data.login;
 	fetch(url,init).then(function(response){
 		if(!response.ok){
 			console.log("error comentario");
-			document.getElementById("titulo-comentario").setAttribute("focused",true);
+			document.getElementById("titulo-comentario").focus();
 			return;
 		}
 		response.json().then(function(data){
@@ -361,6 +361,7 @@ var usuario=data.login;
 
 			document.getElementById("titulo-comentario").value="";
 			document.getElementById("contenido-comentario").value="";
+			document.getElementById("titulo-comentario").focus();
 		}
 			console.log("comentario oki");
 		});
