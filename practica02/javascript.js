@@ -242,13 +242,7 @@ function foto_receta(url){
 
 				mostrar_foto(0);	    	
 
-		    	if(logueado()){
-		    	element.innerHTML =element.innerHTML +'<div class="like">'+
-		    	'<a href="" onclick=voto(1);><i class="far fa-thumbs-up"></i></a>'+
-		    	'<a href=""onclick=voto(0);><i id="dislike" class="far fa-thumbs-down"></i></a>'+
-		    	'</div>';
-	    	
-			}
+		    	
 		});
 	})
 }
@@ -272,12 +266,57 @@ if(a>=0&&a<data.FILAS.length){
 				    	'<p> <a onclick="mostrar_foto('+a1+')";><i class="fas fa-caret-left"></i></a>'+fotos.texto+
 				    	'<a  onclick="mostrar_foto('+a2+')";><i class="fas fa-caret-right"></i></a>'+
 				    	'</p>';	
+	if(logueado()){
+		    	element.innerHTML =element.innerHTML +'<div class="like">'+
+		    	'<a onclick=voto(1);><i class="far fa-thumbs-up"></i></a>'+
+		    	'<a onclick=voto(0);><i id="dislike" class="far fa-thumbs-down"></i></a>'+
+		    	'</div>';
+	}
 	
 }
 
 }
 
-function voto(tipo){
+function voto(tipo,url){
+
+var parametros = getParameterByName('id');
+var data=JSON.parse(sessionStorage.getItem('usuario'));
+console.log(data);
+var clave=data.clave;
+var usuario=data.login;
+
+	var url ='http://localhost/PCW/practica02/rest/receta/' + parametros+'/voto/'+tipo;
+	var fd = new FormData();
+	var init = {method:'post', 'body':fd, headers:{'Authorization':clave}};
+	
+	fd.append('l', usuario);
+
+	fetch(url,init).then(function(response){
+		if(!response.ok){
+			console.log("error voto");
+			return;
+		}
+		response.json().then(function(data){
+			var element;
+		element = document.getElementById("voto-ok");
+		if (element) {
+			element.innerHTML = 
+			'<div class="box_emergente">' +
+			'<p>Voto registrado correctamente, pulse para continuar</p>' +
+			'<p><button onclick="cerrar_voto();"><i class="far fa-times-circle"></i></button></p>'+
+			'</br>'
+			'</div>';
+		}
+			console.log("todo oki");
+		});
+
+	})/*.cath(function(err){
+	console.log('Fetch Error: ', err);
+	})*/;
+	return false;
+
+
+
 
 //LIKE
 	if(tipo===1){
@@ -289,6 +328,15 @@ function voto(tipo){
 
 	}
 }
+
+function cerrar_voto(){
+	var element;
+		element = document.getElementById("voto-ok");
+		if (element) {
+			element.innerHTML = '';
+		}
+}
+
 
 
 
@@ -324,7 +372,19 @@ function info_receta(url){
 
 					if(!logueado()){
 				    	element2.innerHTML ='<p>'+'Para dejar un comentario debes estar <a href="login.html">logueado</a> '+'</p>';
-				    	}	
+				    }
+				    else{
+				    	var xhttp = new XMLHttpRequest();
+				    	xhttp.open("GET", "comentario.html", true);
+						xhttp.onreadystatechange = function() {
+						    if (this.readyState == 4 && this.status == 200) {
+						       // Typical action to be performed when the document is ready:
+						       document.getElementById("form_coment").innerHTML = xhttp.responseText;
+						    }
+						};
+						
+						xhttp.send(null);
+				    }	
 				});
 			})
 }
@@ -604,6 +664,8 @@ function redireccionar_registro_ok(){
 	}
 	location.href ="login.html";
 }
+
+
 //FIN FUNCIONES REGISTRO
 	
 //FUNCIONES EXTERNAS 
