@@ -275,7 +275,7 @@ function mostrar_foto(a){//Funcion recursiva para mostrar la foto siguiente o an
 	}
 }
 
-function voto(){//Fetch de voto
+function voto(tipo){//Fetch de voto
 	var parametros=getParameterByName('id');
 	var data=JSON.parse(sessionStorage.getItem('usuario'));
 	var clave=data.clave;
