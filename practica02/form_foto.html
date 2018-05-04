@@ -1,13 +1,17 @@
-<div class="contenido">
-	<article>
-		<label id="label_id" for="foto"> <img type ="file" src="img/no_foto.jpg" width="350" height="200"></label>
-		<p id="des_foto">Aun no se ha subido ninguna foto</p>
-	</article>	
+
+<div>
+	<div class="contenido">
+		<article>
+			<label id="label_id" for="foto"> <img type ="file" src="img/no_foto.jpg" width="350" height="200"></label>
+			<p id="des_foto">Aun no se ha subido ninguna foto</p>
+		</article>	
+	</div>
+	<br>
+	<div class="anyadir"><input type="file" class="boton_form" id="input_foto" onchange="tamanyo_foto(this);"></input></div>
+	<p>
+		<label for="desc_foto">Descripción</label>
+		<textarea id="desc_foto"></textarea>
+	</p>
+	<div class="anyadir"><span class="boton_form rojo" onclick="eliminar_form_foto(this);">Eliminar foto</span></div>
+	<div id="error_foto"></div>
 </div>
-<br>
-<div class="anyadir"><input type="file" class="boton_form" id="input_foto" onchange="tamanyo_foto(this);"></input></div>
-<p>
-	<label for="desc_foto">Descripción</label>
-	<textarea id="desc_foto"></textarea>
-</p>
-<div class="anyadir"><span class="boton_form rojo">Eliminar foto</span></div>
