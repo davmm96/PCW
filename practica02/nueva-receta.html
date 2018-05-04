@@ -32,38 +32,37 @@
 
 		<h2> Datos generales</h2>
 
-		<form class="form-vertical">
+		<form class="form-vertical" onsubmit ="n_receta(); return false;">
 			<p>
-				<label for="receta"> Nombre de la receta</label>
-				<input type="text" name="receta" id="receta"
+				<label for="receta1"> Nombre de la receta</label>
+				<input type="text" name="receta1" id="receta1"
 				placeholder="Arroz a banda"
-				maxlength="200"
-				autofocus
+				maxlength="200"	
 				required/>
 			</p>
 
 			<p>
-				<label for="comensales"> Nº de comensales</label>
-				<input type="number" name="comensales" id="comensales" min=0 required/> 
+				<label for="comensales1"> Nº de comensales</label>
+				<input type="number" name="comensales1" id="comensales1" min=0 required/> 
 			</p>
 
 			<p>
-				<label for="tiempo">Tiempo de elaboración (en minutos)</label>
-				<input type="number" name="tiempo" id="tiempo" min=0 required/> 
+				<label for="tiempo1">Tiempo de elaboración (en minutos)</label>
+				<input type="number" name="tiempo1" id="tiempo1" min=0 required/> 
 			</p>
 
 			<p>
-				<label for="dificultad">Dificultad</label>
-				<select id="dificultad" class="dropdown">
-					<option value="Baja">Baja</option>
-					<option value="Media">Media</option>
-					<option value="Alta">Alta</option>			
+				<label for="dificultad1">Dificultad</label>
+				<select id="dificultad1" class="dropdown">
+					<option value="0">Baja</option>
+					<option value="1">Media</option>
+					<option value="2">Alta</option>			
 				</select>
 			</p>
 
 			<p>
-				<label for="elaboracion"> Elaboración</label>
-				 <textarea id="elaboracion"></textarea>
+				<label for="elaboracion1"> Elaboración</label>
+				 <textarea id="elaboracion1"></textarea>
 			</p>
 
 			<div> 
@@ -72,14 +71,15 @@
 					<legend>Ingredientes</legend>
 					<ul contenteditable="true" id="l_ingr"></ul>
 				</fieldset>	
-				<input type="text" name="ingrediente" id="ingrediente" required/> 
-					<button class="boton_form" onclick="anyadir_ingr();">Añadir</button>
+				<input type="text" name="ingrediente" id="ingrediente"/> 
+					<span class="boton_form" onclick="anyadir_ingr();">Añadir</span>
 			</div>
 		 
 			<h2>Fotos</h2>
 				<div id="form_foto"></div>
-				<div class="anyadir"><button class="boton_form" onclick="form_foto_receta();">Nueva foto</button></div>
-				<p><input type="submit" value="Crear receta"></p>
+				<div class="anyadir"><span class="boton_form" onclick="form_foto_receta();">Nueva foto</span></div>
+
+			<p><input  type="submit" value="Crear receta"></p>
 		</form>
 		
 		<footer>

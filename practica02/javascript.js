@@ -1,3 +1,5 @@
+num_fotos=0;
+
 //FUNCIONES INDEX Y BUSCAR//
 
 function seisUltimas(){
@@ -408,20 +410,17 @@ function cerrar(tipo){//Cerrar mensaje emergente
 
 //FUNCIONES NUEVA RECETA
 function red_nuevareceta(){//Redirecciona si no logeado
-	if(!logueado()){
+	if(!logueado())
 		location.href="index.html";
-	}
 }
 
 function anyadir_ingr(){//Anyade un ingrediente a la lista
 	let ingrediente=document.getElementById("ingrediente").value;
 	let lista=document.getElementById("l_ingr");
 	let li=document.createElement("li");
-	let span=document.createElement("span");
 	let textnode=document.createTextNode(ingrediente);
 
-	span.appendChild(textnode);
-	li.appendChild(span);
+	li.appendChild(textnode);
 	lista.appendChild(li);
 	document.getElementById("ingrediente").value="";
 }
@@ -431,11 +430,139 @@ function form_foto_receta(){//Carga el formulario al pulsar subir foto
     xhttp.open("GET","form_foto.html", true);
 	xhttp.onreadystatechange=function(){
 		if(this.readyState==4 && this.status==200){
-	       document.getElementById("form_foto").innerHTML=xhttp.responseText;
+	       document.getElementById("form_foto").innerHTML+=xhttp.responseText;
+
+	     document.getElementById("input_foto").setAttribute('id',num_fotos);
+	     document.getElementById("label_id").setAttribute('for',num_fotos);
+	     document.getElementById("label_id").setAttribute('id','label'+num_fotos);
+	     document.getElementById("des_foto").setAttribute('id','des'+num_fotos);
+
+
+	       num_fotos++;
+	        
 	    }
 	};
 	xhttp.send(null);
 }
+
+
+function n_receta(){//Post de receta
+
+	var data=JSON.parse(sessionStorage.getItem('usuario'));
+	var clave=data.clave;
+	var usuario=data.login;
+
+	var url='http://localhost/PCW/practica02/rest/receta/';
+	var fd=new FormData();
+	fd.append('l',usuario);
+	fd.append('n',document.getElementById("receta1").value);
+	fd.append('e',document.getElementById("elaboracion1").value);
+	fd.append('t',document.getElementById("tiempo1").value);
+	fd.append('d',document.getElementById("dificultad1").value);
+	fd.append('c',document.getElementById("comensales1").value);
+
+	var init={method:'post','body':fd,'headers':{'Authorization':clave}};
+	
+
+	fetch(url,init).then(function(response){
+		if(!response.ok){
+			console.log("error receta");
+		}
+		response.json().then(function(data){
+
+			let id=data.ID;
+			n_ingr(id);
+
+		});
+	});
+	return false;
+
+}
+
+function n_ingr(id){//POST INGREDIENTES
+
+	var data=JSON.parse(sessionStorage.getItem('usuario'));
+	var clave=data.clave;
+	var usuario=data.login;
+
+	var url='http://localhost/PCW/practica02/rest/receta/'+id+'/ingredientes';
+	var fd=new FormData();
+	fd.append('l',usuario);
+
+	let t_ingr=document.getElementsByTagName("li");
+
+	let j_ingr=[];
+
+	for(let i=0; i<t_ingr.length; i++){
+		j_ingr.push(t_ingr.item(i).innerText);
+	}
+
+	j_ingr=JSON.stringify(j_ingr);
+
+	fd.append('i',j_ingr);
+
+	var init={method:'post','body':fd,'headers':{'Authorization':clave}};
+	
+
+	fetch(url,init).then(function(response){
+		if(!response.ok){
+			console.log("error ingredientes");
+		}
+		response.json().then(function(data){
+			n_fotos(id);
+		});
+	});
+	return false;
+
+}
+
+function n_fotos(id){//Post foto
+
+	var data=JSON.parse(sessionStorage.getItem('usuario'));
+	var clave=data.clave;
+	var usuario=data.login;
+
+	var url='http://localhost/PCW/practica02/rest/receta/'+id+'/foto';
+	var fd=new FormData();
+	fd.append('l',usuario);
+	fd.append('t',j_ingr);
+	fd.append('f',j_ingr);
+
+	var init={method:'post','body':fd,'headers':{'Authorization':clave}};
+
+	fetch(url,init).then(function(response){
+		if(!response.ok){
+			console.log("error fotos");
+		}
+		response.json().then(function(data){
+
+			console.log("ok fotos");
+
+		});
+	});
+	return false;
+}
+
+function tamanyo_foto(input){
+
+	if(input && input.files[0].size < 300000){
+
+		let element=input.parentNode.previousElementSibling.previousElementSibling.firstElementChild.firstElementChild.firstElementChild;
+
+		element.setAttribute('src',URL.createObjectURL(input.files[0]));
+
+		let element2=input.parentNode.previousElementSibling.previousElementSibling.firstElementChild.firstElementChild.nextElementSibling;
+
+		element2.innerHTML="";
+
+	}
+	else{
+		
+	}
+}
+
+
+
 //FIN FUNCIONES NUEVA RECETA
 
 //FUNCIONES DEL MENU
