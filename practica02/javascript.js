@@ -130,8 +130,9 @@ function paginacion(pag,parametros){
 	'<div class="pasa_paginas">'  +
 	'<a href="'+ web + '">1</a>'  +
 	'<a href="'+ web +'pag='+ pag_a +'"><i class="fas fa-caret-left"></i></a>'  +
-	'<a href=""> '+ pag_mostrar +' </a>'  +
-	'<a href="'+ web +'pag='+ pag_s +'"><i class="fas fa-caret-right"></i></a>'  +
+	'<a href="">'+ pag_mostrar + '</a>'  +
+	'/ ' + n_paginas  + 
+	' <a href="'+ web +'pag='+ pag_s +'"><i class="fas fa-caret-right"></i></a>'  +
 	'<a href="'+ web +'pag=' + ult_pag +'">'+ n_paginas + '</a>'  +
 	'</div>'  +
 	'</div>';
