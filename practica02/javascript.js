@@ -1,4 +1,7 @@
 num_fotos=0;
+total_fotos=-1;
+
+
 
 //FUNCIONES INDEX Y BUSCAR//
 
@@ -206,36 +209,41 @@ function info_receta(url){//Fetch de la info y muestra el form de comentario (lo
 			return;
 		}
 		response.json().then(function(data){
-			var element;
-			element = document.getElementById("info_receta");
-			if (element) {
-				var receta = data.FILAS[0];
-		    	element.innerHTML = '<h1>'+receta.nombre+'</h1>'+
-		    	'<p>Fecha: '+receta.fecha+'</p>'+
-		    	'<p>Tiempo de elaboracion: '+receta.tiempo+'</p>'+
-		    	'<p>Dificultad: '+receta.dificultad+'</p>'+
-		    	'<p>Plato para: '+receta.comensales+' personas</p>'+
-		    	'Ingredientes'+
-		    	'<div id="ingredientes"></div>'+
-		    	'<p>'+receta.elaboracion+'</p>'+
-		    	'<p>'+receta.positivos+' votos positivos</p>'+
-		    	'<p>'+receta.negativos+' votos negativos</p>'+
-		    	'<p><a href="buscar.html">'+receta.autor+'</a></p>'+
-		    	'<p><a href="#seccion-comentarios">'+receta.comentarios +' Comentarios</a></p>';		    	
+			if(data.FILAS.length!=0){
+				var element;
+				element = document.getElementById("info_receta");
+				if (element) {
+					var receta = data.FILAS[0];
+			    	element.innerHTML = '<h1>'+receta.nombre+'</h1>'+
+			    	'<p>Fecha: '+receta.fecha+'</p>'+
+			    	'<p>Tiempo de elaboracion: '+receta.tiempo+'</p>'+
+			    	'<p>Dificultad: '+receta.dificultad+'</p>'+
+			    	'<p>Plato para: '+receta.comensales+' personas</p>'+
+			    	'Ingredientes'+
+			    	'<div id="ingredientes"></div>'+
+			    	'<p>'+receta.elaboracion+'</p>'+
+			    	'<p>'+receta.positivos+' votos positivos</p>'+
+			    	'<p>'+receta.negativos+' votos negativos</p>'+
+			    	'<p><a href="buscar.html">'+receta.autor+'</a></p>'+
+			    	'<p><a href="#seccion-comentarios">'+receta.comentarios +' Comentarios</a></p>';		    	
+				}
+				element2=document.getElementById("form_coment");
+				if(!logueado()){
+			    	element2.innerHTML ='<p>'+'Para dejar un comentario debes estar <a href="login.html">logueado</a> '+'</p>';
+			    }
+			    else{
+			    	var xhttp = new XMLHttpRequest();
+			    	xhttp.open("GET", "comentario.html", true);
+					xhttp.onreadystatechange = function() {
+					    if (this.readyState == 4 && this.status == 200) {
+					       document.getElementById("form_coment").innerHTML = xhttp.responseText;
+					    }
+					};
+					xhttp.send(null);
 			}
-			element2=document.getElementById("form_coment");
-			if(!logueado()){
-		    	element2.innerHTML ='<p>'+'Para dejar un comentario debes estar <a href="login.html">logueado</a> '+'</p>';
 		    }
 		    else{
-		    	var xhttp = new XMLHttpRequest();
-		    	xhttp.open("GET", "comentario.html", true);
-				xhttp.onreadystatechange = function() {
-				    if (this.readyState == 4 && this.status == 200) {
-				       document.getElementById("form_coment").innerHTML = xhttp.responseText;
-				    }
-				};
-				xhttp.send(null);
+		    	location.href="index.html";
 		    }	
 		});
 	})
@@ -266,8 +274,8 @@ function mostrar_foto(a){//Funcion recursiva para mostrar la foto siguiente o an
 		var element=document.getElementById("img_receta");
 
 		element.innerHTML='<img src="fotos/' + fotos.fichero + '" alt="'+ fotos.texto+'">'+			    	
-					    	'<p> <a onclick="mostrar_foto('+a1+')";><i class="fas fa-caret-left"></i></a>'+fotos.texto+
-					    	'<a  onclick="mostrar_foto('+a2+')";><i class="fas fa-caret-right"></i></a>'+
+					    	'<p> <a onclick="mostrar_foto('+a1+');"><i class="fas fa-caret-left"></i></a>'+fotos.texto+
+					    	'<a  onclick="mostrar_foto('+a2+');"><i class="fas fa-caret-right"></i></a>'+
 					    	'</p>';	
 		if(logueado()){
 	    	element.innerHTML=element.innerHTML +'<div class="like">'+
@@ -306,6 +314,8 @@ function voto(tipo){//Fetch de voto
 				'</br>'
 				'</div>';
 			}
+			var url2 ='http://localhost/PCW/practica02/rest/receta/' + parametros;
+			info_receta(url2);
 			console.log("voto ok");
 		});
 	});
@@ -340,6 +350,7 @@ function comen_receta(url){//Fetch de comentario
 		response.json().then(function(data){
 			var element;
 			element=document.getElementById("seccion-comentarios");
+			element.innerHTML="";
 			if(element){
 				for(let i=0; i<data.FILAS.length; i++){
 				var comentarios=data.FILAS[i];
@@ -391,6 +402,9 @@ function comentario(){//Post de comentario
 				document.getElementById("titulo-comentario").focus();
 			}
 			console.log("comentario oki");
+
+			var url2 ='http://localhost/PCW/practica02/rest/receta/' + parametros+'/comentarios';
+			comen_receta(url2);
 		});
 	});
 	return false;
@@ -409,10 +423,15 @@ function cerrar(tipo){//Cerrar mensaje emergente
 		element=document.getElementById("error_no_foto");
 	else if(tipo===5)
 		element=document.getElementById("error_receta");
+	else if(tipo===6)
+		element=document.getElementById("receta_ok");
 		
 
 	if (element)
 		element.innerHTML='';
+
+	if(tipo===6)
+		location.href="index.html";
 }
 //FIN FUNCIONES RECETA
 
@@ -438,18 +457,25 @@ function form_foto_receta(){//Carga el formulario al pulsar subir foto
     xhttp.open("GET","form_foto.html", true);
 	xhttp.onreadystatechange=function(){
 		if(this.readyState==4 && this.status==200){
-	      document.getElementById("form_foto").innerHTML+=xhttp.responseText;
 
-	     document.getElementById("input_foto").setAttribute('id',num_fotos);
-	     document.getElementById("label_id").setAttribute('for',num_fotos);
-	     document.getElementById("label_id").setAttribute('id','label'+num_fotos);
-	     document.getElementById("des_foto").setAttribute('id','des'+num_fotos);
-	     document.getElementById("desc_foto").setAttribute('id','desc'+num_fotos);
+		total_fotos++;
+
+		if(total_fotos==0){	
+			console.log(document.getElementById("form_foto").innerHTML);
+	     	document.getElementById("form_foto").innerHTML=xhttp.responseText;
+	     }
+	     else{
+	     	document.getElementById("s"+(total_fotos)).innerHTML=xhttp.responseText;
+	     }
 
 
-
-	       num_fotos++;
-	        
+	     document.getElementById("foto").setAttribute('id',total_fotos);
+	     document.getElementById("label_id").setAttribute('for',total_fotos);
+	     document.getElementById("label_id").setAttribute('id','label'+total_fotos);
+	     document.getElementById("des_foto").setAttribute('id','des'+total_fotos);
+	     document.getElementById("desc_foto").setAttribute('id','desc'+total_fotos);
+	     document.getElementById("siguiente").setAttribute('id','s'+(total_fotos+1));
+ 
 	    }
 	};
 	xhttp.send(null);
@@ -457,17 +483,29 @@ function form_foto_receta(){//Carga el formulario al pulsar subir foto
 
 function eliminar_form_foto(span){//Elimina el formulario de la foto
 
+
+	let input=span.parentNode.previousElementSibling.previousElementSibling;
+
+	input=input.firstElementChild;
+
+	if(input.files[0] && input.files[0].size<300000)
+		num_fotos--;
+
+
 	let element=span.parentNode.previousElementSibling.previousElementSibling;
 
 	element=element.previousElementSibling.previousElementSibling.parentNode;
 
 	element.innerHTML="";
 
-	num_fotos--;
+	total_fotos--;
+	
+
+console.log(num_fotos);
+console.log(total_fotos);
 }
 
 function n_receta(){//Post de receta
-
 
 	if(num_fotos>0){
 		var data=JSON.parse(sessionStorage.getItem('usuario'));
@@ -495,7 +533,7 @@ function n_receta(){//Post de receta
 				error = document.getElementById("error_receta");
 				if (error) {
 					error.innerHTML = 
-					'<div id="error_receta">' +
+					'<div class="mensaje_error">' +
 					'<p>Ha ocurrido un error</p>' +
 					'<p><button onclick="cerrar(5);"><i class="far fa-times-circle"></i></button></p>'+
 					'</div>';
@@ -514,7 +552,7 @@ function n_receta(){//Post de receta
 		error = document.getElementById("error_no_foto");
 		if (error) {
 			error.innerHTML = 
-			'<div id="error_no_foto">' +
+			'<div class="mensaje_error">' +
 			'<p>Debes incluir una foto al menos</p>' +
 			'<p><button onclick="cerrar(4);"><i class="far fa-times-circle"></i></button></p>'+
 			'</div>';
@@ -570,34 +608,55 @@ function n_fotos(id){//Post foto
 
 	var url='http://localhost/PCW/practica02/rest/receta/'+id+'/foto';
 
+console.log(num_fotos);
+console.log(total_fotos);
 
-	for (var i = 0; i < num_fotos; i++){
+	for (var i = 0; i <= total_fotos; i++){
 
 
 		let descripcion=document.getElementById("desc"+i).value;
 
 		let src=document.getElementById(i).files[0];
 
+		if(document.getElementById(i).files[0] && document.getElementById(i).files[0].size<300000){
+			console.log("foto"+i);
+			var fd=new FormData();
+			fd.append('l',usuario);
+			fd.append('t',descripcion);
+			fd.append('f',src);
+
+			var init={method:'post','body':fd,'headers':{'Authorization':clave}};
+
+			fetch(url,init).then(function(response){
+				if(!response.ok){
+					console.log("error fotos");
+				}
+				response.json().then(function(data){
+
+					console.log("ok todo");
 
 
+				var element;
+				element=document.getElementById("receta_ok");
+				if(element){
+					element.innerHTML= 
+					'<div class="mensaje_error">'+
+					'<p>Receta subida correctamente, pulse para continuar</p>'+
+					'<p><button onclick="cerrar(6);"><i class="far fa-times-circle"></i></button></p>'+
+					'</br>'
+					'</div>';
 
-		var fd=new FormData();
-		fd.append('l',usuario);
-		fd.append('t',descripcion);
-		fd.append('f',src);
-
-		var init={method:'post','body':fd,'headers':{'Authorization':clave}};
-
-		fetch(url,init).then(function(response){
-			if(!response.ok){
-				console.log("error fotos");
-			}
-			response.json().then(function(data){
-
-				console.log("ok fotos");
-
+					document.getElementById("receta1").value="";
+					document.getElementById("comensales1").value="";
+					document.getElementById("tiempo1").value="";
+					document.getElementById("dificultad1").value="";
+					document.getElementById("elaboracion1").value="";
+					document.getElementById("l_ingr").innerHTML="";
+					document.getElementById("form_foto").innerHTML="";
+				}
+				});
 			});
-		});
+		}
 	}
 	
 	return false;
@@ -615,16 +674,23 @@ function tamanyo_foto(input){
 
 		element2.innerHTML="";
 
+		num_fotos++;
+
+
+		console.log(num_fotos);
+		console.log(total_fotos);
+		
+
 	}
 	else{
-		var error;
-		error = document.getElementById("error_foto");
+		let error=document.getElementById("error_foto");
 		if (error) {
 			error.innerHTML = 
-			'<div id="error_foto">' +
+			'<div class="mensaje_error">' +
 			'<p>La imagen pesa demasiado (Maximo 300Kb)</p>' +
 			'<p><button onclick="cerrar(3);"><i class="far fa-times-circle"></i></button></p>'+
 			'</div>';
+
 		}
 	}
 }
@@ -728,6 +794,7 @@ function cerrar_aviso(){
 		if (element) {
 			element.innerHTML = '';
 		}
+		document.getElementById("usuario").focus();
 }
 
 function red_login_registro(){
