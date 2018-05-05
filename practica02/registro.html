@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 	<head>
 		<link href="https://fonts.googleapis.com/css?family=Patrick+Hand" rel="stylesheet">
 		<link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
@@ -11,21 +11,20 @@
 
     <body onload="dibujar_menu(); red_login_registro(); registro_ok();">
     	<header id="header">
-			<div id="logo"><a href="index.html"><img src="img/icook-logo.png" alt="logo" width="100px" height="100px"></a></div>
-			
-			<p>Esta es una página para subir recetas.</p>
+		<div id="logo"><a href="index.html"><img src="img/icook-logo.png" alt="logo"></a></div>
+		<p>Esta es una página para subir recetas.</p>
 
-			<label for="boton_menu"> <i class="fas fa-bars"></i></label>
-				<input type="checkbox" name="menu" id="boton_menu"/>
+		<label for="boton_menu"> <i class="fas fa-bars"></i></label>
+			<input type="checkbox" name="menu" id="boton_menu"/>
 
-			<div class="menu-horizontal" id="menu-principal">
-				<a href="index.html">Inicio <i class="fas fa-home"></i></a>
-				<a href="buscar.html">Buscar <i class="fas fa-search"></i></a>
-				<a href="nueva-receta.html" id="n_rec">Nueva receta <i class="fas fa-plus-circle"></i></a>
-				<a href="registro.html" id="registro">Registro <i class="fas fa-user-plus"></i></a>
-				<a href="login.html" id="login" >Login <i class="fas fa-sign-in-alt"></i></a>		
-				<a href="index.html" id="logout">Logout <i class="fas fa-sign-out-alt"></i></a>
-			</div>
+		<div class="menu-horizontal" id="menu-principal">
+			<a href="index.html">Inicio <i class="fas fa-home"></i></a>
+			<a href="buscar.html">Buscar <i class="fas fa-search"></i></a>
+			<a href="nueva-receta.html" id="n_rec">Nueva receta <i class="fas fa-plus-circle"></i></a>
+			<a href="registro.html" id="registro">Registro <i class="fas fa-user-plus"></i></a>
+			<a href="login.html" id="login" >Login <i class="fas fa-sign-in-alt"></i></a>		
+			<a href="index.html" id="logout" onclick="desconectar();">Logout <i class="fas fa-sign-out-alt"></i></a>
+		</div>
 		</header>
 
 		<h2>Registro</h2>
@@ -49,13 +48,13 @@
 			</p>
 
 			<p>
-				<label for="password"> Contraseña</label>
+				<label for="pass"> Contraseña</label>
 				<input type="password" name="pass" id="pass" placeholder="qwe1234" pattern="[A-Za-z0-9_-]{8,20}" required/> 
-				(la contraseña debe tener al menos 8 caracteres y puede incluir letras o números)
+				(La contraseña debe tener al menos 8 caracteres y puede incluir letras o números)
 			</p>
 
 			<p>
-				<label for="password2"> Repetir contraseña</label>
+				<label for="pass2"> Repetir contraseña</label>
 				<input type="password" name="pass2" id="pass2"
 				placeholder="qwe1234"
 				pattern="[A-Za-z0-9_-]{8,20}"
