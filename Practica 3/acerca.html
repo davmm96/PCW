@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head lang="es">
+	<link href="https://fonts.googleapis.com/css?family=Patrick+Hand" rel="stylesheet">
+	<link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+	<title>iCook-Acerca</title>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" type="text/css" href="estilo.css">
+	<script src="javascript.js">	</script>
+</head>
+<body onload="dibujar_menu();">
+	<header id="header">
+		<div id="logo"><a href="index.html"><img src="img/icook-logo.png" alt="logo"></a></div>
+		<p>Esta es una página para subir recetas.</p>
+
+		<label for="boton_menu"> <i class="fas fa-bars"></i></label>
+			<input type="checkbox" name="menu" id="boton_menu"/>
+
+		<div class="menu-horizontal" id="menu-principal">
+			<a href="index.html">Inicio <i class="fas fa-home"></i></a>
+			<a href="buscar.html">Buscar <i class="fas fa-search"></i></a>
+			<a href="nueva-receta.html" id="n_rec">Nueva receta <i class="fas fa-plus-circle"></i></a>
+			<a href="registro.html" id="registro">Registro <i class="fas fa-user-plus"></i></a>
+			<a href="login.html" id="login" >Login <i class="fas fa-sign-in-alt"></i></a>		
+			<a href="index.html" id="logout" onclick="desconectar();">Logout <i class="fas fa-sign-out-alt"></i></a>
+		</div>
+	</header>
+
+	<main class="contenido" id="acerca">
+
+		<h2> Información de contacto </h2>
+
+		<div class="acerca">
+		<p>Práctica 1 de la asignatura Programación del Cliente Web, que pertenece al 2º curso de la titulación del Grado en Ingeniería Multimedia</p>
+
+		<h3>Autores</h3>
+
+		<div class="autor-acerca">
+			<h4>Sergio Bueno García</h4>
+			<p>DNI: 03220993G</p>
+			<p>Correo electrónico: sergiopatohumanes@gmail.com</p>
+		</div>
+
+		<div class="autor-acerca">
+			<h4>David Melero Morant</h4>
+			<p>DNI: 48783869H</p>
+			<p>Correo electrónico: dmelero96@gmail.com</p>	
+		</div>
+		<div class="info-receta fuente">
+				<h1>Documentación Práctica 2</h1>
+				<p>Trabajo realizado</p>
+				<p>Hemos implementado todos los apartados incluidos en el enunciado de la práctica (index, login, buscar, receta, nueva receta, registro y la gestion del SessionStorage), implementando las funciones necesarias en el archivo javascript.js y modificando los elementos necesarios en el html y css. 
+				</p>
+				<br>
+				<p>Incompatibilidades y problemas</p>
+				<p>
+				No hemos pasado por grandes problemas en el transcurso de la página. Sobre todo las partes mas complicadas han sido el apartado de subida de fotos en nueva receta, porque habia que sincronizarlo todo correctamente y daba muchos problemas y por otro lado la paginación en buscar a la hora de mantener el resultado de la busqueda cuando pasabas de página.
+				</p>
+		</div>
+		<div class="info-receta fuente">
+				<h1>Documentación Práctica 1</h1>
+				<p>Trabajo realizado</p>
+				<p>Hemos realizado todos los apartados mencionados en el enunciado de la práctica, tanto las páginas HTML como el correspondiente estilo CSS según las indicaciones proporcionadas. Así, hemos hecho que todas las páginas de nuestro sitio web sean responsive, según la resolución de la pantalla donde se visualice. También hemos utilizado las etiquetas y atributos necesarios para validar algunos campos de los formulario de registro y login. Por último, hemos implementado la web utilizando Web Fonts e Icon Fonts tal y como se especificaba.
+				Para que la web sea responsive hemos utilizado media queries y las instrucciones proporcionadas para realizar el menú hamburguesa únicamente con HTML y CSS. Tuvimos que diseñar diferentes encabezados según la resolución de la pantalla para su correcta visualización.</p>
+				<br>
+				<p>Incompatibilidades y problemas</p>
+				<p>
+					Por lo general no encontramos demasiados problemas durante el desarrollo de la práctica. Tuvimos que investigar un poco especialmente a la hora de realizar las validaciones de los formularios y algunas animaciones que hemos incorporado como las de las fotos de las recetas o la del menú hamburguesa al aparecer y desaparecer. 
+					Sí que encontramos algún problema al probar la web en diferentes navegadores, especialmente en Mozilla Firefox, concretamente en dos aspectos. Por un lado, en algunos campos de formularios con números enteros, debido a que el alto del campo era demasiado pequeño, salían diferentes y para corregirlo, simplemente ampliamos el ancho de los campos (labels) del formulario. El otro problema que nos surgió  y que nos llevó un poco más de tiempo resolver, fue que en las páginas con formularios, se cargaba el icono de la web en grande, y posteriormente la web hacía una especia de scroll y se situaba a mitad del contenido (en vez de arriba, como debería ser). Al final encontramos que el problema estaba en el icono ya que cargaba el html antes que el CSS, y le establecimos un tamaño fijo en el HTML para corregirlo.
+				</p>
+		</div>
+		<h4>Grupo 4 de prácticas</h4>
+		</div>
+	</main>
+
+	<footer>
+		<a href="#header">Inicio</a>
+		<a href="acerca.html">Información de contacto</a>
+		<p>Copyright 2018</p>	
+	</footer>
+
+</body>
+</html>
