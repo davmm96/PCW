@@ -20,14 +20,25 @@
 		<div id="seleccion">
 			<h2>Imagen</h2>
 			<canvas id="cv_img"></canvas>
-		</div>
-		
+		</div>	
 		
 		<div id="puzzle">
-			<h2>Seleccion</h2>
-			<canvas id="cv_sel"></canvas>	
-		</div>
+			<h2>Puzzle</h2>
+			<canvas id="cv_sel"></canvas>
 
+			<label for="color">Color:</label>
+			<input type="color" value="#ff0000" id="color">
+
+			<label for="dificultad">Dificultad:</label>
+			<input type="number" value="1" id="dificultad" min=1 max=3>
+
+
+
+			<button id="start">Empezar</button>
+			<button id="finish">Finalizar</button>
+			<button id="help">Ayuda</button>	
+
+		</div>
 	</div>
 
 	<footer>

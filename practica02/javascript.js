@@ -7,7 +7,7 @@ total_fotos=-1;
 
 function seisUltimas(){
 	var pag = 0;
-	var url = 'http://localhost/PCW/practica02/rest/get/receta.php?prm=&pag=';
+	var url = 'rest/get/receta.php?prm=&pag=';
 	if( getParameterByName('pag') ){
 		pag = getParameterByName('pag');		
 	}
@@ -25,7 +25,7 @@ function busqueda_avanzada(){
 	else{
 		var parametro;
 		var check = false;
-		var url = 'http://localhost/PCW/practica02/rest/receta/';
+		var url = 'rest/receta/';
 		var parametros = 
 		"?name=" + getParameterByName('name') +
 		"&ingredientes=" + getParameterByName('ingredientes') +
@@ -72,7 +72,7 @@ function busqueda_avanzada(){
 
 function busqueda_rapida_recetas(){
 	var parametros = getParameterByName('buscar');
-	var url ='http://localhost/PCW/practica02/rest/receta/?t=' + parametros;
+	var url ='rest/receta/?t=' + parametros;
 	var param = '?buscar=' + parametros;
 	var pag = 0;
 
@@ -187,7 +187,7 @@ function url_receta(){//Redirecciona si la url no tiene el id
 }
 function id_receta(){//Obtiene el id de la receta y hace los 3 fetch (ingredientes,fotos,comentarios)
 	var parametros = getParameterByName('id');
-	var url ='http://localhost/PCW/practica02/rest/receta/' + parametros;
+	var url ='rest/receta/' + parametros;
 
 	//Informacion general
 	info_receta(url);
@@ -292,7 +292,7 @@ function voto(tipo){//Fetch de voto
 	var clave=data.clave;
 	var usuario=data.login;
 
-	var url='http://localhost/PCW/practica02/rest/receta/'+parametros+'/voto/'+tipo;
+	var url='rest/receta/'+parametros+'/voto/'+tipo;
 	var fd=new FormData();
 	var init={method:'post','body':fd,headers:{'Authorization':clave}};
 	
@@ -314,7 +314,7 @@ function voto(tipo){//Fetch de voto
 				'</br>'
 				'</div>';
 			}
-			var url2 ='http://localhost/PCW/practica02/rest/receta/' + parametros;
+			var url2 ='rest/receta/' + parametros;
 			info_receta(url2);
 			console.log("voto ok");
 		});
@@ -372,7 +372,7 @@ function comentario(){//Post de comentario
 	var clave=data.clave;
 	var usuario=data.login;
 
-	var url='http://localhost/PCW/practica02/rest/receta/'+parametros+'/comentario';
+	var url='rest/receta/'+parametros+'/comentario';
 	var fd=new FormData();
 	var init={method:'post','body':fd,headers:{'Authorization':clave}};
 	
@@ -403,7 +403,7 @@ function comentario(){//Post de comentario
 			}
 			console.log("comentario oki");
 
-			var url2 ='http://localhost/PCW/practica02/rest/receta/' + parametros+'/comentarios';
+			var url2 ='rest/receta/' + parametros+'/comentarios';
 			comen_receta(url2);
 		});
 	});
@@ -512,7 +512,7 @@ function n_receta(){//Post de receta
 		var clave=data.clave;
 		var usuario=data.login;
 
-		var url='http://localhost/PCW/practica02/rest/receta/';
+		var url='rest/receta/';
 		var fd=new FormData();
 		fd.append('l',usuario);
 		fd.append('n',document.getElementById("receta1").value);
@@ -569,7 +569,7 @@ function n_ingr(id){//POST INGREDIENTES
 	var clave=data.clave;
 	var usuario=data.login;
 
-	var url='http://localhost/PCW/practica02/rest/receta/'+id+'/ingredientes';
+	var url='rest/receta/'+id+'/ingredientes';
 	var fd=new FormData();
 	fd.append('l',usuario);
 
@@ -606,7 +606,7 @@ function n_fotos(id){//Post foto
 	var clave=data.clave;
 	var usuario=data.login;
 
-	var url='http://localhost/PCW/practica02/rest/receta/'+id+'/foto';
+	var url='rest/receta/'+id+'/foto';
 
 console.log(num_fotos);
 console.log(total_fotos);
@@ -725,7 +725,7 @@ function dibujar_menu(){
 
 //FUNCIONES DE LOGIN
 function check_login(){
-	let url = 'http://localhost/PCW/practica02/rest/login/',
+	let url = 'rest/login/',
 	fd = new FormData(),
 	init = {method:'post', 'body':fd};
 	
@@ -828,7 +828,7 @@ function check_pwd(){
 }
 
 function usuario_disponible(){
-	let url = 'http://localhost/PCW/practica02/rest/login/' + document.getElementById("usuario").value;
+	let url = 'rest/login/' + document.getElementById("usuario").value;
 
 	fetch(url).then(function(response){
 		if(!response.ok){
@@ -860,7 +860,7 @@ function usuario_disponible(){
 }
 
 function registro(){
-	let url = 'http://localhost/PCW/practica02/rest/usuario/',
+	let url = 'rest/usuario/',
 	fd = new FormData(),
 	init = {method:'post', 'body':fd};
 	
