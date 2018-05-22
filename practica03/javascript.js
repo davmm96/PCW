@@ -25,8 +25,10 @@ if(!imag){
 	//derrapa&dropea
 	let cv01 = document.querySelector('#cv_img');
 	let cv02 = document.querySelector('#cv_sel');
-
 	let ctx = cv01.getContext('2d');
+
+
+	ctx.fillStyle = '#000';
 	ctx.font = 'bold 18px sans-serif';
 	ctx.textAlign = 'center';
 	ctx.fillText('Haz click o arrastra una imagen aquí',180,100);
@@ -34,14 +36,38 @@ if(!imag){
 	cv01.ondragover = function(e){
 		e.stopPropagation();
 		e.preventDefault(); //return false;
-		console.log("Drageando");
 	};
+
+	//RESALTAR CUANDO DRAGEAS
+
+	if(imag == false){
+
+		cv01.ondragenter = function(e){
+			ctx.fillStyle = '#00bbff';
+			ctx.globalAlpha = 0.3;
+			ctx.fillRect(0,0,_ANCHO,_ALTO);
+			console.log("HOLA");
+		}
+
+		cv01.ondragleave = function(e){
+			ctx.globalAlpha = 0;
+			cv01.width=cv01.width;
+			ctx.fillStyle = '#000';
+			ctx.font = 'bold 18px sans-serif';
+			ctx.textAlign = 'center';
+			ctx.fillText('Haz click o arrastra una imagen aquí',180,100);
+		}
+	}	
+	//FIN DE RESALTAR CUANDO DRAGEAS
+
+	
 
 
 	cv01.ondrop = function(e){
 		e.stopPropagation();
-		e.preventDefault(); //return false;	
-
+		e.preventDefault(); //return false;
+		
+		cv01.width=cv01.width;
 		let fichero = e.dataTransfer.files[0];
 		let fr = new FileReader();
 
@@ -176,4 +202,8 @@ function dibujar_rejilla(ctx2){
 			}
 		}
 		return ctx2;
+}
+
+function jugar(){
+
 }
