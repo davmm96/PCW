@@ -5,6 +5,8 @@ var dificultad=1;
 var color="#f00";
 var ctx2;
 var imagen;
+var cronometro;
+var ingame = false;
 
 function load_canvas(){
 
@@ -40,16 +42,19 @@ if(!imag){
 
 	//RESALTAR CUANDO DRAGEAS
 
-	if(imag == false){
+	
 
-		cv01.ondragenter = function(e){
+	cv01.ondragenter = function(e){
+		if(document.getElementById("anyadir_foto").disabled == false){
 			ctx.fillStyle = '#00bbff';
 			ctx.globalAlpha = 0.3;
 			ctx.fillRect(0,0,_ANCHO,_ALTO);
 			console.log("HOLA");
 		}
+	}
 
-		cv01.ondragleave = function(e){
+	cv01.ondragleave = function(e){
+		if(document.getElementById("anyadir_foto").disabled == false){
 			ctx.globalAlpha = 0;
 			cv01.width=cv01.width;
 			ctx.fillStyle = '#000';
@@ -57,33 +62,34 @@ if(!imag){
 			ctx.textAlign = 'center';
 			ctx.fillText('Haz click o arrastra una imagen aquí',180,100);
 		}
-	}	
-	//FIN DE RESALTAR CUANDO DRAGEAS
+	}
 
 	
-
+	//FIN DE RESALTAR CUANDO DRAGEAS
 
 	cv01.ondrop = function(e){
 		e.stopPropagation();
-		e.preventDefault(); //return false;
-		
-		cv01.width=cv01.width;
-		let fichero = e.dataTransfer.files[0];
-		let fr = new FileReader();
+		e.preventDefault(); //return false; 
 
-		fr.onload = function(){
-			let img = new Image();
-			img.onload = function(){
+		if(document.getElementById("anyadir_foto").disabled == false){
+			cv01.width=cv01.width;
+			let fichero = e.dataTransfer.files[0];
+			let fr = new FileReader();
 
-				insertar_foto_canvas(img);
-
+			fr.onload = function(){
+				let img = new Image();
+				img.onload = function(){
+					insertar_foto_canvas(img);
+				};
+				img.src = fr.result;
 			};
-			img.src = fr.result;
-		};
-		fr.readAsDataURL(fichero);
-		imag=true;
-		document.getElementById("start").disabled = false;
+
+			fr.readAsDataURL(fichero);
+			imag=true;
+			document.getElementById("start").disabled = false;
+		}
 	};
+
 }
 
 function anyadir_foto(input){
@@ -91,11 +97,9 @@ function anyadir_foto(input){
 
 		let fichero = input.files[0];
 		let fr = new FileReader();
-
 		fr.onload = function(){
 			let img = new Image();
 			img.onload = function(){
-
 				insertar_foto_canvas(img);
 			};
 			img.src = fr.result;
@@ -107,23 +111,22 @@ function anyadir_foto(input){
 }
 
 function insertar_foto_canvas(img){
+	if (ingame == false){
+		let cv01 = document.querySelector('#cv_img');
+		let ctx = cv01.getContext('2d');
+		ctx.drawImage(img,0,0,cv01.width,cv01.height);
 
-	let cv01 = document.querySelector('#cv_img');
-	let ctx = cv01.getContext('2d');
-	ctx.drawImage(img,0,0,cv01.width,cv01.height);
+		let cv02 = document.querySelector('#cv_sel');
+		ctx2 = cv02.getContext('2d');
+		ctx2.drawImage(img,0,0,cv02.width,cv02.height);
 
-	let cv02 = document.querySelector('#cv_sel');
-	ctx2 = cv02.getContext('2d');
-	ctx2.drawImage(img,0,0,cv02.width,cv02.height);
+		imagen=img;
 
-	imagen=img;
+		ctx2=dibujar_rejilla(ctx2);
 
-	ctx2=dibujar_rejilla(ctx2);
-
-	ctx2.strokeStyle=color;
-	ctx2.stroke();
-
-
+		ctx2.strokeStyle=color;
+		ctx2.stroke();
+	}
 }
 
 function cambio_dificultad(dif){
@@ -205,5 +208,23 @@ function dibujar_rejilla(ctx2){
 }
 
 function jugar(){
+	//CRONOMETRO
+	ingame = true;
+	document.getElementById("start").disabled = true;
+	div_segundos = document.getElementById("cronometro");
+	var segundos = 0;
+	cronometro = setInterval(function(){
+		segundos ++;
+		div_segundos.innerHTML = "Tiempo: " + segundos + " segundos";
+	},1000);
+	
+	document.getElementById("anyadir_foto").disabled = true;
+	document.getElementById("dificultad").disabled = true;
+	document.getElementById("color").disabled = true;
+	document.getElementById("finish").disabled = false;
+	document.getElementById("help").disabled = false;
+}
 
+function detenerCrono(){
+	clearInterval(cronometro);
 }
