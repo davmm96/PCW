@@ -102,7 +102,7 @@ function insertar_foto_canvas(img){
 
 function cambio_dificultad(dif){
 
-	if(dificultad!=dif.value){
+if(imag){
 		dificultad=dif.value;
 
 		let cv02 = document.querySelector('#cv_sel');
@@ -114,12 +114,15 @@ function cambio_dificultad(dif){
 		ctx2.strokeStyle=color;
 		ctx2.stroke();
 	}
+	else
+		dificultad=dif.value;
 }
 
 
 
+
 function cambio_color(col){
-	if(color!=col.value){
+	if(imag){
 		color=col.value;
 
 		let cv02 = document.querySelector('#cv_sel');
@@ -134,6 +137,8 @@ function cambio_color(col){
 		ctx2.stroke();
 
 	}
+	else
+		color=col.value;
 }
 
 function dibujar_rejilla(ctx2){
