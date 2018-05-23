@@ -16,6 +16,10 @@
 		<p>Elzzup or die</p>	
 	</header>
 
+	<div id="mensajemodal" class="modal">
+  		<div class="contenidomodal"></div>
+	</div>
+
 	<div class="zonas">
 		<div id="seleccion">
 			<h2>Imagen</h2>
@@ -35,13 +39,13 @@
 			<input type="number" value="1" id="dificultad" min=1 max=3 onchange="cambio_dificultad(this);">
 
 			<button id="start" onclick="jugar();">Empezar</button>
-			<button id="finish">Finalizar</button>
+			<button id="finish" onclick="finalizar();">Finalizar</button>
 			<button id="help">Ayuda</button>	
 
 			<div id="marcador">
 				<h3>Marcador</h3>
 				<div>0 Piezas desordenadas</div>
-				<div>0 Movimientos realizados</div>
+				<div id="n_movimientos">0 Movimientos realizados</div>
 				<div id="cronometro">Tiempo: 0 segundos</div>
 			</div>
 		</div>

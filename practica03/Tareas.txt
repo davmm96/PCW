@@ -29,7 +29,7 @@
 				iii2b) SIP
 				iii2c) SIP
 				iii2d) SIP
-			iii3) 0.5
+			iii3) 0.5 CASI
 		iv)
 			iv1) 0.5
 			iv2) 0.5
@@ -38,12 +38,12 @@
 			iv2) 0.25
 
 	c)MOVIMIENTO
-		i) 0.5
+		i) 0.5 HECHO PATO
 		ii)
-			ii1) 0.5
-			ii2) 0.5
-				ii2a)
-				ii2b)
+			ii1) 0.5 HECHO PATO
+			ii2) 0.5 HECHO PATO
+				ii2a) SIP
+				ii2b) SIP
 		iii) 0.5
 			iii1)
 			iii2) 0.25
@@ -51,5 +51,5 @@
 5)ACERCA.HTML
 	
 ACUMULADO :
-PATO: 3.25
+PATO: 4.75
 DAVID: 1.75
