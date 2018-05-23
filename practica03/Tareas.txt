@@ -1,7 +1,55 @@
-1. HTML y CSS de las dos paginas -> 1p
+1) VALIDATOR	0.25 NO HECHO
 
-2. Zona de puzzle -> 4,25p
+2) GENERAL	0.5
+	2a) HECHO DAVID
+	2b) HECHO DAVID	
 
-3. Zona de imagen -> 2,25p
+3) MOBILE FIRST	0.25 NO HECHO
 
-4. Movimiento -> 2,25p 
+4) INDEX.HTML
+	a)ZONA MOSTRAR IMAGEN
+		i) 0.5 HECHO PATO
+
+		ii) 
+			ii1a) 0.25 HECHO PATO
+			ii1b) 0.25 HECHO PATO
+			ii2) 0.25 HECHO PATO
+
+		iii)
+			iii1) 0.5 HECHO PATO
+			iii2) 0.5 HECHO DAVID
+
+	b)ZONA PUZZLE
+		i) 0.5 HECHO DAVID?
+		ii) 0.25 HECHO DAVID?
+		iii)
+			iii1) 0.5 HECHO PATO
+			iii2) 1 HECHO PATO
+				iii2a) SIP
+				iii2b) SIP
+				iii2c) SIP
+				iii2d) SIP
+			iii3) 0.5
+		iv)
+			iv1) 0.5
+			iv2) 0.5
+		v)
+			iv1) 0.5
+			iv2) 0.25
+
+	c)MOVIMIENTO
+		i) 0.5
+		ii)
+			ii1) 0.5
+			ii2) 0.5
+				ii2a)
+				ii2b)
+		iii) 0.5
+			iii1)
+			iii2) 0.25
+
+5)ACERCA.HTML
+	
+ACUMULADO :
+PATO: 3.25
+DAVID: 1.75
