@@ -6,7 +6,6 @@ var color="#f00";
 var ctx2;
 var imagen;
 var cronometro;
-var ingame = false;
 
 function load_canvas(){
 
@@ -111,7 +110,7 @@ function anyadir_foto(input){
 }
 
 function insertar_foto_canvas(img){
-	if (ingame == false){
+	
 		let cv01 = document.querySelector('#cv_img');
 		let ctx = cv01.getContext('2d');
 		ctx.drawImage(img,0,0,cv01.width,cv01.height);
@@ -126,7 +125,7 @@ function insertar_foto_canvas(img){
 
 		ctx2.strokeStyle=color;
 		ctx2.stroke();
-	}
+	
 }
 
 function cambio_dificultad(dif){
@@ -208,8 +207,33 @@ function dibujar_rejilla(ctx2){
 }
 
 function jugar(){
+	//RANDOMIZAR
+	var tam = 0;
+
+	if(dificultad == 1){tam =60;}
+	else if(dificultad == 2){tam =40;}
+	else if(dificultad == 3){tam =30;}
+
+	let cv02 = document.querySelector('#cv_sel');
+	let ctx2 = cv02.getContext('2d');
+
+	for(var x = 0; x < _ANCHO ; x = x+tam){
+		for(var y = 0; y < _ALTO ; y = y+tam){
+			var rx = Math.floor((Math.random() * _ANCHO/tam) + 1) -1;
+			var ry = Math.floor((Math.random() * _ALTO/tam) + 1) -1;
+			rx = rx*tam;
+			ry = ry*tam;
+
+			let img1 = ctx2.getImageData(x,y,tam,tam);
+			let img2 = ctx2.getImageData(rx,ry,tam,tam);
+
+			ctx2.putImageData(img1, rx, ry);
+			ctx2.putImageData(img2, x, y);
+
+		}
+	}
+
 	//CRONOMETRO
-	ingame = true;
 	document.getElementById("start").disabled = true;
 	div_segundos = document.getElementById("cronometro");
 	var segundos = 0;
@@ -223,6 +247,8 @@ function jugar(){
 	document.getElementById("color").disabled = true;
 	document.getElementById("finish").disabled = false;
 	document.getElementById("help").disabled = false;
+
+
 }
 
 function detenerCrono(){
