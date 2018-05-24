@@ -20,8 +20,8 @@
 			iii2) 0.5 HECHO DAVID
 
 	b)ZONA PUZZLE
-		i) 0.5 HECHO DAVID?
-		ii) 0.25 HECHO DAVID?
+		i) 0.5 HECHO DAVID
+		ii) 0.25 HECHO DAVID
 		iii)
 			iii1) 0.5 HECHO PATO
 			iii2) 1 HECHO PATO
@@ -32,7 +32,7 @@
 			iii3) 0.5 CASI
 		iv)
 			iv1) 0.5
-			iv2) 0.5
+			iv2) 0.5 David
 		v)
 			iv1) 0.5
 			iv2) 0.25

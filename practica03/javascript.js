@@ -1,5 +1,8 @@
+//Dimensiones canvas
 const _ANCHO = 360;
 const _ALTO = 240;
+
+//Variables puzzle
 var imag=false;
 var dificultad=1;
 var color="#f00";
@@ -11,7 +14,7 @@ var movimientos = 0;
 var segundos = 0;
 var ingame = false;
 
-//variables para mov
+//Variables para mov
 var cx = 0;
 var cy = 0;
 var cx_aux = 0;
@@ -24,14 +27,13 @@ var sy_aux = 0;
 
 var pieza_pick = false;
 
+
 function load_canvas(){
-
-
-if(!imag){
-	document.getElementById("start").disabled = true;
-	document.getElementById("finish").disabled = true;
-	document.getElementById("help").disabled = true;
-}
+	if(!imag){
+		document.getElementById("start").disabled = true;
+		document.getElementById("finish").disabled = true;
+		document.getElementById("help").disabled = true;
+	}
 
 
 	let cvs = document.querySelectorAll("canvas");
@@ -58,9 +60,6 @@ if(!imag){
 	};
 
 	//RESALTAR CUANDO DRAGEAS
-
-	
-
 	cv01.ondragenter = function(e){
 		if(document.getElementById("anyadir_foto").disabled == false){
 			ctx.fillStyle = '#00bbff';
@@ -80,10 +79,10 @@ if(!imag){
 			ctx.fillText('Haz click o arrastra una imagen aquí',180,100);
 		}
 	}
-
-	
 	//FIN DE RESALTAR CUANDO DRAGEAS
 
+
+	//Cargar foto
 	cv01.ondrop = function(e){
 		e.stopPropagation();
 		e.preventDefault(); //return false; 
@@ -325,7 +324,6 @@ function jugar(){
 	}
 
 	//CRONOMETRO
-	
 	div_segundos = document.getElementById("cronometro");
 	cronometro = setInterval(function(){
 		segundos ++;
@@ -338,8 +336,6 @@ function jugar(){
 	document.getElementById("color").disabled = true;
 	document.getElementById("finish").disabled = false;
 	document.getElementById("help").disabled = false;
-
-
 }
 
 function finalizar(){
@@ -353,7 +349,47 @@ function finalizar(){
 }
 
 function reiniciar(){
-	
+	let c_seccion = document.querySelector('#mensajemodal');
+	let mensajeModal = document.querySelector('.contenidomodal');
+	mensajeModal.innerHTML = 
+	'';
+	c_seccion.style.display = "none";
+
+	//Variables puzzle
+	imag=false;
+	dificultad=1;
+	color="#f00";
+	ctx2;
+	imagen;
+	cronometro;
+	tam = 0;
+	movimientos = 0;
+	segundos = 0;
+	ingame = false;
+
+	//Variables para mov
+	cx = 0;
+	cy = 0;
+	cx_aux = 0;
+	cy_aux = 0;
+
+	sx = 0;
+	sy = 0;
+	sx_aux = 0;
+	sy_aux = 0;
+
+	pieza_pick = false;
+	segundos=0;
+	document.getElementById("anyadir_foto").disabled = false;
+	document.getElementById("dificultad").disabled = false;
+	document.getElementById("color").disabled = false;
+
+	div_segundos = document.getElementById("cronometro");
+
+	div_segundos.innerHTML = "Tiempo: " + 0 + " segundos";
+	clearInterval(cronometro);
+
+	load_canvas();
 }
 
 function detenerCrono(){
