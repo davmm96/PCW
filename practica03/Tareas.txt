@@ -31,7 +31,7 @@
 				iii2d) SIP
 			iii3) 0.5 CASI
 		iv)
-			iv1) 0.5
+			iv1) 0.5 PATO
 			iv2) 0.5 David
 		v)
 			iv1) 0.5
@@ -51,5 +51,5 @@
 5)ACERCA.HTML
 	
 ACUMULADO :
-PATO: 4.75
+PATO: 5.25
 DAVID: 1.75
