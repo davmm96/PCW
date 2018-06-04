@@ -13,6 +13,11 @@ var tam = 0;
 var movimientos = 0;
 var segundos = 0;
 var ingame = false;
+var inicial=[];
+var puzzle=[];
+var desord=0;
+
+
 
 //Variables para mov
 var cx = 0;
@@ -26,6 +31,7 @@ var sx_aux = 0;
 var sy_aux = 0;
 
 var pieza_pick = false;
+var help=false;
 
 
 function load_canvas(){
@@ -123,8 +129,6 @@ function load_canvas(){
 			cx = Math.trunc(x/tam);
 			cy = Math.trunc(y/tam);
 
-			console.log('cx: ' + cx + ' cy: ' + cy);
-
 			if (cx_aux == cx  && cy_aux == cy){}
 			else{
 				ctx2.globalAlpha = 1;
@@ -135,8 +139,13 @@ function load_canvas(){
 				if(pieza_pick == true){	
 					ctx2.strokeStyle = '#ffffff';
 					ctx2.strokeRect(sx*tam,sy*tam,tam,tam);
+				}
+				if(help==true){
+					
 				}			
-			}	
+			}
+
+
 		}
 	};
 
@@ -171,20 +180,52 @@ function load_canvas(){
 					ctx2.putImageData(img1, sx_aux*tam, sy_aux*tam);
 					ctx2.putImageData(img2, sx*tam, sy*tam);
 
+					ctx2_aux.putImageData(img1, sx_aux*tam, sy_aux*tam);
+					ctx2_aux.putImageData(img2, sx*tam, sy*tam);
+
+					console.log("SX:"+sx);
+					console.log("SY:"+sy);
+					console.log("SX_AUX:"+sx_aux);
+					console.log("SY_AUX:"+sy_aux);
+
+					console.log(puzzle);
+					console.log(inicial);
+
+
+					if(puzzle[sy][sx]==inicial[sy_aux][sx_aux]){
+						desord--;
+					}
+
+					if(puzzle[sy_aux][sx_aux]==inicial[sy][sx]){
+						desord--;
+					}
+
+					let puz_aux=puzzle[sy][sx];
+					puzzle[sy][sx]=puzzle[sy_aux][sx_aux];
+					puzzle[sy_aux][sx_aux]=puz_aux;
+					
+					if(desord==0)
+						finalizar(2);
+
 					movimientos++;
 					div_mov = document.getElementById("n_movimientos");
 					div_mov.innerHTML = movimientos + " Movimientos realizados";
+
+					div_desord = document.getElementById("n_desord");
+					div_desord.innerHTML = desord + " Piezas desordenadas";	
 
 					pieza_pick = false;
 				}	
 			}
 		}		
 	};
+
+
 }
 
 function anyadir_foto(input){
 	if(input.files[0]){
-
+		console.log("img");
 		let fichero = input.files[0];
 		let fr = new FileReader();
 		fr.onload = function(){
@@ -202,6 +243,7 @@ function anyadir_foto(input){
 
 function insertar_foto_canvas(img){
 	
+	console.log("img");
 		let cv01 = document.querySelector('#cv_img');
 		let ctx = cv01.getContext('2d');
 		ctx.drawImage(img,0,0,cv01.width,cv01.height);
@@ -307,21 +349,77 @@ function jugar(){
 	let cv02 = document.querySelector('#cv_sel');
 	let ctx2 = cv02.getContext('2d');
 
-	for(var x = 0; x < _ANCHO ; x = x+tam){
-		for(var y = 0; y < _ALTO ; y = y+tam){
-			var rx = Math.floor((Math.random() * _ANCHO/tam) + 1) -1;
-			var ry = Math.floor((Math.random() * _ALTO/tam) + 1) -1;
+	aux=0;
+	var fil=_ALTO/tam;
+	var col=_ANCHO/tam;
+	var m_aux=[];
+
+	for(var i = 0; i <fil; i++){
+		inicial[i] = [];
+		puzzle[i] = [];
+		m_aux[i] = [];
+		for(var j = 0; j < col ; j ++){
+			inicial[i][j]=aux;
+			puzzle[i][j]=aux;
+			m_aux[i][j]=aux;
+			aux++;
+		}
+	}
+
+
+
+	console.log(inicial);
+	console.log(puzzle);
+
+	for(var x = 0; x < _ALTO ; x = x+tam){
+		for(var y = 0; y < _ANCHO ; y = y+tam){
+			var rx = Math.floor((Math.random() * _ALTO/tam) + 1) -1;
+			var ry = Math.floor((Math.random() * _ANCHO/tam) + 1) -1;
+
+			var auxX=x/tam;
+			var auxY=y/tam;
+
+
+
+			console.log("X inicial: "+auxX);
+			console.log("Y inicial: "+auxY);
+
+			console.log("X rand: "+rx);
+			console.log("Y rand: "+ry);
+
+
+			puzzle[rx][ry]=m_aux[auxX][auxY];
+			puzzle[auxX][auxY]=m_aux[rx][ry];
+
+			let v=m_aux[rx][ry];
+			m_aux[rx][ry]=m_aux[auxX][auxY];
+			m_aux[auxX][auxY]=v;
+			
 			rx = rx*tam;
 			ry = ry*tam;
 
-			let img1 = ctx2.getImageData(x,y,tam,tam);
-			let img2 = ctx2.getImageData(rx,ry,tam,tam);
 
-			ctx2.putImageData(img1, rx, ry);
-			ctx2.putImageData(img2, x, y);
+			let img1 = ctx2.getImageData(y,x,tam,tam);
+			let img2 = ctx2.getImageData(ry,rx,tam,tam);
+
+			ctx2.putImageData(img1, ry, rx);
+			ctx2.putImageData(img2, y, x);
 
 		}
 	}
+
+	for(let i=0;i<fil;i++)
+		for(let j=0;j<col;j++)
+			if(puzzle[i][j]!=inicial[i][j]){
+				desord++;
+			}
+
+	div_desord = document.getElementById("n_desord");
+	div_desord.innerHTML = desord + " Piezas desordenadas";		
+
+	console.log(inicial);
+	console.log(puzzle);
+
 
 	//CRONOMETRO
 	div_segundos = document.getElementById("cronometro");
@@ -338,14 +436,26 @@ function jugar(){
 	document.getElementById("help").disabled = false;
 }
 
-function finalizar(){
-	let c_seccion = document.querySelector('#mensajemodal');
-	let mensajeModal = document.querySelector('.contenidomodal');
-	mensajeModal.innerHTML = 
-	'<div><p>Has dejado 12 piezas por colocar bien ' +
-	'después de ' + movimientos +' y has empleado '+ segundos+' segundos.</p>'+
-	'<button class="confirmar" onclick="reiniciar();">¡De acuerdo!</button></div>';
-	c_seccion.style.display = "block";
+function finalizar(tipo){
+
+	if(tipo==1){
+		let c_seccion = document.querySelector('#mensajemodal');
+		let mensajeModal = document.querySelector('.contenidomodal');
+		mensajeModal.innerHTML = 
+		'<div><p>Has dejado'+desord+' piezas por colocar bien ' +
+		'después de ' + movimientos +' y has empleado '+ segundos+' segundos.</p>'+
+		'<button class="confirmar" onclick="reiniciar();">¡De acuerdo!</button></div>';
+		c_seccion.style.display = "block";
+	}
+	else if(tipo==2){
+		let c_seccion = document.querySelector('#mensajemodal');
+		let mensajeModal = document.querySelector('.contenidomodal');
+		mensajeModal.innerHTML = 
+		'<div><p>¡Felicidades, has completado el puzzle! Has necesitado ' +
+		 + movimientos +' movimientos y '+ segundos+' segundos.</p>'+
+		'<button class="confirmar" onclick="reiniciar();">¡Volver a jugar!</button></div>';
+		c_seccion.style.display = "block";
+	}
 }
 
 function reiniciar(){
@@ -359,13 +469,18 @@ function reiniciar(){
 	imag=false;
 	dificultad=1;
 	color="#f00";
-	ctx2;
-	imagen;
+	ctx2=0;
+	imagen=0;
 	cronometro;
 	tam = 0;
 	movimientos = 0;
 	segundos = 0;
 	ingame = false;
+	inicial=[];
+	puzzle=[];
+	desord=0;
+
+	help=false;
 
 	//Variables para mov
 	cx = 0;
@@ -383,10 +498,17 @@ function reiniciar(){
 	document.getElementById("anyadir_foto").disabled = false;
 	document.getElementById("dificultad").disabled = false;
 	document.getElementById("color").disabled = false;
+	document.getElementById("anyadir_foto").value = "";
 
 	div_segundos = document.getElementById("cronometro");
 
 	div_segundos.innerHTML = "Tiempo: " + 0 + " segundos";
+
+	div_mov = document.getElementById("n_movimientos");
+	div_mov.innerHTML = movimientos + " Movimientos realizados";
+
+	div_desord = document.getElementById("n_desord");
+	div_desord.innerHTML = desord + " Piezas desordenadas";	
 	clearInterval(cronometro);
 
 	load_canvas();
@@ -395,3 +517,20 @@ function reiniciar(){
 function detenerCrono(){
 	clearInterval(cronometro);
 }
+
+function ayuda(){
+
+let cv02 = document.querySelector('#cv_sel');
+let ctx2 = cv02.getContext('2d');
+
+	for(let i=0;i<_ALTO/tam;i++)
+		for(let j=0;j<_ANCHO/tam;j++)
+			if(puzzle[i][j]!=inicial[i][j]){
+				desord++;
+				ctx2.fillStyle = '#00bbff';
+				ctx2.globalAlpha = 0.3;
+				ctx2.fillRect(j*tam,i*tam,tam,tam);
+			}
+	help=true;		
+}
+	

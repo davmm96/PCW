@@ -13,7 +13,7 @@
 	<header id="header">
 		<div id="logo"><a href="index.html"><img src="img/icono.png" alt="logo"></a></div>
 		<h1>ELZZUP</h1>
-		<p>Elzzup or die</p>	
+		<p>Resuelve el puzzle si puedes</p>	
 	</header>
 
 	<div id="mensajemodal" class="modal">
@@ -39,12 +39,12 @@
 			<input type="number" value="1" id="dificultad" min=1 max=3 onchange="cambio_dificultad(this);">
 
 			<button id="start" onclick="jugar();">Empezar</button>
-			<button id="finish" onclick="finalizar();">Finalizar</button>
-			<button id="help">Ayuda</button>	
+			<button id="finish" onclick="finalizar(1);">Finalizar</button>
+			<button id="help" onclick="ayuda();">Ayuda</button>	
 
 			<div id="marcador">
 				<h3>Marcador</h3>
-				<div>0 Piezas desordenadas</div>
+				<div id="n_desord">0 Piezas desordenadas</div>
 				<div id="n_movimientos">0 Movimientos realizados</div>
 				<div id="cronometro">Tiempo: 0 segundos</div>
 			</div>
