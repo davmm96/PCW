@@ -74,10 +74,15 @@ if(!imag){
 		if(document.getElementById("anyadir_foto").disabled == false){
 			ctx.globalAlpha = 0;
 			cv01.width=cv01.width;
-			ctx.fillStyle = '#000';
-			ctx.font = 'bold 18px sans-serif';
-			ctx.textAlign = 'center';
-			ctx.fillText('Haz click o arrastra una imagen aquí',180,100);
+			if(imagen != null){
+				insertar_foto_canvas(imagen);
+			}
+			else{
+				ctx.fillStyle = '#000';
+				ctx.font = 'bold 18px sans-serif';
+				ctx.textAlign = 'center';
+				ctx.fillText('Haz click o arrastra una imagen aquí',180,100);
+			}
 		}
 	}
 
@@ -171,6 +176,11 @@ if(!imag){
 
 					ctx2.putImageData(img1, sx_aux*tam, sy_aux*tam);
 					ctx2.putImageData(img2, sx*tam, sy*tam);
+
+					ctx2.strokeStyle = color;
+					ctx2.strokeRect(sx*tam,sy*tam,tam,tam);
+					ctx2.strokeStyle = color;
+					ctx2.strokeRect(sx_aux*tam,sy_aux*tam,tam,tam);
 
 					movimientos++;
 					div_mov = document.getElementById("n_movimientos");
