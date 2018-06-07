@@ -6,7 +6,6 @@ const _ALTO = 240;
 var imag=false;
 var dificultad=1;
 var color="#f00";
-var ctx2;
 var imagen;
 var cronometro;
 var tam = 0;
@@ -179,9 +178,6 @@ function load_canvas(){
 
 					ctx2.putImageData(img1, sx_aux*tam, sy_aux*tam);
 					ctx2.putImageData(img2, sx*tam, sy*tam);
-
-					ctx2_aux.putImageData(img1, sx_aux*tam, sy_aux*tam);
-					ctx2_aux.putImageData(img2, sx*tam, sy*tam);
 
 					console.log("SX:"+sx);
 					console.log("SY:"+sy);
@@ -526,10 +522,11 @@ let ctx2 = cv02.getContext('2d');
 	for(let i=0;i<_ALTO/tam;i++)
 		for(let j=0;j<_ANCHO/tam;j++)
 			if(puzzle[i][j]!=inicial[i][j]){
-				desord++;
-				ctx2.fillStyle = '#00bbff';
-				ctx2.globalAlpha = 0.3;
-				ctx2.fillRect(j*tam,i*tam,tam,tam);
+				if(color!='#00FFFF')
+					ctx2.strokeStyle = '#00FFFF';
+				else
+					ctx2.strokeStyle = '##FF0000';
+				ctx2.strokeRect(j*tam,i*tam,tam,tam);
 			}
 	help=true;		
 }
