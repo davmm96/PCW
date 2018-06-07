@@ -140,7 +140,13 @@ function load_canvas(){
 					ctx2.strokeRect(sx*tam,sy*tam,tam,tam);
 				}
 				if(help==true){
-					
+					for(let i=0;i<_ALTO/tam;i++)
+						for(let j=0;j<_ANCHO/tam;j++)
+							if(puzzle[i][j]!=inicial[i][j]){
+								ctx2.strokeStyle = '#f00';
+								ctx2.strokeRect(j*tam,i*tam,tam,tam);
+							}
+					help=false;					
 				}			
 			}
 
