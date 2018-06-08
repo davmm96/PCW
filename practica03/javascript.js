@@ -53,7 +53,7 @@ function load_canvas(){
 	let ctx = cv01.getContext('2d');
 	let ctx2 = cv02.getContext('2d');
 
-	ctx.fillStyle = '#000';
+	ctx.fillStyle = '#fff';
 	ctx.font = 'bold 18px sans-serif';
 	ctx.textAlign = 'center';
 	ctx.fillText('Haz click o arrastra una imagen aquí',180,100);
@@ -83,7 +83,7 @@ function load_canvas(){
         		insertar_foto_canvas(imagen); 
       		} 
      		else{ 
-        		ctx.fillStyle = '#000'; 
+        		ctx.fillStyle = '#fff'; 
         		ctx.font = 'bold 18px sans-serif'; 
         		ctx.textAlign = 'center'; 
         		ctx.fillText('Haz click o arrastra una imagen aquí',180,100); 
