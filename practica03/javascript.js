@@ -201,13 +201,17 @@ function load_canvas(){
 					console.log(inicial);
 
 
-					if(puzzle[sy][sx]==inicial[sy_aux][sx_aux]){
-						desord--;
-					}
+					if(puzzle[sy][sx]==inicial[sy][sx] || puzzle[sy_aux][sx_aux]==inicial[sy_aux][sx_aux])
+						desord++;
 
-					if(puzzle[sy_aux][sx_aux]==inicial[sy][sx]){
+
+					if(puzzle[sy][sx]==inicial[sy_aux][sx_aux])
 						desord--;
-					}
+					
+
+					if(puzzle[sy_aux][sx_aux]==inicial[sy][sx])
+						desord--;
+					
 
 					let puz_aux=puzzle[sy][sx];
 					puzzle[sy][sx]=puzzle[sy_aux][sx_aux];
