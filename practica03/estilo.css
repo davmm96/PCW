@@ -69,35 +69,41 @@ h2{
 }
 
 
-/*INDEX*/
+/*PARTE JUEGO*/
 
-.zonas {
-    text-align: center;
+.zonas{
+    display: flex;
+    flex-direction: row;
+    align-content: center;
     margin: auto;
-    outline: red solid 2px;
+    text-align: center;
 }
 
-.zonas div{
-    margin: 1% 1%;
-    display: inline-block;
-    outline: white solid 2px;
-    width: 45%;
+
+.zonas > div{    
+    box-shadow: 0px 0px 30px -3px rgba(0,0,0,0.63);
+    background-color: rgba(0, 0, 0,0.4);
+    align-self: center;
+    margin: auto;
+    padding: 1% 3%;
+    min-height: 600px;
+
 }
 
-.zonas div canvas{
-    outline: blue solid 2px;
+#puzzle > div{
+    outline: 2px white solid ;
 }
-/*MENU CABECERA*/
 
-header label{
-    position: fixed;
-    top: 2%;
-    left: 5%;
-    display: none;
-    background-color: rgba(0, 0, 0,0.3); 
-    padding: 0% 3%;
-    border-radius: 5%;
+#anyadir_foto{
+    margin: 20% 0%;
 }
+canvas{
+    outline: black 2px solid;
+    display: block;
+    margin: 5% auto;
+}
+
+/*CONTENIDO ACERCA*/
 
 .contenido {
     text-align: center;
@@ -205,146 +211,24 @@ footer a:hover {
     color: #0BA25D;
 }
 
-a{
-    color:white;
-}
-a:hover{
-    color: #0BA25D;
-}
 
-
-.boton_form{
-
-    font-family: 'Patrick Hand', cursive;
-    font-size: 120%;
-    width: 20%;
-    min-width: 90px;
-    background-color: #0BA25D;
-    color: black;
-    padding: 1% 1%;
-    margin: 1% 0;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-.boton_form:hover{
-    background-color: #99e88b;
-    color: black;
-    outline: none;
-}
-
-ul{
-    text-align: left;
-    list-style-type: none;
-}
-
-
-.rojo{
-    background-color: #db3b3b;
-}
-.rojo:hover{
-    background-color: #af3434;;
-}
-@media screen and (max-width: 480px) {
-
-    /*CABECERA*/
-
-	header img{
-		margin-bottom: 5%;
-		width: 50%;
-		height: 50%;
-	}	
-
-	header p{
-		display: none;
-	}
-
-	.contenido article{
-		width: 220px;
-		margin: 10%  0%;
-	}
-
-	.autor-acerca{
-		width: 90%;
-    	font-size: 90%;
-	}
-
-    header label{
-        cursor: pointer;
-        z-index: 999;
-        display:initial;
-        font-size: 230%;
-    }
-
-    header label:hover{
-        color: #777777;
-    }
-    /*MENU NAVEGACION*/
-
-    .menu-horizontal{
-        font-size: 80%;
-        box-shadow: 0px 0px 30px -3px rgba(0,0,0,0.63);
-        background-color: rgba(0, 0, 0,0.7); 
-        position: fixed;
-        transform: translateX(-180%);
-        transition: transform 0.8s ease-in-out;
-        width: 50%;
-        top: 2%;
-        padding-left: 20%;
-        padding-right: 2%;
-        z-index: 100;
-    }
-
-    .menu-horizontal a{
-        margin: 5%;
+@media screen and (max-width: 1000px) {
+    .zonas{
+        margin: auto;
         display: block;
     }
 
-    header input:checked + div, header input:checked + div a{
+    .zonas > div{    
+        width: 60%;
+        margin: 5% auto;
         display: block;
-        transform: translateX(0);
+        min-width: 360px;
     }
-    /*FORM FINAL INDEX*/
-    .form-pequenyo{
-        width: 70%;
-    }
-    /*FORMULARIO BUSCAR*/
-    .form-reducido{
-        padding-bottom: 4%;
-    }
-
-    .form-reducido input[type=submit]{
-        margin-top: 4%;
-    }
-
-
-    /*DETALLE RECETA*/
-
-    .foto-receta{
-    font-size: 150%;
-    text-align: center;
-    box-shadow: 0px 0px 30px -3px rgba(0,0,0,0.63);
-    background-color: rgba(0, 0, 0,0.4); 
-    color: white;
-    margin: 0% 4%;
-    margin-bottom: 5%;
-    padding-bottom: 1%;
-    } 
 }
 
 @media screen and (max-width: 1280px) {
-    .menu-horizontal a{
-        padding: 0 4%;
-    }
-    .menu-horizontal span{
-        display: none;
-    }
 
-}
 
-.m_span{
-    margin-bottom: 30px;
 }
 
 
