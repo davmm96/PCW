@@ -78,10 +78,16 @@ function load_canvas(){
 		if(document.getElementById("anyadir_foto").disabled == false){
 			ctx.globalAlpha = 0;
 			cv01.width=cv01.width;
-			ctx.fillStyle = '#000';
-			ctx.font = 'bold 18px sans-serif';
-			ctx.textAlign = 'center';
-			ctx.fillText('Haz click o arrastra una imagen aquí',180,100);
+
+			if(imagen != null){ 
+        		insertar_foto_canvas(imagen); 
+      		} 
+     		else{ 
+        		ctx.fillStyle = '#000'; 
+        		ctx.font = 'bold 18px sans-serif'; 
+        		ctx.textAlign = 'center'; 
+        		ctx.fillText('Haz click o arrastra una imagen aquí',180,100); 
+     		} 
 		}
 	}
 	//FIN DE RESALTAR CUANDO DRAGEAS
@@ -94,6 +100,7 @@ function load_canvas(){
 
 		if(document.getElementById("anyadir_foto").disabled == false){
 			cv01.width=cv01.width;
+			cv02.width= cv02.width;
 			let fichero = e.dataTransfer.files[0];
 			let fr = new FileReader();
 
@@ -208,6 +215,11 @@ function load_canvas(){
 					
 					if(desord==0)
 						finalizar(2);
+
+					ctx2.strokeStyle = color; 
+          			ctx2.strokeRect(sx*tam,sy*tam,tam,tam); 
+          			ctx2.strokeStyle = color; 
+          			ctx2.strokeRect(sx_aux*tam,sy_aux*tam,tam,tam); 
 
 					movimientos++;
 					div_mov = document.getElementById("n_movimientos");
