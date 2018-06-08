@@ -1,0 +1,25 @@
+.modal{
+	display:none;
+	top: 0;
+	position: fixed;
+	height: 100%;
+	width: 100%;
+	padding: 250px 0%;
+
+	/*PERSONALIZABLE*/
+	background-color: rgba(0,0,0,0.4); 
+}
+
+.contenidomodal{
+
+	/*CENTRARLO*/
+	margin: auto;
+	text-align: center;
+
+	/*PERSONALIZABLE*/
+
+
+	background-color: red;
+	border: 1px solid #888;
+    width: 80%;
+}
