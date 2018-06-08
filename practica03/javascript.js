@@ -141,9 +141,15 @@ function load_canvas(){
 				ctx2.strokeStyle = color;
 				ctx2.strokeRect(cx_aux*tam,cy_aux*tam,tam,tam);
 				ctx2.strokeStyle = '#000000';
+				if(color == '#000000'){
+					ctx2.strokeStyle = '#ff0000';
+				}
 				ctx2.strokeRect(cx*tam,cy*tam,tam,tam);
 				if(pieza_pick == true){	
 					ctx2.strokeStyle = '#ffffff';
+					if(color == '#ffffff'){
+						ctx2.strokeStyle = '#ff0000';
+					}
 					ctx2.strokeRect(sx*tam,sy*tam,tam,tam);
 				}
 				if(help==true){
@@ -177,6 +183,9 @@ function load_canvas(){
 			if(pieza_pick == false){
 				pieza_pick = true;
 				ctx2.strokeStyle = '#ffffff';
+				if(color == '#ffffff'){
+						ctx2.strokeStyle = '#ff0000';
+					}
 				ctx2.strokeRect(sx*tam,sy*tam,tam,tam);
 			}
 			else{
@@ -321,6 +330,7 @@ function cambio_color(col){
 }
 
 function dibujar_rejilla(ctx2){
+	ctx2.lineWidth = 2;
 	if(dificultad==1){
 		tam = 60;
 			for(var x=0; x<=360; x=x+tam){
