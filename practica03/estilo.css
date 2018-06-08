@@ -7,6 +7,7 @@ html,body{
     font-family: 'Patrick Hand', cursive;
 }
 
+
 /*PARTE DEL MODAL*/
 
 .modal {
@@ -96,6 +97,7 @@ h2{
 
 #anyadir_foto{
     margin: 20% 0%;
+    display: none;
 }
 canvas{
     outline: black 2px solid;
